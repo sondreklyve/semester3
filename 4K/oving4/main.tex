@@ -1,0 +1,163 @@
+\documentclass[11pt, a4paper, norsk]{NTNUoving}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathrsfs}
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+
+\ovingnr{4}    % Nummer på innlevering
+\semester{Haust 2022}
+\fag{TMA4120}
+\institutt{Institutt for matematiske fag}
+\begin{document}
+\section*{11.4}
+\begin{oppgave}[2]
+Starter med å finne Fourierrekken til $f(x)$. Siden funksjonen er odde, blir $a_n=0$, og koeffisientene blir
+\[
+b_n=\frac{2}{\pi}\int_0^{\pi}x\sin(nx) dx = -\frac{2(-1)^n}{n}	
+\]
+Bruker videre at
+\[
+E^{*} = \int_{-\pi}^{\pi}f^2 dx - \pi \left[2a_0^2 + \sum_{n=1}^{N} (a_n^2+b_n^2)\right]
+\]
+Setter inn for koeffisientene, og får
+\begin{align*}
+E^{*} &= \int_{-\pi}^{\pi}x^2 dx - \sum_{n=1}^{N}\frac{4\pi}{n^2} \\
+	&= \frac{2\pi^3}{3}-  \sum_{n=1}^{N}\frac{4\pi}{n^2} \\
+\end{align*}
+Regner ut noen verdier i python
+\begin{center}
+\begin{tabular}{ll}
+$N$ & $E^{*}$\\
+1& 8.104480505840705\\
+2& 4.962887852250912\\
+3& 3.5666244506554463\\
+4& 2.7812262872580007\\
+5& 2.278571462683633\\
+10& 1.1958954441865721\\
+100& 0.1250374819660962\\
+1000& 0.012560089523425688 \\
+\end{tabular}
+\end{center}
+\end{oppgave}
+\begin{oppgave}[3]
+Starter med å finne Fourierrekken til $f(x)$. Siden funksjonen er like, blir $b_n=0$, og koeffisientene blir
+\begin{align*}
+a_0 &= \frac{1}{\pi}\int_0^{\pi}x dx = \frac{\pi}{2}\\
+a_n&=\frac{2}{\pi}\int_0^{\pi}x\cos(nx) dx = -\frac{2}{\pi n^2}((-1)^n-1)	
+\end{align*}
+Setter inn for koeffisientene, og får
+\begin{align*}
+E^{*} &= \int_{-\pi}^{\pi}x^2 dx - \pi \left[\frac{2\pi^2}{4} + \frac{4}{\pi^2}\sum_{n=1}^{N} \frac{((-1)^n-1)^2}{n^4}\right] \\
+ &=\frac{\pi^3}{6} - \frac{4}{\pi}\sum_{n=1}^{N} \frac{((-1)^n-1)^2}{n^4} \\
+\end{align*}
+Regner ut noen verdier i python
+\begin{center}
+\begin{tabular}{ll}
+$N$ & $E^{*}$\\
+1& 0.07475460110931831 \\
+2& 0.07475460110931831 \\
+3& 0.011878574208815884 \\
+4& 0.011878574208815884 \\
+5& 0.0037298411225110684 \\
+\end{tabular}
+\end{center}
+\end{oppgave}
+\begin{oppgave}[9]
+Finner koeffisienten
+\begin{align*}
+c_n &= \frac{1}{2\pi}\int_{-\pi}^{\pi}x e^{-inx} dx \\
+&= \frac{ix}{2\pi n}\left[e^{-inx}\right]_{-\pi}^{\pi} -
+	  \frac{i}{2\pi n} \int_{-\pi}^{\pi}e^{-inx} dx \\
+&= \frac{i}{n} \cos(n\pi)+ \frac{1}{2\pi n^2} \left[e^{-inx} \right]_{-\pi}^{\pi} \\
+&= \frac{i}{n}\cos(n\pi)- \frac{i}{\pi n^2} \sin(n\pi) \\
+&= i \frac{(-1)^n}{n}
+\end{align*}
+Fra dette kan vi skrive ut Fourierrekken som
+\[
+f(x) = i\sum_{n=-\infty}^{\infty}\frac{(-1)^n}{n}e^{inx}
+\]
+\end{oppgave}
+\begin{oppgave}[13]
+Tar utgangspunkt i funksjonen 
+\[
+f(x) =
+\left\{
+	\begin{array}{ll}
+		\pi - x  & \mbox{if } x > 0 \\
+		\pi + x & \mbox{if } x < 0
+	\end{array}
+\right.
+\]
+Dette er en like funksjon, så Fourierkoeffisientene blir
+\begin{align*}
+a_0 &= \frac{1}{\pi} \int_0^{\pi} (\pi-x) dx = \frac{\pi}{2}\\
+a_n &= \frac{2}{\pi} \int_0^{\pi} (\pi-x)\cos(nx) dx = \frac{2-2(-1)^n}{\pi n^2}
+\end{align*}
+Setter disse koeffisientene inn i Parsevals identitet, som gir
+\begin{align*} 
+&& 2a_0^2+\sum_{n=1}^{\infty} (a_n^2 + b_n^2) &= \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)^2 dx \\
+&\Rightarrow& \frac{\pi^2}{2}+\frac{4}{\pi^2}\sum_{n=1}^{\infty} \frac{(1-(-1)^n)^2}{n^4} &= \frac{\pi^2}{3}\\
+&\Rightarrow& \frac{1}{4}\sum_{n=1}^{\infty} \frac{(1-(-1)^n)^2}{n^4} &= \frac{\pi^4}{96}\\
+\end{align*}
+Dersom vi skriver ut summen, ser vi at det stemmer med oppgaven.
+\[
+\frac{1}{4}\sum_{n=1}^{\infty} \frac{(1-(-1)^n)^2}{n^4}= 1 + \frac{1}{3^4} + \frac{1}{5^4} + \frac{1}{7^4} + ... = \frac{\pi^4}{96}
+\]
+\end{oppgave}
+\section*{11.7}
+\begin{oppgave}[1]
+Begynner med å se på de enkleste tilfellene. Dersom $x=0$, får vi integralet
+\[
+\int_0^{\infty} \frac{1}{1+w^2} dw = \frac{\pi}{2}
+\]
+som stemmer med oppgaven.\\
+Videre ser vi at funksjonen er definert som et integral fra $0$ til $\infty$, slik at funksjonsverdien blir $0$ for alle $x<0$.\\
+Til sist har vi tilfellet der $x>0$. Vi deler opp integralet i sinus- og cosinusledd, og bruker deretter (4) og (5) fra Kreyzsig for å sjekke opp den oppgitte funksjonen stemmer.
+\begin{align*}
+A(w)&=\frac{1}{\pi}\int_0^{\infty}\pi e^{-v}\cos(wv)dv = \frac{1}{1+w^2}\\ 
+B(w)&=\frac{1}{\pi}\int_0^{\infty}\pi e^{-v}\sin(wv)dv = \frac{w}{1+w^2}\\ 
+\end{align*}
+Disse integralene kjenner vi uansett løsningene på fra Laplacetransformasjoner. Vi ser at svarene stemmer overens med $A(w)$ og $B(w)$ fra integralet, og kan dermed konkludere at likheten i oppgaven er korrekt.
+\end{oppgave}
+\section*{11.9}
+I denne seksjonen brukes det at Fouriertransformen
+\[
+\hat{f}(w)=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}f(x)e^{-iwx} dx
+\]
+\begin{oppgave}[5]
+Finner Fouriertransformen ved definisjonen over.
+\begin{align*}
+\hat{f}(w)&=\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^x e^{-iwx} dx \\
+&=\frac{1}{\sqrt{2\pi}}\int_{-a}^{a}e^{(1-iw)x} dx \\
+&=\frac{1}{\sqrt{2\pi}(1-iw)}\left[e^{(1-iw)x}\right]_{-a}^{a} \\
+&=\frac{1}{\sqrt{2\pi}(1-iw)}\left[e^{(1-iw)a}-e^{-(1-iw)a}\right] \\
+\end{align*}
+\end{oppgave}
+\begin{oppgave}[7]
+Finner Fouriertransformen.
+\begin{align*}
+\hat{f}(w)&=\frac{1}{\sqrt{2\pi}}\int_{0}^{a}x e^{-iwx} dx \\
+&=\frac{1}{\sqrt{2\pi}}\left[\frac{ix}{w}e^{-iwx}\right]_0^a
+	 - \frac{i}{w\sqrt{2\pi}}\int_0^a e^{-iwx} dx \\
+&=\frac{ixe^{-iwa}}{w\sqrt{2\pi}}
+	 + \frac{1}{w^2\sqrt{2\pi}}\left[e^{-iwx}\right]_0^a \\
+&=\frac{iwae^{-iwa}+e^{-iwa}-1}{w^2\sqrt{2\pi}} \\
+&=\frac{e^{-iwa}(1+iwa)-1}{w^2\sqrt{2\pi}}
+\end{align*}
+\end{oppgave}
+\begin{oppgave}[9]
+Observerer at 
+\[
+\hat{f}(w)=\frac{1}{\sqrt{2\pi}}\int_{-1}^{1}|x| e^{-iwx} dx
+	=\frac{\sqrt{2}}{\sqrt{\pi}}\int_{0}^{1}x e^{-iwx} dx 
+\]
+Vi har dermed et integral på samme form som i forrige oppgave, men $a=1$. Utnytter resultatet vi allerede har funnet.
+\[
+\hat{f}(w) = \frac{1}{w^2}\sqrt{\frac{2}{\pi}}(e^{-iw}(1+iw)-1)
+	 = \frac{1}{w^2}\sqrt{\frac{2}{\pi}}(\cos(w)-w\sin(w)-1)
+\]
+Ved siste likhet brukes Eulers formel, $e^{ix} = \cos(x)+i\sin(x)$
+\end{oppgave}
+\end{document}

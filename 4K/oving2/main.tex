@@ -1,0 +1,168 @@
+\documentclass[11pt, a4paper, norsk]{NTNUoving}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathrsfs}
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+
+\ovingnr{1}    % Nummer på innlevering
+\semester{Haust 2022}
+\fag{TMA4120}
+\institutt{Institutt for matematiske fag}
+
+\begin{document}
+
+\section*{6.4}
+\begin{oppgave}[4]
+  Laplacetransformerer likningen.
+  \[
+    s^{2}Y-2s+16Y=4e^{-3\pi s}\Rightarrow Y=\frac{4}{s^{2}+4^{2}}e^{-3\pi s}+2\frac{s}{s^{2}+4^{2}}
+  \]
+  Bruker $t$-skift og får
+  \[
+    y(t)=2\cos(4t)+\sin(4(t-3\pi))u(t-3\pi)
+  \]
+\end{oppgave}
+\begin{oppgave}[10]
+Laplacetransformerer likningen.
+\[
+  s^{2}Y+5sY+6Y=e^{-\frac{1}{2}\pi s}-e^{-\pi s}\frac{s}{s^{2}+1}
+\]
+Det gir:
+\[
+  Y=\frac{e^{-\frac{1}{2}\pi s}}{s^{2}+5s+6}-\frac{s e^{-\pi s}}{(s^{2}+1)(s^{2}+5s+6)} =
+  \frac{e^{-\frac{1}{2}\pi s}}{s^{2}+5s+6}-\frac{s e^{-\pi s}}{(s^{2}+1)(s+2)(s+3)}
+\]
+Herfra gjelder det å finne den inverse Laplacetransformen for å ende opp med et uttrykk for $y(t)$.
+\end{oppgave}
+\section*{6.5}
+\begin{oppgave}[12]
+  Ser at vi har definisjonen av konvolusjon i likningen, så skriver om til
+  \[
+    y(t)+y*\cosh(t)=t+e^{t}
+  \]
+  Dette kan vi Laplacetransformere.
+  \[
+    Y+Y\frac{s}{s^{2}-1}=\frac{1}{s^{2}}+\frac{1}{s-1}\Rightarrow Y=\frac{1}{s-1}-\frac{1}{s^{2}(s-1)}=\frac{1}{s^{2}}+\frac{1}{s}
+  \]
+  Dette kan vi enkelt finne inverstransformen til, og får
+  \[
+    y(t) = t+1
+  \]
+\end{oppgave}
+\begin{oppgave}[19]
+  Deler uttrykket opp i et produkt, slik at vi kan bruke konvolusjon.
+  \[
+    \mathscr{L}^{-1}\left[\frac{2\pi s}{(s^{2}+\pi^{2})^{2}}\right]
+    = \mathscr{L}^{-1}\left[\frac{2\pi}{s^{2}+\pi^{2}}\frac{s}{s^{2}+\pi^{2}}\right]
+    = \mathscr{L}^{-1}[\mathscr{L}[2\sin(\pi t)] \mathscr{L}[\cos(\pi t)]]
+  \]
+  Ved konvolusjon har vi at dette blir
+  \[
+    = 2\sin(\pi t)*\cos(\pi t) = \int_{0}^{t}2\cos(\pi\tau)\sin(\pi(t-\tau))d\tau
+  \]
+  Ved litt trigonometriske identiteter får via
+  \[
+    = \int_{0}^{t}\sin(\pi t)d\tau + \int_{0}^{t}\sin(\pi(t-2\tau))d\tau
+  \]
+  Det første integralet er enkelt fordi det er konstant under $\tau$. Det andre integralet evalueres til 0. Dermed står vi igjen med
+  \[
+    \mathscr{L}^{-1}\left[\frac{2\pi s}{(s^{2}+\pi^{2})^{2}}\right]
+    = t\sin(\pi t)
+  \]
+\end{oppgave}
+\begin{oppgave}[22]
+  Gjør tilsvarende som i forrige oppgave.
+  \[
+    \mathscr{L}^{-1}\left[\frac{e^{-as}}{s(s-1)}\right] = u(t-a)*e^{t}
+    = \int_{0}^{t}u(\tau-a)e^{t-\tau}d\tau
+  \]
+  Vi utnytter egenskaper til Heavisidefunksjonen og får
+  \[
+    =\int_{a}^{t}e^{t-\tau}d\tau=e^{t-a}-1 \text{  ,  } t>a
+  \]
+  Vi må ha $t>a$ fordi konvolusjonen blir 0 ellers. Vi kan skrive det slik:
+  \[
+    \mathscr{L}^{-1}\left[\frac{e^{-as}}{s(s-1)}\right]
+    =(e^{t-a}-1)u(t-a)
+  \]
+\end{oppgave}
+\section*{6.6}
+\begin{oppgave}[7]
+  Begynner med å bruke $\sinh(2t)$ på eksponentialform. Det gir
+  \[
+    \frac{1}{2}\mathscr{L}[t^{2}e^{t}]-\frac{1}{2}\mathscr{L}[t^{2}e^{-t}]
+  \]
+  Bruker så at
+  \[
+    F'(s)= \mathscr{L}[tf(t)]
+  \]
+  Lar $f(t)=e^{t}$, slik at
+  \[
+    \mathscr{L}[tf(t)]=\left(-\frac{1}{s-2}\right)'=\frac{1}{(s-2)^{2}}
+  \]
+  Lar så $g(t)=te^{t}$, som tilsvarende gir
+  \[
+    \mathscr{L}[tg(t)]=\left(-\frac{1}{(s-2)^{2}}\right)'=\frac{2}{(s-2)^{3}}
+  \]
+  Dette kan vi så gjøre nøyaktig tilsvarende for det andre leddet vi vil Laplacetransformen, og vi sitter til slutt igjen med
+  \[
+    \mathscr{L}[t^{2}\sinh(2t)]=\frac{1}{(s-2)^{3}}-\frac{1}{(s+2)^{3}}
+  \]
+\end{oppgave}
+\begin{oppgave}[15]
+  Velger å bruke konvolusjon. Da får vi
+  \[
+    \mathscr{L}^{-1}\left[\frac{s}{s^{2}+4}\right]
+    =\frac{1}{2}\sin(2t)*\cos(2t)
+  \]
+  Fra seksjon 6.5, oppgave 19, regnet vi ut en lignende konvolusjon, og kan dermed enkelt konkludere hva denne konvolusjonen blir.
+  \[
+    \mathscr{L}^{-1}\left[\frac{s}{s^{2}+4}\right]=\frac{1}{4}t\sin(2t)
+  \]
+\end{oppgave}
+\begin{oppgave}[17]
+  Deler opp logaritmen, og bruker lineariteten til den inverse Laplacetransformen.
+  \[
+    \mathscr{L}^{-1}\left[\ln\frac{s}{s-1}\right]
+    = \mathscr{L}^{-1}[\ln s] - \mathscr{L}^{-1}[\ln s-1]
+  \]
+  Bruker integrasjonsregel, som sier at
+  \[
+    \int_{s}^{\infty}F(\bar{s})d\bar{s}=\mathscr{L}\left[\frac{f(t)}{t}\right]
+  \]
+  Lar $F(s)=-\frac{1}{s}$, slik at
+  \[
+    \int_{s}^{\infty}F(\bar{s})d\bar{s}
+    =-\int_{s}^{\infty}\frac{1}{\bar{s}}d\bar{s}
+    = \ln(s)
+  \]
+  Dermed har vi at
+  \[
+    \mathscr{L}^{-1}[\ln(s)]
+    =\frac{1}{t}\mathscr{L}^{-1}\left[\frac{1}{s}\right]
+    =-\frac{1}{t}
+  \]
+  Tilsvarende får vi at
+  \[
+    \mathscr{L}^{-1}[\ln(s-1)]
+    =\frac{1}{t}\mathscr{L}^{-1}\left[\frac{1}{s-1}\right]
+    =-\frac{e^{t}}{t}
+  \]
+  Sitter da igjen med
+  \[
+    \mathscr{L}^{-1}\left[\ln\frac{s}{s-1}\right]
+    =\frac{e^{t}-1}{t}
+  \]
+\end{oppgave}
+\section*{6.7}
+\begin{oppgave}[4]
+  Vi begynner med å Laplacetransformere begge likningene:
+  \begin{align*}
+    sY_{1} &= 4Y_{2}-\frac{8s}{s^{2}+16} \\
+    sY_{2} -3 &= -3Y_{1}-\frac{36}{s^{2}+16}
+  \end{align*}
+  Kan løse dette for $Y_{1}$ og $Y_{2}$, og derette finne den inverse Laplacetransformen til likningene man ender opp med. Det vil gi uttrykk for $y_{1}$ og $y_{2}$.
+\end{oppgave}
+\end{document}
