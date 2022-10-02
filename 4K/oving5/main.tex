@@ -1,0 +1,144 @@
+\documentclass[11pt, a4paper, norsk]{NTNUoving}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathrsfs}
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+
+\ovingnr{5}    % Nummer på innlevering
+\semester{Haust 2022}
+\fag{TMA4120}
+\institutt{Institutt for matematiske fag}
+\begin{document}
+\section*{12.1}
+\begin{oppgave}[15]
+  Vi har gitt $u(x,y)=a\ln(x^2+y^2)=b$, og vil vise at den oppfyller Laplaceligningen. Staret med å finne andrederiverte.
+  \begin{align*}
+    \frac{\partial^2u}{\partial x^2} &= \frac{\partial}{\partial x}\left(\frac{2ax}{x^2+y^2}\right) = -\frac{2a(x^2-y^2)}{(x^2+y^2)^2}\\
+    \frac{\partial^2u}{\partial y^2} &= \frac{\partial}{\partial y}\left(\frac{2ay}{x^2+y^2}\right) = \frac{2a(x^2-y^2)}{(x^2+y^2)^2}\\
+    &\Rightarrow \frac{\partial^2u}{\partial x^2} + \frac{\partial^2u}{\partial y^2} = 0
+  \end{align*}
+  Dermed har vi vist at ligningen er oppfylt. Videre setter vi inn initialbetingelsene, og finner at
+  \begin{align*}
+    x^2+y^2 = 1 &\Rightarrow u=a\ln(1)+1 = 110 &&\Rightarrow b=110 \\
+    x^2+y^2 = 100 &\Rightarrow u=a\ln(100)+110 = 0 &&\Rightarrow a=-\frac{110}{\ln(100)}
+  \end{align*}
+  Dermed har vi
+  \[
+    u(x,y) = 110 - \frac{110}{\ln(100)} \ln(x^2+y^2)
+  \]
+  som oppfyller Laplaceligningen.
+\end{oppgave}
+\section*{12.3}
+\begin{oppgave}[5]
+  Vi har gitt initialbetingelsene
+  \begin{align*}
+    u(0,t)&=u(L,t)=0\\
+    u(x,0)&=f(x)=k\sin(3\pi x) \\
+    u_{t}(x,0)&=g(x)=0\\
+    u_{tt}&=c^2u_{xx}
+  \end{align*}
+  Vi lar $u(x,t)=F(x)G(t)$, og bruker resultat fra forelesning (eventuelt kapittel 12.3 i boken).
+  \[
+    u(x,t)=\sum_{n=0}^{\infty}u_n(x,t)=\sum_{n=0}^{\infty}F_n(x)G_n(t)=
+    \sum_{n=0}^{\infty}(B_n\cos(\lambda_nt)+B_n^*\sin(\lambda_nt))\sin\frac{n\pi x}{L}
+  \]
+  Vi har at
+  \begin{align*}
+    B_n^*\lambda_n &= 2\int_0^1g(x)\sin(n\pi x) dx = 0 \Rightarrow B_n^*=0 \Rightarrow B_n^* = 0
+  \end{align*}
+  Videre ser vi at
+  \[
+    f(x)=\sum_{n=0}^{\infty}F_n(x)=\tilde{B_n}\sin(n\pi x) = k\sin(3\pi x) \Rightarrow F_3 = f(x)
+  \]
+  Dermed er $F_n=0$ for alle $n\neq 3$. Det gir
+  \[
+    u(x,t) = u_3=F_3(x)G_3(t) = k\cos(3\pi t)\sin(3\pi x)
+  \]
+\end{oppgave}
+\begin{oppgave}[7]
+  Tilsvarende forrige oppgave kan vi argumentere for at $B_n^*=0$. Dermed er
+  \[
+    u_n = B_n\cos(n\pi t)\sin(n\pi x)
+  \]
+  Vi finner
+  \[
+    B_n=2\int_0^1kx(1-x)\sin(n\pi x) = -\frac{4k}{\pi^3n^3}(\cos(\pi n)-1)
+  \]
+  Da har vi alt vi trenger, og skriver ut
+  \[
+    u(x,t)=\frac{8k}{\pi^3}\left(\cos(\pi t)\sin(\pi x) + \frac{1}{27}\cos(3\pi t)\sin(3\pi x) + \frac{1}{125}\cos(5\pi t)\sin(5\pi x) + ... \right)
+  \]  
+\end{oppgave}
+\begin{oppgave}[15]
+  Lar $u(x,t)=F(x)G(t)$. Setter dette inn i differensialligningen, som gir
+  \[
+    FG''=-c^2F^{(4)}G\Rightarrow \frac{F^{(4)}}{F} = -\frac{G''}{c^2G}=konst=\beta^4
+  \]
+  Dette må være konstant dersom de to funksjonene av ulike variable skal være like til en hver tid. Kaller så denne konstanten $\beta^4$ for å følge konvensjonen brukt i oppgaven.
+  Fra dette kan vi lage ligningene
+  \begin{align*}
+    F^{(4)}-\beta^4F &= 0 \\
+    G''+c^2\beta^4 &= 0
+  \end{align*}
+  Den siste av disse kan løses ved bruk av metoder fra Matematikk 3, som gir
+  \[
+    G(t) = a\cos(c\beta^2 t) + b\sin(c\beta^2 t)
+  \]
+  Var litt usikker på hvordan jeg skulle løse den andre direkte, men kan uansett vise likheten i oppgaven ved innsetting. Det gir
+  \begin{align*}
+    F(x) &= A\cos(\beta x) + B\sin(\beta x) + C\cosh(\beta x) + D\sinh(\beta x) \\
+    F^{(4)}(x) &= \beta^4A\cos(\beta x) + \beta^4B\sin(\beta x) + \beta^4C\cosh(\beta x) + \beta^4D\sinh(\beta x)
+  \end{align*}
+  Vi ser enkelt at $F^{(4)}(x) = \beta^4 F(x)$, slik at ligninen er oppfylt, og vi har vist det oppgaven spurte om. 
+\end{oppgave}
+\section*{11.4}
+\begin{oppgave}[19]
+  Begynner med å skrive opp betingelser gitt i oppgaven.
+  \begin{align*}
+    u_{tt}&=c^2u_{xx}\\
+    u(0,t) &= 0 \\
+    u(x,0) &= f(x) \\
+    u_x(x,L) &= 0 \\
+    u_t(x,0) &= 0
+  \end{align*}
+  Antar $u(x,t)=F(x)G(t)$ slik at
+  \begin{align*}
+    F''-kF &= 0 &\Rightarrow F(x) &= A\cos(px)+B\sin(px)\\
+    G''-kc^2 G &= 0 &\Rightarrow G(t) &= B_n\cos(\lambda_n t) + B_n^*\sin(\lambda_n t), \lambda_n=\frac{c n \pi}{L}
+  \end{align*}
+  Bruker at $u(0,t)=F(0)=0$ til å sette $A=0$. Ved $u_x(x,L)=0$ får vi
+  \[
+    F'(L)=pB\cos(pL)=0\Rightarrow pL = \frac{(2n+1)\pi}{2} \Rightarrow p_n=\frac{(2n+1)\pi}{2L}
+  \]  
+  Fra $u_t(x,0) =0$ får vi
+  \[
+    G'(0) = \lambda_nB_n^* = 0\Rightarrow B_n^* = 0
+  \]  
+  Vi har til slutt
+  \[
+    u(x,t)=\sum_{n=0}^{\infty}u_n(x,t)=\sum_{n=0}^{\infty}B_n\cos(p_nc t)\sin(p_nx)
+  \]
+  der vi har byttet ut $\lambda_n$ med $p_nc$. Vi kan avgjøre $B_n$ ved at
+  \[
+    u(x,0)=f(x)=\sum_{n=0}^{\infty}\sin(p_nx)
+  \]
+  slik at $B_n$ blir koeffisientene til Fourier sinusrekken til $f(x)$
+  \[
+    B_n=\frac{2}{L}\int_0^Lf(x)\sin(p_n x) dx
+  \]  
+\end{oppgave}
+\section*{12.Rev}
+\begin{oppgave}[18]
+  Vi har gitt $u_{xx}+u_x=0$. Lar $v(x,t) = u_x(x,t)\Rightarrow v_x+v=0$. Dette er en vanlig separabel differensialligning.
+  \[
+    \int \frac{1}{v_x}dv = \int{-1}dx \Rightarrow v(x,t) = D(y)e^{-x} 
+  \]
+  Dermed blir
+  \[
+    u(x,t) = \int v(x,t) dx = C(y)e^{-x} + h(y)
+  \]  
+  Siden funksjoner av $y$ oppfører seg konstant ved derivasjon med hensyn på $x$, ser vi at $h(y)$ blir derivert bort i $u_x$. $C(y)$ avhenger av $y$, men spiller ingen rolle i derivasjon mhp $x$.  
+\end{oppgave}
+\end{document}
