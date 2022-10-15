@@ -1,7 +1,0 @@
-latex_template
-*.gz
-*.log
-*.fls
-*.fdb_latexmk
-*.aux
-*.auctex-auto

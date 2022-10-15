@@ -1,2 +1,11 @@
 .DS_Store
 Books
+*~
+latex_template
+*.gz
+*.log
+*.fls
+*.fdb_latexmk
+*.aux
+*.auctex-auto
+.ipynb_checkpoints
