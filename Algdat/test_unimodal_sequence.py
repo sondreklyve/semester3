@@ -10,8 +10,18 @@ random.seed(123)
 
 
 def find_maximum(x):
-    # Skriv din kode her
-    pass
+    if len(x) == 1:
+        return x[0]
+
+    index = len(x) // 2
+
+    if len(x) % 2 and (x[index] < x[index-1] and x[index] < x[index+1]):
+        return max(x[0], x[-1])
+
+    if x[index-1] > x[index]:
+        return find_maximum(x[:index])
+    else:
+        return find_maximum(x[index:])
 
 
 # Noen håndskrevne tester
