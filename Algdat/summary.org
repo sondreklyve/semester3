@@ -1,0 +1,67 @@
+* Problemer og algoritmer
+** RAM-modellen
+** Problem, instans og problemstørrelse
+** Asymptotisk notasjon
+** Best-, average- og worst-case
+** Løkkeinvarianter og induksjon
+** Rekursiv dekomponering og induksjon over delinstanser
+** INSERTION SORT
+* Datastrukturer
+** Stack og kø
+** Lenkede lister
+** Direkte addressering og hash-tabeller
+** Chaining
+** Hashfunksjoner
+** Amortisert analyse
+** Aggregert analyse
+** Dynamiske tabeller
+* Splitt og hersk 
+** Divide and conquer
+** BISECT og BISECT'
+** MERGE-SORT
+** QUICKSORT og RANDOMIZED-QUICKSORT
+** Løse rekurrenser
+* Rangering i lineær tid 
+** Sammenligningsbasert worst case
+** Stabil sorteringsalgoritme
+** COUNTING-SORT
+** RADIX-SORT
+** BUCKET-SORT
+** RANDOMIZED-SELECT
+** SELECT
+* Rotfaste trestrukturer
+** Hauger og prioriteringskøer
+** HEAPSORT
+** Implementasjon av rotfaste trær
+** Binære søketrær
+** Forventet og garantert høyde på søketrær
+
+* Dynamisk programmering
+** Delinstansgraf
+** Dymanisk programmering
+** Memoisering
+** Iterasjon
+** Rekonstruere løsninger
+** Optimal delstruktur
+** Overlappende delinstanser
+** Stavkutting, matrisekjede-multiplikasjon og LCS
+** Det binære ryggsekkproblemet
+* Grådighet og stabil matching
+** Grådighet
+** Grådighetsegenskapen
+** Aktivitet-utvelgelse og Det kontinuerlige ryggsekkproblemet
+** HUFFMANN of Huffmann-koder
+** Stabil matching
+** GALE-SHAPLEY
+*** Best for kvinne -> værst for menn
+* Traversering av grafer
+** Implementere grafer
+** BFS - korteste vei uten vekter
+** DFS
+*** Parentesteoremet
+*** Hvit-sti-teoremet
+*** Klassifisering
+*** Impementasjon på stakk
+** TOPOLOGICAL-SORT
+** Traverseringstrær
+** Vilkårlig prioriteringskø

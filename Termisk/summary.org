@@ -1,0 +1,77 @@
+* Innledning - Hovedtema
+** Grunnbegreper
+** System og omgivelser
+** Trykk
+** Temperatur og termisk likevekt
+** Tilstandsvariable og tilstandsligninger
+** Ideell gass
+** Eksempler, trykk
+** Målbare koeffisienter; eksempler
+** Partielle deriverte og differensialer
+* Termodynamikkens 1. lov
+** Reversible prosesser
+** Arbeid
+** Indre energi
+** Varme og 1. lov
+** Energienheter
+** Kretsprosess. Adiabatisk prosess
+** Varmekapasitet
+** Differansen  $C_p-C_v$
+** Latent varme
+** Adiabatiske prosesser
+** Entalpi
+** Joule-Thomson-effekten
+** Carnot-prosessen
+* Termodynamikkens 2. lov
+** Energibevarelse er ikke alt
+** Carnots teorem
+* Entropi
+** Clausius' ulikhet
+** Entropi
+** ST-diagrammer
+** Den termodynamiske identitet
+** $C_p-C_v$
+** $\Delta S$ ved reversible prosesser
+** Prinsippet om entropiens økning
+** Irreversible prosesser
+** Mikrofysisk tolkning av entropi
+* Kinetisk gassteori
+** Mikroskopisk, statistisk bevegelse
+** Antagelser
+** Trykk i ideell gass
+** Mikroskopisk tolkning av T
+** Maxwells hastighetsfordeling
+** Gaussintegraler
+** Middelverdier
+* Statistisk mekanikk
+** Boltzmannfaktoren
+** Ekvipartisjonsprinsippet
+** $C_v$ for 2-atomige molekyler
+** $C_v$ for krystaller
+* Termodynamiske potensialer og relasjoner
+** Helmholtz fri energi F
+** Gibbs fri energi G
+** Eksergi: maksimalt arbeid
+** Maxwell-relasjonene
+** Legendretransformasjoner
+** Joule-Thomson-koeffisient
+*** For van der Waals-gass
+* Magnetiske systemer
+* Materielt åpne systemer
+** Kjemisk potensial
+** Likevektsbetingelser
+** Ideelle blandinger
+** Kjemiske reaksjoner; massevirkningsloven
+* Faselikevekter
+** Smelting, sublimasjon, trippelpunkt
+** Gibbs' faseregel
+** Clausius-Clapeyrons ligning
+** Damptrykk, eksempler
+** Fasediagram for rent stoff, (p,T),(p,V)
+** Kritisk punkt
+*** For van der Waals-gass
+** Faselikevekter og svake oppløsninger
+*** Damptrykknedsettelse
+*** Kokepunktforhøyelse
+*** Frysepunktnedsettelse
+** Osmose

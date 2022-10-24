@@ -9,3 +9,4 @@ latex_template
 *.aux
 *.auctex-auto
 .ipynb_checkpoints
+.zip

@@ -1,0 +1,72 @@
+
+* Innledende emner
+
+** Plancks strålingslov
+** Fotoelektrisk effekt
+** Comptoneffekt
+** Bohrs atommodell
+** de Broglies hypotese
+
+* Schrödingerligningen
+** Uke 35 (Bølgefunksjon)
+*** Bølgefunksjon; fysisk tolkning
+*** Bølgepakker og uskarphet
+*** Operatorer, egenfunksjoner, egenverdier
+**** Impulsoperator
+**** Hamiltonoperator
+** Uke 36 (TUSL)
+*** Tidsuavhengig Schrödingerligning
+*** Stasjonære tilstander
+*** Partikkel i 1D-boks
+*** Energikvantisering og normering
+*** Symmetri og nullpunkter
+*** Grunntilstand og eksiterte tilstander
+*** Grensebetingelser og krumningsegenskaper
+*** Ortogonalitet, ortonormert sett av funksjoner
+*** Starttilstand og tidsutvikling
+*** Superposisjon og ikke-stasjonære tilstander
+
+** Uke 38 (Sannsynlighet og operatorer)
+*** Sanns.strøm og sanns.bevarelse
+
+*** Kommutatorer
+*** Hermitske operatorer
+*** Usikkerhet og uskarphetsrelasjoner
+*** Forventningsverdiens tidsutvikling
+*** Ehrenfests teorem
+** Uke 39 (Krystaller og halvledere)
+*** Stykkevis konstante potensialer
+*** Elektroner i krystaller 1D
+*** Periodisk potensial, Blochs teorem
+*** Energibånd, spinn
+*** Pauliprinsippet
+*** Valensbånd, ledningsbånd, båndgap
+*** Isolator, halvleder, metall
+*** Hull, doping av halvledere, p- og n-type
+*** Lagdelte halvledere, heterostrukturer, effektiv masse
+** Uke 40 (Enkle modeller)
+*** Endeling potensialbrønn
+*** Harmonisk oscillator i 1D
+*** Klassisk vs QM oscillator
+*** Morsepotensialet
+** Uke 41 (Tunnelering)
+*** Tunneleffekt
+*** Resonant tunnelering
+*** Anvendelser av tunnelering
+*** Deltafunksjonspotensial
+*** Potensialsprang
+** Uke 42 (QM i 2D og 3D)
+*** Harmonisk oscillator i 3D
+*** Partikkel i 3D boks
+*** Tilstandstetthet
+*** 2D kulesymm, pot. og dreieimpuls
+** Uke 43
+*** Kompatible størrelser
+*** Simultane egenfunksjoner
+*** Symmetriegenskaper og paritet
+*** Dreieimpuls i 3D
+* Numerikk
+** Numerisk løsning av TUSL
+** Atomære enheter
+
+* Postulatene

@@ -1,0 +1,149 @@
+\documentclass[11pt, a4paper, norsk]{NTNUoving}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{mathrsfs}
+\newcommand{\RomanNumeralCaps}[1]
+{\MakeUppercase{\romannumeral #1}}
+
+
+\ovingnr{8}    % Nummer på innlevering
+\semester{Haust 2022}
+\fag{TMA4120}
+\institutt{Institutt for matematiske fag}
+
+\begin{document}
+\section*{13.4}
+\begin{oppgave}[2]
+Gitt $f(z) = iz\overline{z}=i|z|^2=i(x^2+y^2)$ for $z=x+iy$. Sjekker om dette oppfyller Cauchy-Riemann med $u(x,y)=0$ og $v(x,y)=x^2+y^2$.
+\begin{align*}
+  u_x &= 0\neq 2y = v_y \\
+  u_y &= 0\neq 2x = -v_x
+\end{align*}
+Ser at dette ikke er oppfylt, som betyr at $f(z)$ ikke er analytisk.
+\end{oppgave}
+\begin{oppgave}[10]
+  Har $f(z)=\ln|z|+i\text{Arg}z=\text{Ln}(z)$. Lar $z=re^{i\theta}$, slik at vi på polarform får $f(z)=\ln(r) + i\theta$. Bruker Cauchy-Riemann på polarform, som gir
+\begin{align*}
+  u_r &= \frac{1}{r} =\frac{1}{r} v_{\theta}\\
+  u_{\theta} &= 0 = v_x
+\end{align*}
+Siden Arg($z$) er diskontinuerlig på negativ reell akse, kan heller ikke $f(z)$ være analytisk her. Samtidig er ikke $f(z)$ definert for $z=0$, så vi står igjen med at $f(z)$ er analytisk på positiv reell akse, bortsett fra i $z=0$.
+\end{oppgave}
+\begin{oppgave}[18]
+  Sjekker først at $u=x^3-3xy^2$ oppfyller Laplace ligning.
+  \[
+    u_{xx}+u_{yy}=6x-6x = 0
+  \]
+  Konstruerer så en analytisk funksjon $f(z)=u(x,y)+iv(x,y)$ ved å bruke Cauchy-Riemann.
+  \begin{align*}
+    u_x=3x^2-3y^2=v_y&\Rightarrow v = \int (3x^2-3y^2)dy = 3x^2y-y^3+g(x) \\
+    u_y=-6xy=-v_x&\Rightarrow v = \int 6xy dx = 3x^2y+h(y) \\
+  \end{align*}
+  Velger $g(x)=0$ og $h(y)=-y^3$, og ser at dette gir den analytiske funksjonen
+  \[
+    f(z) = x^3-3xy^2 - i(3x^2y-y^3)
+  \]
+  Kan dobbeltsjekke at denne er harmonisk. Vet at $u_{xx}+u_{yy}=0$, så trenger bare å sjekke
+  \[
+    v_{xx}+v_{yy}=6y-6y=0
+  \]
+  $f(z)$ er altså både harmonisk og analytisk.
+\end{oppgave}
+\begin{oppgave}[30]
+  \begin{punkt}[b]
+    $\text{Im}f(z)=\text{konst}\Rightarrow v(x,y) = \text{konst}$. Bruker Cauchy-Riemann, og får
+    \begin{align*}
+      u_x&=v_y = 0 \Rightarrow u = h(y) \\
+      u_y&=-v_x = 0 \Rightarrow u = g(x) \\
+    \end{align*}
+    Dette kan bare stemme dersom $g(x)=h(y)=\text{konst}$, som betyr at hele $f(z)$ også må være konstant.
+  \end{punkt}
+  \begin{punkt}[c]
+    Fra Cauchy Riemann får vi at
+    \[
+      f'(z)=u_x+iv_x=0
+    \]
+    Dermed må $u_x=v_x=0$, og følgelig $u_y=v_y=0$ slik at $f(z)$ må være konstant.
+  \end{punkt}
+\end{oppgave}
+\section*{13.5}
+\begin{oppgave}[20]
+  Begynner med å skrive høyre side på polar form:
+  \[
+    4+3i = 5e^{i(\arctan(3/4) + 2\pi n)}
+  \]
+  Har bakt inn periodisiteten til den komplekse eksponentialfunksjonen slik at alle løsninger kommer med til slutt. Setter dette inn i ligningen fra oppgaven
+  \[
+    e^xe^{iy}=5e^{i(\arctan(3/4) + 2\pi n)}
+  \]
+  Dette gir to ligninger:
+  \begin{align*}
+    e^x = 5 &\Rightarrow x=\ln(5) \\
+    e^{iy} = 5e^{i(\arctan(3/4) + 2\pi n)} &\Rightarrow y = \arctan(3/4) + 2\pi n
+  \end{align*}
+  Setter dette sammen, som gir løsningen
+  \[
+    z = \ln(5) + i (\arctan(3/4) + 2\pi n )
+  \]
+\end{oppgave}
+\section*{13.6}
+\begin{oppgave}[10]
+  Bruker identiteter for hyperbolske funksjoner med komplekse argument, som gir
+  \begin{align*}
+    \sinh(3+4i) &= \sinh(3)\cos(4)+i\cosh(3)\sin(4) \\
+    \cosh(3+4i) &= \cosh(3)\cos(4)+i\sinh(3)\sin(4)
+  \end{align*}
+\end{oppgave}
+\begin{oppgave}[19]
+  Skrive om til polar form
+  \[
+    \sinh(z)=0\Rightarrow e^z-e^{-z}=0\Rightarrow e^{2z}=1
+  \]
+  Bruker logaritme, og får
+  \[
+    z = \frac{\ln(1)}{2} = \frac{0+2i\pi n}{2} = i\pi n
+  \]
+\end{oppgave}
+\newpage
+\section*{13.7}
+\begin{oppgave}[15]
+  Bruker regler for logaritme, som gir
+  \[
+    \ln(e^i) = i\ln(e) = i + 2\pi n i
+  \]
+\end{oppgave}
+\begin{oppgave}[17]
+  Bruker at $\ln(z)=\text{Ln}|z|+i\text{arg}z$, og regner ut de oppgitte logaritmene.
+  \begin{align*}
+    \ln(i^2) &= \text{Ln}|-1|+i\text{arg}(-1) = 0 + i\pi+2\pi i n = i\pi(2n+1) \\
+    2\ln(i) &= 2\text{Ln}|i|+2i\text{arg}(i) = 0 + i\pi+4\pi i n = i\pi(4n+1) \\
+  \end{align*}
+  Dette sser vi er ulikt, som skulle vises.
+\end{oppgave}
+\begin{oppgave}[30]
+  \begin{punkt}[a]
+    Vi har at
+    \[
+      \cos(w) = \frac{e^{iw}+e^{-iw}}{2} = z
+    \]
+  
+    Vil så finne inversen ved å løse dette for $w$. Fra siste likhet får vi
+    \[
+      e^{2iw}-2ze^{iw}+1=0
+    \]
+    Ved substitusjonen $u=e^{iw}$ får vi et vanlig andregradsuttrykk
+    \[
+      u^2-2zu+1 = 0 \Rightarrow u=\frac{2z\pm \sqrt{4z^2-4}}{2} = z\pm\sqrt{z^2-1}
+    \]
+    Dette gir
+    \[
+      w = -i\ln(z+\sqrt{z^2-1})
+    \]
+    Og kan dermed konkludere at
+    \[
+      \arccos(z) =  -i\ln(z+\sqrt{z^2-1})
+    \]
+    som skulle vises.
+  \end{punkt}
+\end{oppgave}
+\end{document}
