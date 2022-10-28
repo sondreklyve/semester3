@@ -1,42 +1,16 @@
 import numpy as np
 import matplotlib.pyplot as plt
-import pandas as pd
 
+from read_data import Mass
 
-class Mass:
-    def __init__(self, index, filename):
-        self.index = index
-        self.data_set = self.load_data(filename)
-        self.vx_list, self.vy_list, self.v_list = self.calculate_v()
+"""
+Imports Mass class from read_data.py, and make various plots and calculations on these objects.
+Most functionality is defined in the functions below,
+while the code is executed from the main-function at the very bottom of this file.
 
-    def load_data(self, filename):
-        """Read data from file using pandas"""
-        return pd.read_csv(
-            filename, delim_whitespace=True, skiprows=[0, 1], names=["t", "x", "y"]
-        )
-
-    def get_data(self, type=""):
-        """Return column (t, x or y) from the data set. If type is empty return entire data set"""
-        if type:
-            return self.data_set[type]
-        else:
-            return self.data_set
-
-    def calculate_v(self):
-        """Calculate velocities of the mass from its position over time"""
-        v_list = np.zeros((3, len(self.data_set) - 1))
-        v_list[0] = np.diff(self.get_data("x")) / np.diff(self.get_data("t"))
-        v_list[1] = np.diff(self.get_data("y")) / np.diff(self.get_data("t"))
-        v_list[2] = np.sqrt(v_list[0] ** 2 + v_list[1] ** 2)
-        return v_list
-
-    def scatter_pos(self):
-        """Make scatter plot of the positions of the mass"""
-        plt.scatter(self.get_data("x"), self.get_data("y"), marker="x", c="k")
-
-    def scatter_v(self):
-        """Make scatter plot of the velocities of the mass"""
-        plt.scatter(self.vx_list, self.vy_list, marker=".", c="b")
+The code run in main are structured into the subproblems as suggested in the assignement text,
+which is made clear by the comments.
+"""
 
 
 def boltzmann_velocity_distribution(v_list):
@@ -53,10 +27,8 @@ def boltzmann_speed_distribution(v_list):
 
 def boltzmann_constant(m, T, v_list):
     """Calculate Boltzmanns constant for arbitrary particle of mass m"""
-    k_b = 1.38e-23  # Boltzmanns constant [J/K]
     k_p = m * np.average(v_list**2) / (2 * T)
-    T_gass = m * np.average(v_list**2) / (2 * k_b)
-    return f"{k_p = :.3f}\t{T_gass = :.3e}"
+    return f"{k_p = :.3f} J/K"
 
 
 def concatenate_velocities(mass_list):
@@ -90,12 +62,14 @@ def plot_hist(mass_list):
 def plot_scatter(mass_list, average_v_x, average_v_y):
     """Make scatter plot of position and velocity of all masses in an array"""
     plt.figure(4)
+    plt.title('Spredningsplott posisjon')
     plt.xlabel('x (cm)')
     plt.ylabel('y (cm)')
     for mass in mass_list:
         mass.scatter_pos()
 
     plt.figure(5)
+    plt.title('Spredningsplott hastighet')
     plt.xlabel('$v_x$ (cm/s)')
     plt.ylabel('$v_y$ (cm/s)')
     for mass in mass_list:
@@ -113,8 +87,8 @@ def average_vs_rms(v_list):
     ratio = average / rms
     diff = abs(ratio - np.sqrt(np.pi) / 2)
     return (
-        f"{average = :.3f}\n"
-        f"{rms = :.3f}\n"
+        f"{average = :.3f} cm/s \n"
+        f"{rms = :.3f} cm/s \n"
         f"{ratio = :.3f}\n"
         f"√π/2 = {np.sqrt(np.pi)/2:.3f}\n"
         f"{diff = :.3f}\n"
@@ -129,7 +103,7 @@ def main():
     masses = list()
 
     for i in range(data_file_count):  # Read data from file and make mass objects
-        masses.append(Mass(i, f"numerisk2/mass8_{i+1}.txt"))
+        masses.append(Mass(f"data/mass8_{i+1}.txt"))
 
     v_list_x, v_list_y, v_list_tot = concatenate_velocities(masses)
 
@@ -138,15 +112,22 @@ def main():
     plot_scatter(masses, np.average(v_list_x), np.average(v_list_y))
 
     # Oppgave b)
-    for v_list in concatenate_velocities(masses):
-        print(boltzmann_constant(mass, temperature, v_list))
+    print(boltzmann_constant(mass, temperature, v_list_tot))
 
     print()  # Newline
 
     # Oppgave c)
     print(average_vs_rms(v_list_tot))
 
+    print()  # Newline
+
+    # Oppgave d)
+    print(f"Average velocity x: {np.average(v_list_x):.3f} cm/s")
+    print(f"Average velocity y: {np.average(v_list_y):.3f} cm/s")
+
+    
     plt.show()
+
 
 
 if __name__ == "__main__":

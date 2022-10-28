@@ -32,6 +32,7 @@ def simulate_fleas(N, NT):
     plt.xlabel("t/s")
     plt.ylabel("Antall lopper på hund A")
     plt.legend()
+    plt.savefig(f"{N}_lopper.pdf")
 
     
 def analytical(t, N):
@@ -43,7 +44,7 @@ def main():
     NT = [100, 3000, 30000]  # Totalt antall tidssteg
     N = [6, 1000, 20000]  # Antall lopper
     [simulate_fleas(n, nt) for n, nt in zip(N, NT)]
-    plt.show()
+    # plt.show()
 
 
 if __name__ == '__main__':
