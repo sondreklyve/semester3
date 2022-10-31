@@ -99,22 +99,77 @@ Fra klassisk fysikk:
  
 ** Uke 35 (Bølgefunksjon)
 *** Bølgefunksjon; fysisk tolkning
+Både masseløse partikler (fotoner) og partikler med masse (elektroner...) har bølge- og partikkelegenskaper.
+Tenker på absoluttkvadratet av bølgefunksjonen som sannsynlighetsfordeling for posisjon til partikkel.
+Max Born :
+$$ dP = |\Psi(x,t)|^2 dx = \text{ sanns for partikkel mellom } x \text{ og } x+dx \text{ ved tid } t$$
+
+Må dermed normere bølgefunksjonen slik at
+
+$$\int_{-\infty}^\infty |\Psi(x,t)|^2 dx = 1$$
 
 *** Bølgepakker og uskarphet
+Skarp impuls gir
+
+$$\int_{-\infty}^\infty |e^{i(px-Et)/\hbar}|^2 dx = \int_{-\infty}^\infty 1dx = \infty$$
+
+Må derfor innføre en prefaktor for å lage bølgepakke. Dersom vi har skarpt definert bølgepakke for posisjon, vil usikkerheten i impuls være stor, og omvendt. Fra der får vi *Heisenbergs uskarphetsrelasjon*:
+$$\Delta x\cdot \Delta p\geq\hbar/2$$
+
 *** Operatorer, egenfunksjoner, egenverdier
 **** Impulsoperator
 **** Hamiltonoperator
+Definerer
+$$\hat{A} f(x) = A f(x) $$
+der $\hat{A}$ er en operator, $f(x)$ en egenfunksjon, og $A$ er egenverdien.
+Fra dette kan vi utlede følgende operatorer:
+*Impulsoperator*
+$$ \hat{p} = \frac{\hbar}{i}\frac{\partial}{\partial x} $$
+
+*Operator for kinetisk energi*
+$$ \hat{K} = \frac{\hat{p}^2}{2m} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} $$
+
+*Hamiltonoperatoren*
+$$ \hat{H} = \hat{K} + V(x) $$
+
+slik at Scrödingerligningen blir
+$$ i\hbar \frac{\partial \Psi}{\partial t} = \hat{H}\Psi $$
 ** Uke 36 (TUSL)
-*** Tidsuavhengig Schrödingerligning
-*** Stasjonære tilstander
+*** Tidsuavhengig Schrödingerligning og stasjonære tilstander
+Antar Schödingerligning er et produkt at tidsuavhengig og posisjonsuavhengig funksjoner $\psi(x)$ og $T(t)$. Ved separasjon får vi tidsuavhengig Schrödingerligning
+
+$$ \hat{H}\psi = E\psi $$
+
+og Schrödingerligninger blir
+
+$$ \Psi(x,t) = \psi(x)e^{-iEt/\hbar} $$
+
+Dette kalles en *stasjonær tilstand* siden absoluttkvadratet av bølgefunksjonen er uavhengig at tid ($|e^{if(t)}=1|$).
+Vi har at $E$ er mulige *energiegenverdier*, og $\psi$ mulige *energiegenfunksjoner*.
+
+Ved linearitet er SL en lineærkombinasjon av energiegenfunksjoner av stasjonære løsninger:
+
+$$ \Psi(x,t) = \sum_n c_n\psi_n e^{-iE_n t/\hbar}  $$
+
+Dersom ulike energiegenverdier bidrar til $\Psi(x,t)$ er den ikke lenger stasjonær (avhengig av tid). 
+
 *** Partikkel i 1D-boks
-*** Energikvantisering og normering
-*** Symmetri og nullpunkter
-*** Grunntilstand og eksiterte tilstander
-*** Grensebetingelser og krumningsegenskaper
-*** Ortogonalitet, ortonormert sett av funksjoner
-*** Starttilstand og tidsutvikling
-*** Superposisjon og ikke-stasjonære tilstander
+Ser for oss et potensial som er null i et intervall mellom 0 og L, og uendelig ellers. Partikkel kan ikke være utenfor intervallet, så bølgefunksjonen blir null. Løser TUSL med grensebetingelser at bølgefunksjonen er kontinuerlig og null i endepunkter. Det gir følgelig
+$$ E_n = \frac{n^2\pi^2\hbar^2}{2mL^2} $$
+
+og
+$$ \psi_n(x) = \sqrt{\frac{2}{L}}\sin\frac{n\pi x}{L} $$
+
+
+*** Noen merknader
+**** Symmetri
+**** Nullpunkter
+**** Grunntilstand og eksiterte tilstander
+**** Grensebetingelser
+**** Krumningsegenskaper
+**** Ortogonalitet, ortonormert sett av funksjoner
+**** Starttilstand og tidsutvikling
+**** Superposisjon og ikke-stasjonære tilstander
 
 ** Uke 38 (Sannsynlighet og operatorer)
 *** Sanns.strøm og sanns.bevarelse
