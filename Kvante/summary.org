@@ -59,7 +59,7 @@ $$ p_{rms} = \sqrt{2m\cdot 3 \cdot \frac{1}{2} k_b T} $$
 og dermed
 
 
-$$ \lambda = h/p_{rms} = h/\sqrt{3mk_bT} $$k
+$$ \lambda = h/p_{rms} = h/\sqrt{3mk_bT} $$
 
 * Schrödingerligningen
 ** Introduksjon

@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-10-31 Mon 17:30 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Sondre Klyve" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#orgb853258">1. Innledende emner</a>
+<ul>
+<li><a href="#org4de897f">1.1. Plancks strålingslov</a></li>
+<li><a href="#org1dcbd3a">1.2. Fotoelektrisk effekt</a></li>
+<li><a href="#org741020f">1.3. Comptoneffekt</a></li>
+<li><a href="#org87cfa8c">1.4. Bohrs atommodell</a></li>
+<li><a href="#org92c4c0e">1.5. de Broglies hypotese</a></li>
+</ul>
+</li>
+<li><a href="#orgc9f92b0">2. Schrödingerligningen</a>
+<ul>
+<li><a href="#orgbce5780">2.1. Introduksjon</a></li>
+<li><a href="#org2002ba9">2.2. Uke 35 (Bølgefunksjon)</a>
+<ul>
+<li><a href="#org58dc8f3">2.2.1. Bølgefunksjon; fysisk tolkning</a></li>
+<li><a href="#org084af18">2.2.2. Bølgepakker og uskarphet</a></li>
+<li><a href="#orgb1b36a1">2.2.3. Operatorer, egenfunksjoner, egenverdier</a></li>
+</ul>
+</li>
+<li><a href="#org92eca3b">2.3. Uke 36 (TUSL)</a>
+<ul>
+<li><a href="#org8704a4d">2.3.1. Tidsuavhengig Schrödingerligning og stasjonære tilstander</a></li>
+<li><a href="#org75ed06a">2.3.2. Partikkel i 1D-boks</a></li>
+<li><a href="#orga12c608">2.3.3. Noen merknader</a></li>
+</ul>
+</li>
+<li><a href="#orgaecee5f">2.4. Uke 38 (Sannsynlighet og operatorer)</a>
+<ul>
+<li><a href="#orgf74e02d">2.4.1. Sanns.strøm og sanns.bevarelse</a></li>
+<li><a href="#orgd39b8fa">2.4.2. Kommutatorer</a></li>
+<li><a href="#org3fe8076">2.4.3. Hermitske operatorer</a></li>
+<li><a href="#orgd3ce820">2.4.4. Usikkerhet og uskarphetsrelasjoner</a></li>
+<li><a href="#org255de94">2.4.5. Forventningsverdiens tidsutvikling</a></li>
+<li><a href="#org9fd1cad">2.4.6. Ehrenfests teorem</a></li>
+</ul>
+</li>
+<li><a href="#org0ee8a35">2.5. Uke 39 (Krystaller og halvledere)</a>
+<ul>
+<li><a href="#org4509eaa">2.5.1. Stykkevis konstante potensialer</a></li>
+<li><a href="#orgfb2ff4b">2.5.2. Elektroner i krystaller 1D</a></li>
+<li><a href="#org2b2b605">2.5.3. Periodisk potensial, Blochs teorem</a></li>
+<li><a href="#orga276f33">2.5.4. Energibånd, spinn</a></li>
+<li><a href="#org614134a">2.5.5. Pauliprinsippet</a></li>
+<li><a href="#orgaaf6964">2.5.6. Valensbånd, ledningsbånd, båndgap</a></li>
+<li><a href="#orgd9debd6">2.5.7. Isolator, halvleder, metall</a></li>
+<li><a href="#org1bc7e3b">2.5.8. Hull, doping av halvledere, p- og n-type</a></li>
+<li><a href="#orgcd678ff">2.5.9. Lagdelte halvledere, heterostrukturer, effektiv masse</a></li>
+</ul>
+</li>
+<li><a href="#org0aab415">2.6. Uke 40 (Enkle modeller)</a>
+<ul>
+<li><a href="#org251bcf6">2.6.1. Endeling potensialbrønn</a></li>
+<li><a href="#org23819ab">2.6.2. Harmonisk oscillator i 1D</a></li>
+<li><a href="#org93ba2e3">2.6.3. Klassisk vs QM oscillator</a></li>
+<li><a href="#org1aa2d2a">2.6.4. Morsepotensialet</a></li>
+</ul>
+</li>
+<li><a href="#orgd2daccc">2.7. Uke 41 (Tunnelering)</a>
+<ul>
+<li><a href="#orgee49afa">2.7.1. Tunneleffekt</a></li>
+<li><a href="#org139607c">2.7.2. Resonant tunnelering</a></li>
+<li><a href="#orgeb1a891">2.7.3. Anvendelser av tunnelering</a></li>
+<li><a href="#org6280679">2.7.4. Deltafunksjonspotensial</a></li>
+<li><a href="#org5d400ea">2.7.5. Potensialsprang</a></li>
+</ul>
+</li>
+<li><a href="#orge14dccb">2.8. Uke 42 (QM i 2D og 3D)</a>
+<ul>
+<li><a href="#orgfce43a6">2.8.1. Harmonisk oscillator i 3D</a></li>
+<li><a href="#org9980c0e">2.8.2. Partikkel i 3D boks</a></li>
+<li><a href="#orgf3f3fc1">2.8.3. Tilstandstetthet</a></li>
+<li><a href="#orgaea4b0f">2.8.4. 2D kulesymm, pot. og dreieimpuls</a></li>
+</ul>
+</li>
+<li><a href="#org70c7d77">2.9. Uke 43</a>
+<ul>
+<li><a href="#orga9caa4b">2.9.1. Kompatible størrelser</a></li>
+<li><a href="#org8ade5c2">2.9.2. Simultane egenfunksjoner</a></li>
+<li><a href="#org02f340c">2.9.3. Symmetriegenskaper og paritet</a></li>
+<li><a href="#org0256a88">2.9.4. Dreieimpuls i 3D</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org57be427">3. Numerikk</a>
+<ul>
+<li><a href="#org6aeb437">3.1. Numerisk løsning av TUSL</a></li>
+<li><a href="#orgecca284">3.2. Atomære enheter</a></li>
+</ul>
+</li>
+<li><a href="#org5fd3df3">4. Postulatene</a>
+<ul>
+<li><a href="#org3a29bf4">4.1. A) Operatorpostulatet</a></li>
+<li><a href="#org7250c94">4.2. B) Tilstandspostulatet</a></li>
+<li><a href="#orgc76ad44">4.3. C) Forventningsverdipostulatet</a></li>
+<li><a href="#org6426daa">4.4. D) Målepostulatet</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgb853258" class="outline-2">
+<h2 id="orgb853258"><span class="section-number-2">1.</span> Innledende emner</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org4de897f" class="outline-3">
+<h3 id="org4de897f"><span class="section-number-3">1.1.</span> Plancks strålingslov</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Max Planck: <b>Kvantehypotese</b> \(E_n = n\cdot h\nu\).
+</p>
+
+<p>
+Ser på metallboks med lite hull, svart legeme.
+Kan kun ha stående EM bølger tilsvarende streng med lengde L
+Sannsynlighet for gitt energi \(E = E_n = n\cdot h\nu\):
+\[ p_n \sim \exp(-E_n/k_b T) \]
+Konkulderer at strålingsintensitet fra svart legeme med absolutt temperatur T er
+\[ j(T) = \int_0^\infty d\nu \frac{dj}{d\mu} \]
+med frekvensfordeling
+\[ \frac{dj}{d\nu} = \frac{2\pi h\nu^3/c^2}{\exp(h\nu/k_b T)-1} \]
+Kjent som <b>Plancks Strålingslov</b>.
+</p>
+
+<p>
+<b>Stefan-Boltzmanns lov</b>: \(j(T)\sim T^4\).
+</p>
+
+<p>
+<b>Wiens forskyvningslov</b>: Maksimal \(dj/d\nu\) ved \(\lambda_{max}\).
+</p>
+
+<p>
+<b>Rayleigh-Jeans lov</b>: \(hv << k_b T \Rightarrow \frac{du}{d\mu} \approx \frac{8\pi k_b T}{c^3} \cdot \nu^2\)
+</p>
+
+<p>
+<b>Ekvipartisjonsprinsippet</b>: Et kvadratisk ledd i energifunksjonen gir et bidrag \(\frac{1}{2}k_b T\) til midlere energi, pr partikkel, eller (som her) svingemode.
+Her: \(u = u_\varepsilon + u_B = \frac{1}{2}\epsilon_0\varepsilon^2+\frac{1}{2\mu_0}B^2\).
+Det gir \(\langle E \rangle = 2\cdot \frac{1}{2}k_b T\)
+Som betyr at \(du/d\nu = \frac{8\pi k_b T}{c^3} \cdot \nu^3\)
+Dette er det samme som <b>Plancks strålingslov</b> i grensen, som betyr at klassisk fysikk og kvantefysikk "henger sammen". 
+</p>
+</div>
+</div>
+<div id="outline-container-org1dcbd3a" class="outline-3">
+<h3 id="org1dcbd3a"><span class="section-number-3">1.2.</span> Fotoelektrisk effekt</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+EM stråling kvantisert: Elektron i metallet kan bare absorbere hele \(h\nu\).
+W = minste energi som løsriver elektron fra metalloverflaten = frigjøringsarbeid.
+Det vi si at \(h\nu\) må være større enn W for å kunne løsrive elektroner.
+</p>
+</div>
+</div>
+<div id="outline-container-org741020f" class="outline-3">
+<h3 id="org741020f"><span class="section-number-3">1.3.</span> Comptoneffekt</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Kollisjon mellom røntgenfoton med masse 0 og elektron i ro.
+Foton: m=0, \(E=h\nu = pc \Rightarrow p = h\nu/c = h/\lambda\).
+Energi- og impulsbevaring gir \(\lambda_{foton,etter} = \lambda_{foton,for} + \lambda_c(1-\cos\theta)\) med \(\lambda_c = h/m_e c \approx 0.024 Å\).
+Dette er kjent som elektronets <b>Comptonbølgelengde</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-org87cfa8c" class="outline-3">
+<h3 id="org87cfa8c"><span class="section-number-3">1.4.</span> Bohrs atommodell</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Frem til nå:
+</p>
+<ul class="org-ul">
+<li>Elektronet (Thomson 1897)</li>
+<li>Atomkjernen (Rutherford 1911)</li>
+<li>Balmerserien for H-atomet (Balmer 1885) \(\lambda_n=B\cdot \frac{n^2}{n^2-2^2}\)</li>
+<li>Kvantisert strålingsenergi (Planck 1900, Einstein 1905)</li>
+</ul>
+
+<p>
+Bohr antok:
+</p>
+<ul class="org-ul">
+<li>Elektron beveger seg i klassiske baner rundt kjernen med bestemte energier; såkalte stasjonære tilstander.</li>
+<li>Elektronet kan foreta <b>kvantesprang</b> mellom de stasjonære tilstandene, ved hjelp av absorpsjon eller emisjon av et strålingskvant med energi \(hc/\lambda\).</li>
+<li>Elektroet har <b>kvantisert dreieimpuls</b> \(L = n\hbar\).</li>
+</ul>
+<p>
+Elektronbaner med radius \(r_n = n^2 \cdot a_0\).
+<b>Bohr-radien</b>: \(a_0 = 4\pi\epsilon_0 \hbar^2/m_e e^2 \approx 0.059\) Å.
+Mulige energiverdier for elektronet: \(-\frac{e^2}{8\pi\epsilon_0 r_n} \approx -\frac{13.6}{n^2}\) eV
+</p>
+</div>
+</div>
+<div id="outline-container-org92c4c0e" class="outline-3">
+<h3 id="org92c4c0e"><span class="section-number-3">1.5.</span> de Broglies hypotese</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Partikler med masse har - i likhet med masseløse partikler - både partikkel- og bølgeegenskaper.
+For fotoner: \(\lambda=h/p\) og \(\nu = E/h\).
+De Broglie: Dette gjelder også for elektroner, protoner, nøytroner, atomer, molekyler&#x2026;
+</p>
+
+<p>
+Partiklers termiske de Broglie-bølgelengde fra ekvipartisjonsprinsippet:
+</p>
+
+<p>
+\[ p_{rms} = \sqrt{2m\cdot 3 \cdot \frac{1}{2} k_b T} \]
+og dermed
+</p>
+
+
+<p>
+\[ \lambda = h/p_{rms} = h/\sqrt{3mk_bT} \]k
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgc9f92b0" class="outline-2">
+<h2 id="orgc9f92b0"><span class="section-number-2">2.</span> Schrödingerligningen</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orgbce5780" class="outline-3">
+<h3 id="orgbce5780"><span class="section-number-3">2.1.</span> Introduksjon</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Vil finne bølgefunksjon som kan beskrive de Broglies partikkelbølger.
+Fra klassisk fysikk:
+</p>
+<ul class="org-ul">
+<li><p>
+Bølgeligningen
+</p>
+
+<p>
+\[\frac{\partial^2y}{\partial x^2} = \frac{1}{v_f^2}\frac{\partial^2 y}{\partial t^2}\]
+</p>
+
+<p>
+med generell løsning \(y(x,t) = y(x\pm v_f t)\) og <b>harmoniske løsninger</b>
+o\[ y(x,t) = Ae^{i(kx-\omega t)} \]
+</p></li>
+
+<li>Bølgestørrelser og relasjoner:
+<ul class="org-ul">
+<li>A = amplitude</li>
+<li>k = \(2\pi/\lambda\) = bølgetall</li>
+<li>\(\omega = 2\pi/T\) = vinkelfrekvens</li>
+<li>\(\nu = \omega/2\pi\) = frekvens</li>
+<li>\(v_f = \lambda / T = \lambda\nu = \omega/k\) = fasehastighet</li>
+<li>\(v_g = d\omega/dk\) = gruppehastiget</li>
+</ul></li>
+</ul>
+
+<p>
+Fra de Broglie:
+\[ \lambda = h/p \Rightarrow k = 2\pi/\lambda = 2\pi p/h = p/\hbar \]
+\[ \nu = E/h \Rightarrow \omega = 2\pi\nu = 2\pi E/h = E/\hbar \]
+</p>
+
+<p>
+Finner noe som passer i bølgeligning, og ender opp noe som
+</p>
+
+<p>
+\[ i\hbar \frac{\partial\Psi}{\partial t} = -\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2} \]
+</p>
+
+<p>
+for fri partikkel i potensial V = 0. En fri partikkel i konstant potensial kan beskrives ved
+\[ \Psi(x,t) = e^{i(px-Et)/\hbar} \]
+</p>
+
+<p>
+Dette gir opphav til <b>Schrödingerligningen</b>
+</p>
+
+<p>
+\[ i\hbar\frac{\partial}{\partial t} \Psi(\vec{r},t) = \left[-\frac{\hbar^2}{2m}\nabla^2+V(\vec{r})\right]\Psi(\vec{r}, t) \]
+</p>
+
+<p>
+<b>Merk</b> Bølgefunksjonen må være kompleks, og er dermed ikke direkte målbar.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org2002ba9" class="outline-3">
+<h3 id="org2002ba9"><span class="section-number-3">2.2.</span> Uke 35 (Bølgefunksjon)</h3>
+<div class="outline-text-3" id="text-2-2">
+</div>
+<div id="outline-container-org58dc8f3" class="outline-4">
+<h4 id="org58dc8f3"><span class="section-number-4">2.2.1.</span> Bølgefunksjon; fysisk tolkning</h4>
+<div class="outline-text-4" id="text-2-2-1">
+<p>
+Både masseløse partikler (fotoner) og partikler med masse (elektroner&#x2026;) har bølge- og partikkelegenskaper.
+Tenker på absoluttkvadratet av bølgefunksjonen som sannsynlighetsfordeling for posisjon til partikkel.
+Max Born :
+\[ dP = |\Psi(x,t)|^2 dx = \text{ sanns for partikkel mellom } x \text{ og } x+dx \text{ ved tid } t\]
+</p>
+
+<p>
+Må dermed normere bølgefunksjonen slik at
+</p>
+
+<p>
+\[\int_{-\infty}^\infty |\Psi(x,t)|^2 dx = 1\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-org084af18" class="outline-4">
+<h4 id="org084af18"><span class="section-number-4">2.2.2.</span> Bølgepakker og uskarphet</h4>
+<div class="outline-text-4" id="text-2-2-2">
+<p>
+Skarp impuls gir
+</p>
+
+<p>
+\[\int_{-\infty}^\infty |e^{i(px-Et)/\hbar}|^2 dx = \int_{-\infty}^\infty 1dx = \infty\]
+</p>
+
+<p>
+Må derfor innføre en prefaktor for å lage bølgepakke. Dersom vi har skarpt definert bølgepakke for posisjon, vil usikkerheten i impuls være stor, og omvendt. Fra der får vi <b>Heisenbergs uskarphetsrelasjon</b>:
+\[\Delta x\cdot \Delta p\geq\hbar/2\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb1b36a1" class="outline-4">
+<h4 id="orgb1b36a1"><span class="section-number-4">2.2.3.</span> Operatorer, egenfunksjoner, egenverdier</h4>
+<div class="outline-text-4" id="text-2-2-3">
+<p>
+Definerer
+\[\hat{A} f(x) = A f(x) \]
+der \(\hat{A}\) er en operator, \(f(x)\) en egenfunksjon, og \(A\) er egenverdien.
+Fra dette kan vi utlede følgende operatorer:
+<b>Impulsoperator</b>
+\[ \hat{p} = \frac{\hbar}{i}\frac{\partial}{\partial x} \]
+</p>
+
+<p>
+<b>Operator for kinetisk energi</b>
+\[ \hat{K} = \frac{\hat{p}^2}{2m} = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} \]
+</p>
+
+<p>
+<b>Hamiltonoperatoren</b>
+\[ \hat{H} = \hat{K} + V(x) \]
+</p>
+
+<p>
+slik at Scrödingerligningen blir
+\[ i\hbar \frac{\partial \Psi}{\partial t} = \hat{H}\Psi \]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org92eca3b" class="outline-3">
+<h3 id="org92eca3b"><span class="section-number-3">2.3.</span> Uke 36 (TUSL)</h3>
+<div class="outline-text-3" id="text-2-3">
+</div>
+<div id="outline-container-org8704a4d" class="outline-4">
+<h4 id="org8704a4d"><span class="section-number-4">2.3.1.</span> Tidsuavhengig Schrödingerligning og stasjonære tilstander</h4>
+<div class="outline-text-4" id="text-2-3-1">
+<p>
+Antar Schödingerligning er et produkt at tidsuavhengig og posisjonsuavhengig funksjoner \(\psi(x)\) og \(T(t)\). Ved separasjon får vi tidsuavhengig Schrödingerligning
+</p>
+
+<p>
+\[ \hat{H}\psi = E\psi \]
+</p>
+
+<p>
+og Schrödingerligninger blir
+</p>
+
+<p>
+\[ \Psi(x,t) = \psi(x)e^{-iEt/\hbar} \]
+</p>
+
+<p>
+Dette kalles en <b>stasjonær tilstand</b> siden absoluttkvadratet av bølgefunksjonen er uavhengig at tid (\(|e^{if(t)}=1|\)).
+Vi har at \(E\) er mulige <b>energiegenverdier</b>, og \(\psi\) mulige <b>energiegenfunksjoner</b>.
+</p>
+
+<p>
+Ved linearitet er SL en lineærkombinasjon av energiegenfunksjoner av stasjonære løsninger:
+</p>
+
+<p>
+\[ \Psi(x,t) = \sum_n c_n\psi_n e^{-iE_n t/\hbar}  \]
+</p>
+
+<p>
+Dersom ulike energiegenverdier bidrar til \(\Psi(x,t)\) er den ikke lenger stasjonær (avhengig av tid). 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org75ed06a" class="outline-4">
+<h4 id="org75ed06a"><span class="section-number-4">2.3.2.</span> Partikkel i 1D-boks</h4>
+<div class="outline-text-4" id="text-2-3-2">
+<p>
+Ser for oss et potensial som er null i et intervall mellom 0 og L, og uendelig ellers. Partikkel kan ikke være utenfor intervallet, så bølgefunksjonen blir null. Løser TUSL med grensebetingelser at bølgefunksjonen er kontinuerlig og null i endepunkter. Det gir følgelig
+\[ E_n = \frac{n^2\pi^2\hbar^2}{2mL^2} \]
+</p>
+
+<p>
+og
+\[ \psi_n(x) = \sqrt{\frac{2}{L}}\sin\frac{n\pi x}{L} \]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orga12c608" class="outline-4">
+<h4 id="orga12c608"><span class="section-number-4">2.3.3.</span> Noen merknader</h4>
+<div class="outline-text-4" id="text-2-3-3">
+</div>
+<ol class="org-ol">
+<li><a id="orgea77145"></a>Symmetri<br />
+<div class="outline-text-5" id="text-2-3-3-1">
+<p>
+Symmetrisk potensial gir symmetrisk sannsynlighetsfordeling, og enter symmetrisk eller antisymmetrisk bølgefunksjon.
+</p>
+</div>
+</li>
+<li><a id="orgc784068"></a>Nullpunkter<br />
+<div class="outline-text-5" id="text-2-3-3-2">
+<p>
+\(\psi_n(x)\) har \(n-1\) nullpunkter, som gjelder generelt. Eksludert eventuelle endepunkt.
+</p>
+</div>
+</li>
+<li><a id="orge9821d1"></a>Grunntilstand og eksiterte tilstander<br />
+<div class="outline-text-5" id="text-2-3-3-3">
+<p>
+Tilstand med lavest mulig energi. 1D brønn: \(E_1=\frac{\pi^2\hbar^2}{2mL^2}>0\)
+</p>
+</div>
+</li>
+<li><a id="org9614517"></a>Grensebetingelser<br />
+<div class="outline-text-5" id="text-2-3-3-4">
+<p>
+Ser at TUSL på formen
+\[ \frac{\psi ''}{\psi} = \frac{2m}{\hbar^2}(V-E) \]
+gir \(\psi''\) endelig der V er endelig. Dette betyr at \(\psi\) og \(\psi'\) er kontinuerlige.
+\(\psi\) og \(|\psi|^2\) vil alltid være kontinuerlige over alt.
+</p>
+</div>
+</li>
+<li><a id="org87f9792"></a>Krumningsegenskaper<br />
+<div class="outline-text-5" id="text-2-3-3-5">
+<p>
+\(\psi''/\psi\) har samme fortegn som \(V-E\).
+</p>
+<ul class="org-ul">
+<li>Klassisk tillatt område der \(E\geq V\), slik at \(\psi\) krummer mot x-aksen.</li>
+<li>Klassisk forbudt område der \(E<V\), slik at \(\psi\) krummet bort fra x-aksen. (Lov i QM dersom potensial ikke er uendelig.)</li>
+</ul>
+</div>
+</li>
+<li><a id="org722c6ae"></a>Ortogonalitet, ortonormert sett av funksjoner<br />
+<div class="outline-text-5" id="text-2-3-3-6">
+<p>
+Et funksjonssett \(\{\psi_n(x)\}\) er ortonormet når
+\[ \langle \psi_n, \psi_k \rangle \equiv \int_{-\infty}^\infty \psi_n^*(x)\psi_k(x)dx = \delta_{nk} \]
+Dette gjelder generelt for løsninger av TUSL.
+</p>
+</div>
+</li>
+
+<li><a id="orgd3ea953"></a>Starttilstand og tidsutvikling<br />
+<div class="outline-text-5" id="text-2-3-3-7">
+<p>
+Kan uttrykke en starttilstand som en lineærkombinasjon av energiegenfunksjonene:
+\[ \Psi(x,0)=\sum_n c_n \psi_n(x) \]
+</p>
+
+<p>
+Tidsutviklingen blir en lineærkombinasjon av stasjonære tilstander:
+\[ \Psi(x,t)=\sum_n c_n \psi_n(x)e^{-iE_nt/\hbar} \]
+</p>
+
+<p>
+Kan fastlegge konstanene slik:
+\[ c_n = \int_{-\infty}^\infty \psi_n^*(x)\Psi(x,0)dx \]
+</p>
+
+<p>
+I normert tilstand må vi da ha at
+\[ \sum_n |c_n|^2 = 1 \]
+slik at sannsynlighet er bevart.
+</p>
+</div>
+</li>
+</ol>
+</div>
+</div>
+
+<div id="outline-container-orgaecee5f" class="outline-3">
+<h3 id="orgaecee5f"><span class="section-number-3">2.4.</span> Uke 38 (Sannsynlighet og operatorer)</h3>
+<div class="outline-text-3" id="text-2-4">
+</div>
+<div id="outline-container-orgf74e02d" class="outline-4">
+<h4 id="orgf74e02d"><span class="section-number-4">2.4.1.</span> Sanns.strøm og sanns.bevarelse</h4>
+<div class="outline-text-4" id="text-2-4-1">
+<p>
+Definerer \(j(x,t)\) som <b>sannsynlighetsstrøm</b> inn eller ut av et lite intervall \(dx\). Har fra før at sannsynslighetstettheten \(\rho(x,t)= |\Psi(x,t)|^2\) Fra dette får vi kontinuitetsligning for sannsynligghet
+\[ \frac{\partial \rho}{\partial t} + \frac{\partial j}{\partial x} = 0\]
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgd39b8fa" class="outline-4">
+<h4 id="orgd39b8fa"><span class="section-number-4">2.4.2.</span> Kommutatorer</h4>
+<div class="outline-text-4" id="text-2-4-2">
+<p>
+Definisjon av <b>kommutatoren</b> mellom to operatorer:
+\[ [\hat{A}, \hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A} \]
+\(\hat{A}\) og \(\hat{B}\) kommuterer dersom \([\hat{A}, \hat{B}] f = 0\).
+</p>
+</div>
+</div>
+<div id="outline-container-org3fe8076" class="outline-4">
+<h4 id="org3fe8076"><span class="section-number-4">2.4.3.</span> Hermitske operatorer</h4>
+<div class="outline-text-4" id="text-2-4-3">
+<p>
+Definerer den <b>adjunkte</b> \(\hat{A}^+\) av en operator \(\hat{A}\):
+\[ \int (\hat{A}\Psi_1)^*\Psi_2 dx = \int \Psi_1^* (\hat{A}^+ \Psi_2) dx \]
+</p>
+
+<p>
+La \(F\) være en fysisk størrelse og \(\hat{F}\)  operatorer som representerer \(F\). Da må forventningsverdien \(\langle F \rangle\) være <b>reell</b>.
+\[ \langle F \rangle = \langle F \rangle ^* \]
+Har generelt at
+\[ \int \Psi_1^* \hat{F}\Psi_2 dx  = \int \Psi_2(\hat{F}\Psi_1)^* dx \]
+Sier at \(\hat{F}\) er <b>hermitesk</b> dersom den oppfyller dette. Dermed er også \(\hat{F}^+ = \hat{F}\)  oppfylt, og vi sier at \(\hat{F}\) er <b>selvadjungert</b>.
+</p>
+</div>
+</div>
+<div id="outline-container-orgd3ce820" class="outline-4">
+<h4 id="orgd3ce820"><span class="section-number-4">2.4.4.</span> Usikkerhet og uskarphetsrelasjoner</h4>
+<div class="outline-text-4" id="text-2-4-4">
+<p>
+Definerer <b>standardavvik</b>
+\[ \Delta x = \sqrt{\langle(x-\langle x\rangle)^2\rangle} = \sqrt{\langle x^2\rangle-\langle x\rangle^2} \]
+For to målbare størrelser A og B:
+\[ \Delta A \cdot \Delta B \geq \left|\frac{1}{2}\langle [\hat{A},\hat{B}\rangle]\right| \]
+To størrelser med operatorer som ikke kommuterer, kan altså ikke ha skarpe verdier samtidig. Eksempelvis posisjon og impuls:
+\[ [x, \hat{p}] = i\hbar \Rightarrow \Delta x \cdot \Delta p \geq \frac{1}{2} \hbar \].
+</p>
+</div>
+</div>
+<div id="outline-container-org255de94" class="outline-4">
+<h4 id="org255de94"><span class="section-number-4">2.4.5.</span> Forventningsverdiens tidsutvikling</h4>
+<div class="outline-text-4" id="text-2-4-5">
+<p>
+Ser på tidsuavhengig operator \(\hat{F}\) slik at \(\frac{\partial \hat{F}}{\partial t} = 0\). Dermed:
+\[ \frac{d}{dt} \langle F \rangle = \frac{i}{\hbar} \langle[\hat{H},\hat{F}]\rangle \].
+</p>
+
+<p>
+Dvs: \(\langle F \rangle\) endrer seg ikke hvis \(\hat{F}\) kommuterer med Hamiltonoperatoren \(\hat{H}\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org9fd1cad" class="outline-4">
+<h4 id="org9fd1cad"><span class="section-number-4">2.4.6.</span> Ehrenfests teorem</h4>
+<div class="outline-text-4" id="text-2-4-6">
+<p>
+Kvantemekaniske forventingsverdier \(\langle x \rangle\) og \(\langle p\rangle\) oppfyller samme bevegelsesligninger som de klassiske \(x\) og \(p\),
+\[ \frac{dx}{dt} = v=\frac{p}{m}; \frac{dp}{dt} = F  = -\frac{\partial V }{\partial x} \]
+</p>
+
+<p>
+Får
+\[\frac{d}{dt}\langle x\rangle = \frac{i}{\hbar}\langle [\hat{H},x]\rangle = \frac{1}{m} \langle \hat{p} \rangle = \frac{1}{m}\langle p\rangle\]
+og
+\[\frac{d}{dt}\langle p\rangle = \frac{i}{\hbar}\langle [\hat{H},\hat{p}]\rangle = -\langle \frac{\partial V}{\partial x} \rangle\]
+</p>
+
+<p>
+Kan for eksempel skrive en kvantemekanisk versjon av Newtons 2. lov:
+\[ m\frac{d^2}{dt^2} \langle x\rangle = -\langle\frac{\partial V}{\partial x}\rangle = \langle F\rangle \]
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org0ee8a35" class="outline-3">
+<h3 id="org0ee8a35"><span class="section-number-3">2.5.</span> Uke 39 (Krystaller og halvledere)</h3>
+<div class="outline-text-3" id="text-2-5">
+</div>
+<div id="outline-container-org4509eaa" class="outline-4">
+<h4 id="org4509eaa"><span class="section-number-4">2.5.1.</span> Stykkevis konstante potensialer</h4>
+</div>
+<div id="outline-container-orgfb2ff4b" class="outline-4">
+<h4 id="orgfb2ff4b"><span class="section-number-4">2.5.2.</span> Elektroner i krystaller 1D</h4>
+</div>
+<div id="outline-container-org2b2b605" class="outline-4">
+<h4 id="org2b2b605"><span class="section-number-4">2.5.3.</span> Periodisk potensial, Blochs teorem</h4>
+</div>
+<div id="outline-container-orga276f33" class="outline-4">
+<h4 id="orga276f33"><span class="section-number-4">2.5.4.</span> Energibånd, spinn</h4>
+</div>
+<div id="outline-container-org614134a" class="outline-4">
+<h4 id="org614134a"><span class="section-number-4">2.5.5.</span> Pauliprinsippet</h4>
+</div>
+<div id="outline-container-orgaaf6964" class="outline-4">
+<h4 id="orgaaf6964"><span class="section-number-4">2.5.6.</span> Valensbånd, ledningsbånd, båndgap</h4>
+</div>
+<div id="outline-container-orgd9debd6" class="outline-4">
+<h4 id="orgd9debd6"><span class="section-number-4">2.5.7.</span> Isolator, halvleder, metall</h4>
+</div>
+<div id="outline-container-org1bc7e3b" class="outline-4">
+<h4 id="org1bc7e3b"><span class="section-number-4">2.5.8.</span> Hull, doping av halvledere, p- og n-type</h4>
+</div>
+<div id="outline-container-orgcd678ff" class="outline-4">
+<h4 id="orgcd678ff"><span class="section-number-4">2.5.9.</span> Lagdelte halvledere, heterostrukturer, effektiv masse</h4>
+</div>
+</div>
+<div id="outline-container-org0aab415" class="outline-3">
+<h3 id="org0aab415"><span class="section-number-3">2.6.</span> Uke 40 (Enkle modeller)</h3>
+<div class="outline-text-3" id="text-2-6">
+</div>
+<div id="outline-container-org251bcf6" class="outline-4">
+<h4 id="org251bcf6"><span class="section-number-4">2.6.1.</span> Endeling potensialbrønn</h4>
+</div>
+<div id="outline-container-org23819ab" class="outline-4">
+<h4 id="org23819ab"><span class="section-number-4">2.6.2.</span> Harmonisk oscillator i 1D</h4>
+</div>
+<div id="outline-container-org93ba2e3" class="outline-4">
+<h4 id="org93ba2e3"><span class="section-number-4">2.6.3.</span> Klassisk vs QM oscillator</h4>
+</div>
+<div id="outline-container-org1aa2d2a" class="outline-4">
+<h4 id="org1aa2d2a"><span class="section-number-4">2.6.4.</span> Morsepotensialet</h4>
+</div>
+</div>
+<div id="outline-container-orgd2daccc" class="outline-3">
+<h3 id="orgd2daccc"><span class="section-number-3">2.7.</span> Uke 41 (Tunnelering)</h3>
+<div class="outline-text-3" id="text-2-7">
+</div>
+<div id="outline-container-orgee49afa" class="outline-4">
+<h4 id="orgee49afa"><span class="section-number-4">2.7.1.</span> Tunneleffekt</h4>
+</div>
+<div id="outline-container-org139607c" class="outline-4">
+<h4 id="org139607c"><span class="section-number-4">2.7.2.</span> Resonant tunnelering</h4>
+</div>
+<div id="outline-container-orgeb1a891" class="outline-4">
+<h4 id="orgeb1a891"><span class="section-number-4">2.7.3.</span> Anvendelser av tunnelering</h4>
+</div>
+<div id="outline-container-org6280679" class="outline-4">
+<h4 id="org6280679"><span class="section-number-4">2.7.4.</span> Deltafunksjonspotensial</h4>
+</div>
+<div id="outline-container-org5d400ea" class="outline-4">
+<h4 id="org5d400ea"><span class="section-number-4">2.7.5.</span> Potensialsprang</h4>
+</div>
+</div>
+<div id="outline-container-orge14dccb" class="outline-3">
+<h3 id="orge14dccb"><span class="section-number-3">2.8.</span> Uke 42 (QM i 2D og 3D)</h3>
+<div class="outline-text-3" id="text-2-8">
+</div>
+<div id="outline-container-orgfce43a6" class="outline-4">
+<h4 id="orgfce43a6"><span class="section-number-4">2.8.1.</span> Harmonisk oscillator i 3D</h4>
+</div>
+<div id="outline-container-org9980c0e" class="outline-4">
+<h4 id="org9980c0e"><span class="section-number-4">2.8.2.</span> Partikkel i 3D boks</h4>
+</div>
+<div id="outline-container-orgf3f3fc1" class="outline-4">
+<h4 id="orgf3f3fc1"><span class="section-number-4">2.8.3.</span> Tilstandstetthet</h4>
+</div>
+<div id="outline-container-orgaea4b0f" class="outline-4">
+<h4 id="orgaea4b0f"><span class="section-number-4">2.8.4.</span> 2D kulesymm, pot. og dreieimpuls</h4>
+</div>
+</div>
+<div id="outline-container-org70c7d77" class="outline-3">
+<h3 id="org70c7d77"><span class="section-number-3">2.9.</span> Uke 43</h3>
+<div class="outline-text-3" id="text-2-9">
+</div>
+<div id="outline-container-orga9caa4b" class="outline-4">
+<h4 id="orga9caa4b"><span class="section-number-4">2.9.1.</span> Kompatible størrelser</h4>
+</div>
+<div id="outline-container-org8ade5c2" class="outline-4">
+<h4 id="org8ade5c2"><span class="section-number-4">2.9.2.</span> Simultane egenfunksjoner</h4>
+</div>
+<div id="outline-container-org02f340c" class="outline-4">
+<h4 id="org02f340c"><span class="section-number-4">2.9.3.</span> Symmetriegenskaper og paritet</h4>
+</div>
+<div id="outline-container-org0256a88" class="outline-4">
+<h4 id="org0256a88"><span class="section-number-4">2.9.4.</span> Dreieimpuls i 3D</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org57be427" class="outline-2">
+<h2 id="org57be427"><span class="section-number-2">3.</span> Numerikk</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-org6aeb437" class="outline-3">
+<h3 id="org6aeb437"><span class="section-number-3">3.1.</span> Numerisk løsning av TUSL</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Ser for oss en endelig 1D boks delt inn i små intervall \(\Delta x\). Det gir
+\[ \psi_n '' \approx \frac{\psi_{n+1}-2\psi_n+\psi_{n-1}}{(\Delta x)^2} \]
+TUSL blir N differensialligninger. Får egenverdiproblemet
+\[ \textbf{H}\vec{\psi} = E\vec{\psi} \]
+med den tridiagonale, reelle og symmetriske Hamiltonmatrisen \(\textbf{H}\).
+</p>
+
+<p>
+Anvendt i numeriske øvinger.
+</p>
+</div>
+</div>
+<div id="outline-container-orgecca284" class="outline-3">
+<h3 id="orgecca284"><span class="section-number-3">3.2.</span> Atomære enheter</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Setter \(\hbar = e = a_0 = m_e = 1\).
+Energienheten <b>hartree</b>: \(\hbar^2/m_e a_0^2 = 1\) hartree som tilsvarer 27.2 eV.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-org5fd3df3" class="outline-2">
+<h2 id="org5fd3df3"><span class="section-number-2">4.</span> Postulatene</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-org3a29bf4" class="outline-3">
+<h3 id="org3a29bf4"><span class="section-number-3">4.1.</span> A) Operatorpostulatet</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+Målbare størrelser i klassisk mekanikk representeres i QM av lineære operatorer som konstrueres ved at impulskoordinater erstatter av operatorer. Eksempelvis impuls og kinetisk energi.
+</p>
+</div>
+</div>
+<div id="outline-container-org7250c94" class="outline-3">
+<h3 id="org7250c94"><span class="section-number-3">4.2.</span> B) Tilstandspostulatet</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+Bølgefunksjonen beskriver partikkelens tilstand og er bestemt av Schrödingerligningen.
+</p>
+</div>
+</div>
+<div id="outline-container-orgc76ad44" class="outline-3">
+<h3 id="orgc76ad44"><span class="section-number-3">4.3.</span> C) Forventningsverdipostulatet</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+Mange målinger av størrelse \(F\) på systemer som er preparert i samme tilstand \(\Psi\) vil gi en middelverdi
+\[ \langle F \rangle = \int\Psi^*\hat{F}\Psi d\tau \]
+der \(\langle F \rangle\) er forventningsverdien til \(F\).
+</p>
+</div>
+</div>
+<div id="outline-container-org6426daa" class="outline-3">
+<h3 id="org6426daa"><span class="section-number-3">4.4.</span> D) Målepostulatet</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+Eneste mulige måleverdier av \(F\) er egenverdiene \(f_j\) gitt ved
+\[ \hat{F}\Psi_j = f_j \Psi_j \]
+Dersom \(F\) måles til \(f_j\) havner systemet i egentilstanden \(\Psi_j\). Bølgefunksjonen <b>kollapser</b>, med andre ord påvirker målingen systemet!
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sondre Klyve</p>
+<p class="date">Created: 2022-10-31 Mon 17:30</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
