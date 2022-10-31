@@ -117,8 +117,6 @@ Må derfor innføre en prefaktor for å lage bølgepakke. Dersom vi har skarpt d
 $$\Delta x\cdot \Delta p\geq\hbar/2$$
 
 *** Operatorer, egenfunksjoner, egenverdier
-**** Impulsoperator
-**** Hamiltonoperator
 Definerer
 $$\hat{A} f(x) = A f(x) $$
 der $\hat{A}$ er en operator, $f(x)$ en egenfunksjon, og $A$ er egenverdien.
