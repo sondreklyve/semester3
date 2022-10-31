@@ -235,16 +235,68 @@ $$\frac{d}{dt}\langle p\rangle = \frac{i}{\hbar}\langle [\hat{H},\hat{p}]\rangle
 
 Kan for eksempel skrive en kvantemekanisk versjon av Newtons 2. lov:
 $$ m\frac{d^2}{dt^2} \langle x\rangle = -\langle\frac{\partial V}{\partial x}\rangle = \langle F\rangle $$
-** Uke 39 (Krystaller og halvledere)
-*** Stykkevis konstante potensialer
+** Uke 39 (Motivasjon for stykkevis konstante potensialer)
 *** Elektroner i krystaller 1D
+Tenker oss en regulær 1D krystall, som da vil har periodisk potensial:
+[[file:img/periodic_potential.png]]
 *** Periodisk potensial, Blochs teorem
-*** Energibånd, spinn
+Periodisk potensial er på formen $V(x+j\cdot a) = V(x)$. Her er $a$ gitterkonstanten og $j$ er et heltall.
+Dette gir periodisk sannsynlighet.
+*Blochs teorem* gir bølgefunksjonen på formen
+$$ \psi(x) = e^{ikx} \cdot u(x) $$
+med $u(x+j\cdot a) = u(x)$.
+*** Energibånd
+Kan diskretisere TUSL og få kontinuerlige energibånd. For makroskopisk krystall er $N\approx\infty$ og vi setter $V_n=0$ for alle $n$. 
+Med $\varepsilon = \hbar^2/m(\Delta x)^2$ og $\Delta x = a$ har vi
+
+$$ -\frac{\varepsilon}{2} \left\{\psi_{n+1}-2\psi+\psi_{n-1}\right\} = E\psi_n $$
+
+med $\psi_n = e^{ikx_n}=e^{ikna}$. Setter inn og får
+
+$$ -\frac{\varepsilon}{2} e^{ikna} \left\{e^{ika}-2+e^{-ika}\right\} = E\cdot e^{ikna} \Rightarrow E(k)=\varepsilon(1-\cos(ka))$$
+
+for det kontinuerlige energibåndet.
+Merk at ved stor bølgelengde ser partikkelen essensielt et konstant potensial.
+*** Spinn
+*Spinn*: Partiklers kvantemekaniske indre dreieimpuls $\vec{S}$.
+Elektroner har spinn $m_s \pm 1/2$.
+Altså er total bølgefunksjon (tilstand) for et elektron
+
+$$ \phi(\vec{r},m_s)= \psi(\vec{r})\chi_{m_s} $$
+
+To mulige spinn gir *to* tilstander per orbital => *2N tilstander pr energibånd*
 *** Pauliprinsippet
+Maksimalt ett elektron i en gitt enpartikkeltilstand.
+*Grunntilstand* for atom, molekyl, krystall: lavest mulig total energi i henhold til Pauliprinsippet.
+Dermed; for krystallens grunntilstander:
+ - Med 2M (partall) elektroner pr enhetscelle:
+   2M*N elektroner i alt => M fylte energibånd, resten tomme
+
+ - Med 2M + 1 (oddetall) elektroner pr enhetscelle:
+   (2M + 1)*N elektroner i alt => M fylte energibånd, ett halvfylt. 
 *** Valensbånd, ledningsbånd, båndgap
+*Valensbåndet*: Fylt bånd med høyest energi.
+*Ledningsbåndet*: Neste bånd (tomt eller halvfylt) (conduction band)
+*Båndgap*: Energiforskjellen mellom valensbånd og ledningsbånd: $E_g = E_C - E_V$ 
+ - Isolator:        $E_g \geq 4$ eV
+ - Halvleder:    $E_g \leq 4$ eV
+ - Metall:          $E_g = 0$
 *** Isolator, halvleder, metall
+*Halvledere*: Isolator ved T = 0. Når T > 0, kan elektroner eksiteres fra fylte tilstander nær toppen av valensbåndet, til ledige tilstander nær bunnen av ledningsbåndet.
 *** Hull, doping av halvledere, p- og n-type
+*Hull*: Eksiterte elektroner etterlater seg tomme tilstander i VB, såkalte *hull*, som er "partikler" med positiv ladning. Siden  $k_bT\approx 25$ meV ved 300 K blir antall slike elektron-hull-par _lite_ i en perfekt "ren" halvleder.
+
+*Doping*:
+*p-type*: Anta Si (silisium) med 4 valenselektroner, og at en liten andel av Si erstattes a P (fosfor), med 5 valenselektroner. Da vil 4 av disser inngå i hver sin binding med 4 nabo-Si-atomer, mens det 5. doneres til Si-krystallens ledningsbånd. 
+*n-type*: Dopes Si med Al (aluminium), med 3 valenselektroner, aksepterer Al ett elektron fra Si-krystallens valensbånd og skaper et fritt hull.
+[[file:img/doping.png]]
 *** Lagdelte halvledere, heterostrukturer, effektiv masse
+Kan skjøte halvledere med ulike båndgap, og danne potensialbrønner og barrierer.
+[[file:img/finite_well.png]]
+
+Lagtykkelser kan kontrolleres med atomær nøyaktighet.
+
+*Effektiv masse*: Elektroner og hull i hhv CB og VB opplever periodisk - dvs ikke konstant - potensial. De oppfører seg som frie partikler, med effektiv masse m*.
 ** Uke 40 (Enkle modeller)
 *** Endeling potensialbrønn
 *** Harmonisk oscillator i 1D
@@ -291,4 +343,3 @@ der $\langle F \rangle$ er forventningsverdien til $F$.
 Eneste mulige måleverdier av $F$ er egenverdiene $f_j$ gitt ved
 $$ \hat{F}\Psi_j = f_j \Psi_j $$
 Dersom $F$ måles til $f_j$ havner systemet i egentilstanden $\Psi_j$. Bølgefunksjonen *kollapser*, med andre ord påvirker målingen systemet!
- 
