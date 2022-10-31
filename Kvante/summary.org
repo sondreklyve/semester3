@@ -2,14 +2,104 @@
 * Innledende emner
 
 ** Plancks strålingslov
+Max Planck: *Kvantehypotese* $E_n = n\cdot h\nu$.
+
+Ser på metallboks med lite hull, svart legeme.
+Kan kun ha stående EM bølger tilsvarende streng med lengde L
+Sannsynlighet for gitt energi $E = E_n = n\cdot h\nu$:
+$$ p_n \sim \exp(-E_n/k_b T) $$
+Konkulderer at strålingsintensitet fra svart legeme med absolutt temperatur T er
+$$ j(T) = \int_0^\infty d\nu \frac{dj}{d\mu} $$
+med frekvensfordeling
+$$ \frac{dj}{d\nu} = \frac{2\pi h\nu^3/c^2}{\exp(h\nu/k_b T)-1} $$
+Kjent som *Plancks Strålingslov*.
+
+*Stefan-Boltzmanns lov*: $j(T)\sim T^4$.
+
+*Wiens forskyvningslov*: Maksimal $dj/d\nu$ ved $\lambda_{max}$.
+
+*Rayleigh-Jeans lov*: $hv << k_b T \Rightarrow \frac{du}{d\mu} \approx \frac{8\pi k_b T}{c^3} \cdot \nu^2$
+
+*Ekvipartisjonsprinsippet*: Et kvadratisk ledd i energifunksjonen gir et bidrag $\frac{1}{2}k_b T$ til midlere energi, pr partikkel, eller (som her) svingemode.
+Her: $u = u_\Epsilon + u_B = \frac{1}{2}\epsilon_0\Epsilon^2+\frac{1}{2\mu_0}B^2$.
+Det gir $\langle E \rangle = 2\cdot \frac{1}{2}k_b T$
+Som betyr at $du/d\nu = \frac{8\pi k_b T}{c^3} \cdot \nu^3$
+Dette er det samme som *Plancks strålingslov* i grensen, som betyr at klassisk fysikk og kvantefysikk "henger sammen". 
 ** Fotoelektrisk effekt
+EM stråling kvantisert: Elektron i metallet kan bare absorbere hele $h\nu$.
+W = minste energi som løsriver elektron fra metalloverflaten = frigjøringsarbeid.
+Det vi si at $h\nu$ må være større enn W for å kunne løsrive elektroner.
 ** Comptoneffekt
+Kollisjon mellom røntgenfoton med masse 0 og elektron i ro.
+Foton: m=0, $E=h\nu = pc \Rightarrow p = h\nu/c = h/\lambda$.
+Energi- og impulsbevaring gir $\lambda_{foton,etter} = \lambda_{foton,for} + \lambda_c(1-\cos\theta)$ med $\lambda_c = h/m_e c \approx 0.024 Å$.
+Dette er kjent som elektronets *Comptonbølgelengde*.
 ** Bohrs atommodell
+Frem til nå:
+ - Elektronet (Thomson 1897)
+ - Atomkjernen (Rutherford 1911)
+ - Balmerserien for H-atomet (Balmer 1885) $\lambda_n=B\cdot \frac{n^2}{n^2-2^2}$
+ - Kvantisert strålingsenergi (Planck 1900, Einstein 1905)
+
+Bohr antok:
+ - Elektron beveger seg i klassiske baner rundt kjernen med bestemte energier; såkalte stasjonære tilstander.
+ - Elektronet kan foreta *kvantesprang* mellom de stasjonære tilstandene, ved hjelp av absorpsjon eller emisjon av et strålingskvant med energi $hc/\lambda$.
+ - Elektroet har *kvantisert dreieimpuls* $L = n\hbar$.
+Elektronbaner med radius $r_n = n^2 \cdot a_0$.
+*Bohr-radien*: $a_0 = 4\pi\epsilon_0 \hbar^2/m_e e^2 \approx 0.059$ Å.
+Mulige energiverdier for elektronet: $-\frac{e^2}{8\pi\epsilon_0 r_n} \approx -\frac{13.6}{n^2}$ eV
 ** de Broglies hypotese
+Partikler med masse har - i likhet med masseløse partikler - både partikkel- og bølgeegenskaper.
+For fotoner: $\lambda=h/p$ og $\nu = E/h$.
+De Broglie: Dette gjelder også for elektroner, protoner, nøytroner, atomer, molekyler...
+
+Partiklers termiske de Broglie-bølgelengde fra ekvipartisjonsprinsippet:
+
+$$ p_{rms} = \sqrt{2m\cdot 3 \cdot \frac{1}{2} k_b T} $$
+og dermed
+
+
+$$ \lambda = h/p_{rms} = h/\sqrt{3mk_bT} $$k
 
 * Schrödingerligningen
+** Introduksjon
+Vil finne bølgefunksjon som kan beskrive de Broglies partikkelbølger.
+Fra klassisk fysikk:
+ - Bølgeligningen
+
+   $$\frac{\partial^2y}{\partial x^2} = \frac{1}{v_f^2}\frac{\partial^2 y}{\partial t^2}$$
+
+   med generell løsning $y(x,t) = y(x\pm v_f t)$ og *harmoniske løsninger*
+   o$$ y(x,t) = Ae^{i(kx-\omega t)} $$
+   
+ - Bølgestørrelser og relasjoner:
+   - A = amplitude
+   - k = $2\pi/\lambda$ = bølgetall
+   - $\omega = 2\pi/T$ = vinkelfrekvens
+   - $\nu = \omega/2\pi$ = frekvens
+   - $v_f = \lambda / T = \lambda\nu = \omega/k$ = fasehastighet
+   - $v_g = d\omega/dk$ = gruppehastiget
+
+ Fra de Broglie:
+ $$ \lambda = h/p \Rightarrow k = 2\pi/\lambda = 2\pi p/h = p/\hbar $$
+ $$ \nu = E/h \Rightarrow \omega = 2\pi\nu = 2\pi E/h = E/\hbar $$
+
+ Finner noe som passer i bølgeligning, og ender opp noe som
+
+ $$ i\hbar \frac{\partial\Psi}{\partial t} = -\frac{\hbar^2}{2m}\frac{\partial^2\Psi}{\partial x^2} $$
+
+ for fri partikkel i potensial V = 0. En fri partikkel i konstant potensial kan beskrives ved
+ $$ \Psi(x,t) = e^{i(px-Et)/\hbar} $$
+
+ Dette gir opphav til *Schrödingerligningen*
+
+ $$ i\hbar\frac{\partial}{\partial t} \Psi(\vec{r},t) = \left[-\frac{\hbar^2}{2m}\nabla^2+V(\vec{r})\right]\Psi(\vec{r}, t) $$
+
+ *Merk* Bølgefunksjonen må være kompleks, og er dermed ikke direkte målbar.
+ 
 ** Uke 35 (Bølgefunksjon)
 *** Bølgefunksjon; fysisk tolkning
+
 *** Bølgepakker og uskarphet
 *** Operatorer, egenfunksjoner, egenverdier
 **** Impulsoperator
