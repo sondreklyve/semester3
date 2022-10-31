@@ -21,7 +21,7 @@ Kjent som *Plancks Strålingslov*.
 *Rayleigh-Jeans lov*: $hv << k_b T \Rightarrow \frac{du}{d\mu} \approx \frac{8\pi k_b T}{c^3} \cdot \nu^2$
 
 *Ekvipartisjonsprinsippet*: Et kvadratisk ledd i energifunksjonen gir et bidrag $\frac{1}{2}k_b T$ til midlere energi, pr partikkel, eller (som her) svingemode.
-Her: $u = u_\Epsilon + u_B = \frac{1}{2}\epsilon_0\Epsilon^2+\frac{1}{2\mu_0}B^2$.
+Her: $u = u_\varepsilon + u_B = \frac{1}{2}\epsilon_0\varepsilon^2+\frac{1}{2\mu_0}B^2$.
 Det gir $\langle E \rangle = 2\cdot \frac{1}{2}k_b T$
 Som betyr at $du/d\nu = \frac{8\pi k_b T}{c^3} \cdot \nu^3$
 Dette er det samme som *Plancks strålingslov* i grensen, som betyr at klassisk fysikk og kvantefysikk "henger sammen". 
@@ -158,25 +158,83 @@ $$ E_n = \frac{n^2\pi^2\hbar^2}{2mL^2} $$
 og
 $$ \psi_n(x) = \sqrt{\frac{2}{L}}\sin\frac{n\pi x}{L} $$
 
-
 *** Noen merknader
 **** Symmetri
+Symmetrisk potensial gir symmetrisk sannsynlighetsfordeling, og enter symmetrisk eller antisymmetrisk bølgefunksjon.
 **** Nullpunkter
+$\psi_n(x)$ har $n-1$ nullpunkter, som gjelder generelt. Eksludert eventuelle endepunkt.
 **** Grunntilstand og eksiterte tilstander
+Tilstand med lavest mulig energi. 1D brønn: $E_1=\frac{\pi^2\hbar^2}{2mL^2}>0$
 **** Grensebetingelser
+Ser at TUSL på formen
+$$ \frac{\psi ''}{\psi} = \frac{2m}{\hbar^2}(V-E) $$
+gir $\psi''$ endelig der V er endelig. Dette betyr at $\psi$ og $\psi'$ er kontinuerlige.
+$\psi$ og $|\psi|^2$ vil alltid være kontinuerlige over alt.
 **** Krumningsegenskaper
+$\psi''/\psi$ har samme fortegn som $V-E$.
+- Klassisk tillatt område der $E\geq V$, slik at $\psi$ krummer mot x-aksen.
+- Klassisk forbudt område der $E<V$, slik at $\psi$ krummet bort fra x-aksen. (Lov i QM dersom potensial ikke er uendelig.)
 **** Ortogonalitet, ortonormert sett av funksjoner
+Et funksjonssett $\{\psi_n(x)\}$ er ortonormet når
+$$ \langle \psi_n, \psi_k \rangle \equiv \int_{-\infty}^\infty \psi_n^*(x)\psi_k(x)dx = \delta_{nk} $$
+Dette gjelder generelt for løsninger av TUSL.
+
 **** Starttilstand og tidsutvikling
-**** Superposisjon og ikke-stasjonære tilstander
+Kan uttrykke en starttilstand som en lineærkombinasjon av energiegenfunksjonene:
+$$ \Psi(x,0)=\sum_n c_n \psi_n(x) $$
+
+Tidsutviklingen blir en lineærkombinasjon av stasjonære tilstander:
+$$ \Psi(x,t)=\sum_n c_n \psi_n(x)e^{-iE_nt/\hbar} $$
+
+Kan fastlegge konstanene slik:
+$$ c_n = \int_{-\infty}^\infty \psi_n^*(x)\Psi(x,0)dx $$
+
+I normert tilstand må vi da ha at
+$$ \sum_n |c_n|^2 = 1 $$
+slik at sannsynlighet er bevart.
 
 ** Uke 38 (Sannsynlighet og operatorer)
 *** Sanns.strøm og sanns.bevarelse
+Definerer $j(x,t)$ som *sannsynlighetsstrøm* inn eller ut av et lite intervall $dx$. Har fra før at sannsynslighetstettheten $\rho(x,t)= |\Psi(x,t)|^2$ Fra dette får vi kontinuitetsligning for sannsynligghet
+$$ \frac{\partial \rho}{\partial t} + \frac{\partial j}{\partial x} = 0$$
 
 *** Kommutatorer
+Definisjon av *kommutatoren* mellom to operatorer:
+$$ [\hat{A}, \hat{B}] = \hat{A}\hat{B} - \hat{B}\hat{A} $$
+$\hat{A}$ og $\hat{B}$ kommuterer dersom $[\hat{A}, \hat{B}] f = 0$.
 *** Hermitske operatorer
+Definerer den *adjunkte* $\hat{A}^+$ av en operator $\hat{A}$:
+$$ \int (\hat{A}\Psi_1)^*\Psi_2 dx = \int \Psi_1^* (\hat{A}^+ \Psi_2) dx $$
+
+La $F$ være en fysisk størrelse og $\hat{F}$  operatorer som representerer $F$. Da må forventningsverdien $\langle F \rangle$ være *reell*.
+$$ \langle F \rangle = \langle F \rangle ^* $$
+Har generelt at
+$$ \int \Psi_1^* \hat{F}\Psi_2 dx  = \int \Psi_2(\hat{F}\Psi_1)^* dx $$
+Sier at $\hat{F}$ er *hermitesk* dersom den oppfyller dette. Dermed er også $\hat{F}^+ = \hat{F}$  oppfylt, og vi sier at $\hat{F}$ er *selvadjungert*.
 *** Usikkerhet og uskarphetsrelasjoner
+Definerer *standardavvik*
+$$ \Delta x = \sqrt{\langle(x-\langle x\rangle)^2\rangle} = \sqrt{\langle x^2\rangle-\langle x\rangle^2} $$
+For to målbare størrelser A og B:
+$$ \Delta A \cdot \Delta B \geq \left|\frac{1}{2}\langle [\hat{A},\hat{B}\rangle]\right| $$
+To størrelser med operatorer som ikke kommuterer, kan altså ikke ha skarpe verdier samtidig. Eksempelvis posisjon og impuls:
+$$ [x, \hat{p}] = i\hbar \Rightarrow \Delta x \cdot \Delta p \geq \frac{1}{2} \hbar $$.
 *** Forventningsverdiens tidsutvikling
+Ser på tidsuavhengig operator $\hat{F}$ slik at $\frac{\partial \hat{F}}{\partial t} = 0$. Dermed:
+$$ \frac{d}{dt} \langle F \rangle = \frac{i}{\hbar} \langle[\hat{H},\hat{F}]\rangle $$.
+
+Dvs: $\langle F \rangle$ endrer seg ikke hvis $\hat{F}$ kommuterer med Hamiltonoperatoren $\hat{H}$.
+
 *** Ehrenfests teorem
+Kvantemekaniske forventingsverdier $\langle x \rangle$ og $\langle p\rangle$ oppfyller samme bevegelsesligninger som de klassiske $x$ og $p$,
+$$ \frac{dx}{dt} = v=\frac{p}{m}; \frac{dp}{dt} = F  = -\frac{\partial V }{\partial x} $$
+
+Får
+$$\frac{d}{dt}\langle x\rangle = \frac{i}{\hbar}\langle [\hat{H},x]\rangle = \frac{1}{m} \langle \hat{p} \rangle = \frac{1}{m}\langle p\rangle$$
+og
+$$\frac{d}{dt}\langle p\rangle = \frac{i}{\hbar}\langle [\hat{H},\hat{p}]\rangle = -\langle \frac{\partial V}{\partial x} \rangle$$
+
+Kan for eksempel skrive en kvantemekanisk versjon av Newtons 2. lov:
+$$ m\frac{d^2}{dt^2} \langle x\rangle = -\langle\frac{\partial V}{\partial x}\rangle = \langle F\rangle $$
 ** Uke 39 (Krystaller og halvledere)
 *** Stykkevis konstante potensialer
 *** Elektroner i krystaller 1D
@@ -210,6 +268,27 @@ $$ \psi_n(x) = \sqrt{\frac{2}{L}}\sin\frac{n\pi x}{L} $$
 *** Dreieimpuls i 3D
 * Numerikk
 ** Numerisk løsning av TUSL
-** Atomære enheter
+Ser for oss en endelig 1D boks delt inn i små intervall $\Delta x$. Det gir
+$$ \psi_n '' \approx \frac{\psi_{n+1}-2\psi_n+\psi_{n-1}}{(\Delta x)^2} $$
+TUSL blir N differensialligninger. Får egenverdiproblemet
+$$ \textbf{H}\vec{\psi} = E\vec{\psi} $$
+med den tridiagonale, reelle og symmetriske Hamiltonmatrisen $\textbf{H}$.
 
+Anvendt i numeriske øvinger.
+** Atomære enheter
+Setter $\hbar = e = a_0 = m_e = 1$.
+Energienheten *hartree*: $\hbar^2/m_e a_0^2 = 1$ hartree som tilsvarer 27.2 eV.
 * Postulatene
+** A) Operatorpostulatet
+Målbare størrelser i klassisk mekanikk representeres i QM av lineære operatorer som konstrueres ved at impulskoordinater erstatter av operatorer. Eksempelvis impuls og kinetisk energi.
+** B) Tilstandspostulatet
+Bølgefunksjonen beskriver partikkelens tilstand og er bestemt av Schrödingerligningen.
+** C) Forventningsverdipostulatet
+Mange målinger av størrelse $F$ på systemer som er preparert i samme tilstand $\Psi$ vil gi en middelverdi
+$$ \langle F \rangle = \int\Psi^*\hat{F}\Psi d\tau $$
+der $\langle F \rangle$ er forventningsverdien til $F$.
+** D) Målepostulatet
+Eneste mulige måleverdier av $F$ er egenverdiene $f_j$ gitt ved
+$$ \hat{F}\Psi_j = f_j \Psi_j $$
+Dersom $F$ måles til $f_j$ havner systemet i egentilstanden $\Psi_j$. Bølgefunksjonen *kollapser*, med andre ord påvirker målingen systemet!
+ 
