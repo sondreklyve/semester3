@@ -299,9 +299,84 @@ Lagtykkelser kan kontrolleres med atomær nøyaktighet.
 *Effektiv masse*: Elektroner og hull i hhv CB og VB opplever periodisk - dvs ikke konstant - potensial. De oppfører seg som frie partikler, med effektiv masse m*.
 ** Uke 40 (Enkle modeller)
 *** Endeling potensialbrønn
+Ser for oss et potensial
+   
+$$V(x) = \begin{cases}
+       V_0 &\quad|x|<l \\
+       0 &\quad|x|\geq l \\
+     \end{cases} $$
+
+Løser TUSL for bundne tilstander når $E<V_0$:
+$$\psi(x) = \begin{cases}
+       Ae^{\kappa x} &\quad x\leq -l \\
+       C\sin(kx) + D\cos(kx) &\quad |x|<l \\
+       Be^{-\kappa x} &\quad x\geq l \\
+     \end{cases} $$
+
+Vet at for symmetrisk potensial må vi ha symmetrisk eller antisymmetrisk bølgefunksjon. Holder å kreve at $\psi(x)$ og $d\psi(x)/dx$ er kontinuerlige i f.eks $x=l$. 
+
+Mulige symmetriske:
+$$ Be^{-\kappa l} = D\cos(kl) $$
+$$ -\kappa Be^{-\kappa l} = -kD\sin(kl) $$
+$$ \Rightarrow \tan(kl)=\kappa /k $$
+
+Mulige antisymmetriske:
+$$ Be^{-\kappa l} = C\sin(kl) $$
+$$ -\kappa Be^{-\kappa l} = -kC\cos(kl) $$
+$$ \Rightarrow \tan(kl)=-k/\kappa $$
+
+Løsningene her gir tillatte k-verdier, og dermed tillatte energier for bundne tilstander.
+Definierer $\varepsilon = E/V_0;0<\varepsilon<1$.
+$$ \Rightarrow \tan(\sqrt{\varepsilon} k_0 l) 
+ = \begin{cases}
+       \sqrt{(1-\varepsilon)/\varepsilon} &\quad \text{(S)} \\
+       \sqrt{\varepsilon/(1-\varepsilon)} &\quad \text{(AS)} \\
+     \end{cases} $$
+
+$\tan(\sqrt{\varepsilon}k_0 l)$ har asymptoter for $\sqrt{\varepsilon}k_0 l=(n+1/2)\pi$ og nullpunkter for $\sqrt{\varepsilon}k_0 l = n\pi$.
+ - Antall nullpunkter < 1 = Antall bundne S
+ - Antall asymptoter < 1 = Antall bundne AS
+
+ => Antall bundne: N = 1 + heltallsverdien av $2k_0 l/\pi$.
+
+ Får ubundne tilstander når $E>V_0$:
+ For $|x|>l$ er nå
+ $$ \psi(x)=a\sin(Kx)+b\cos(Kx) ; K=\frac{\sqrt{2m(E-V_0)}}{\hbar} $$
+ og kontinuerlig $\psi$ og $d\psi/dx$ i $x=\pm$ kan realiseres for alle $E>V_0$, dvs vi har et kontinuum.
+ 
 *** Harmonisk oscillator i 1D
+Med symmetrisk potensial forventer vi at TUSL har bundne tilstander, vekselvis symmetrisk og antisymmetrisk, med økende antall nullpunkter.
+$$ -\frac{\hbar^2}{2m}\frac{d^2\psi}{dq^2}+\frac{1}{2}m\omega^2 q^2\psi = E\psi $$
+
+Definerer
+$$ \varepsilon=2E/\hbar\omega \text{  og  } x = q\sqrt{\hbar/m\omega} $$
+
+og får TUSL på formen
+$$ \psi''(x)+(\varepsilon-x^2)\psi(x)=0;\psi''=\frac{d^2\psi}{dx^2} $$
+
+Ved en drøss utregning, gjetning, normering og forskjellig snacks ender vi opp med et *resultat*:
+
+$$ \psi_n(q)=\left(\frac{m\omega}{\pi\hbar}\right)^{1/4}\cdot \frac{e^{-m\omega q^2/2\hbar}}{\sqrt{2^n\cdot n!}}\cdot H_n\left(\sqrt{\frac{m\omega}{\hbar}}q\right) $$
+
+$$ E_n = \left(n+\frac{1}{2}\right)\hbar\omega $$ 
+
+Med $H_n$ som Hermite-polynomer.
 *** Klassisk vs QM oscillator
+QM:
+$$dP_n = |\psi_n(q)|^2dq$$
+
+Klassisk:
+$$dP = \frac{dq}{\pi\sqrt{q_0^2-q^2}}$$
+
+For små verdier av n er det få likhetstrekk mellom QM og klassisk.
+
+For store n oscillerer sannsynlighetsfordelingen ca n ganger på det klassiske tillatte området, men omhylningskurven ligner mye på den klassiske fordelingen.
 *** Morsepotensialet
+Potensial for toatomig molekyl kan modelleres med *Morsepotensialet*:
+$$ V(q) =V_0\{[1-e^{-\alpha(q-d)}]^2-1\} $$
+
+Atomene vil ha avstand $d$, som gir potensial $V=-V_0$. Dersom de er for nærme, blir potensialet veldig stort. Når avstanden vokser mot uendelig blir potensialet null.
+Nær likevekt kan dette modelleres som en QM harmonisk oscillator.
 ** Uke 41 (Tunnelering)
 *** Tunneleffekt
 *** Resonant tunnelering
