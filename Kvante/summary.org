@@ -379,20 +379,141 @@ Atomene vil ha avstand $d$, som gir potensial $V=-V_0$. Dersom de er for nærme,
 Nær likevekt kan dette modelleres som en QM harmonisk oscillator.
 ** Uke 41 (Tunnelering)
 *** Tunneleffekt
+Ser for oss en potensialbarriere på et gitt intervall langs x-aksen. Kan for eksempel realiseres ved å bruke halvledere.
+Antar elektron med skarp impuls $p=\hbar k$ fra venstre, med
+$$ E=K = \frac{\hbar^2 k^2}{2m}, \psi_i (x) = e^{ikx} $$
+To mulige utfall: Refleksjon R og transmisjon T (tunnelering). Total sannsynlighet gir $R+T =1$.
+ - Reflektert bølge: $\psi_r(x)=r\cdot e^{-ikx}, (x<0)$
+ - Transmittert bølge: $\psi_t(x)=t\cdot e^{ikx}, (x>L)$
+
+For "firkantbarriere" med $\varepsilon=E/V_0$ og $k_0=\sqrt{2mV_0}/\hbar$:
+$$ T = \begin{cases}
+       \left[1+\frac{\sinh^2(k_0 L\sqrt{1-\varepsilon})}{4\varepsilon(1-\varepsilon)}\right]^{-1} &\quad\varepsilon < 1 \\
+       \left[1+\frac{\sin^2(k_0 L\sqrt{\varepsilon-1})}{4\varepsilon(\varepsilon-1)}\right]^{-1} &\quad\varepsilon > 1 \\
+     \end{cases} $$
+
+ Merknader:
+ - Tunnereling: $T > 0$ for $E < V_0$. (og $R>0$ for $E > V_0)$
+ - Hvis $E << V_0$ og $k_0 L >> 1$ er $\sinh(k_0 L \sqrt{1-\varepsilon})\approx \frac{1}{2}e^{k_0 L}>> 1$
+        $\Rightarrow T \approx 16\varepsilon\cdot \exp(-2k_0 L)<<1$
+ - $T=1$ når $\sin(k_0 L\sqrt{\varepsilon-1}) = 0$, dvs $k_0 L\sqrt{\varepsilon-1} = n\pi$ og dermed $E-V_0=K = \frac{n^2\pi^2\hbar^2}{2mL^2}$,
+   som er energinivåene for partikkel i boks, der vi har stående bølger med bølgelender $\lambda_n = 2L/n (n=1,2,3,...)$.
+
 *** Resonant tunnelering
+Antar to potensialbarrierer med innbyrdes avstand $b$. Resonant og stående bølger mellom barrierene gir $T=1$ når
+$$E_n = \frac{n^2\pi^2\hbar^2}{2mb^2} ; \lambda_n = \frac{2b}{n} ; n=1,2,3,... $$
+
+Eksperimentelt kan vi tenke å sette på en spenning i en krets med slike potensialbarrierer, og dermed "løfte" den ene siden. Vil da få at dersom vi øker spenningen, vil strømmen nå et lokalt maksimum der det er resonant tunnelering, og deretter avta litt, før den til slutt vil vokse videre. Det gir altså negativ differensiell resistans for spenning mellom $U_1$ og $U_2$:
+$$ r = \frac{dU}{dI} < 0$$
+
 *** Anvendelser av tunnelering
+**** AC-forsterker
+Ser for oss en krets med en gitt spenning, resistans, dobbelpotensialbarriere og påtrykt AC-spenning. Dersom den gitte spenningen ligger midt i intervallet mellom $U_1$ og $U_2$, og AC-signalet oscillerer i dette intervallet, vil signalet bli forsterket.
+
+**** STM (Scanning Tunneling Microscope)
+Nål med _ett_ atom ytterst på spissen scannes i (xy)-planet nær metalloverflaten; strømmen $I(x,y)$ måles.
+$$ I \sim T \sim \exp(-2\kappa L), \kappa=\sqrt{2m(V_0 - E)/\hbar}$$
+$\Rightarrow I(x,y)$ gir avbildning av overflaten med atomær oppløsning.
 *** Deltafunksjonspotensial
+Deltafunksjonen er definert ved
+$$ \delta(x): \int_{-\infty}^\infty f(x)\delta(x) dx = f(0) $$
+gitt at $f(x)$ er kontinuerlig i $x=0$.
+
+Noen egenskaper:
+ - $\int_{-\infty}^\infty \delta(x) dx = 1$
+ - $\delta(x) = 0$ for $x\neq 0 ; \delta(0) = \infty$
+ - $\delta(-x) = \delta(x)$
+ - $\delta(ax) = \delta(x) / |a|$
+
 *** Potensialsprang
+Tenker oss et potensial som gjør et sprang fra i et gitt punkt. Hvis $E < V_0$ er $R=1$ og $T=0$.
+Med $E  > V_0$:
+$$ \psi(x) = \begin{cases}
+       e^{ikx} + re^{-ikx} ; k^2 = 2mE / \hbar^2&\quad x < 0 \\
+       te^{iqx} ; q^2 = 2m(E-V_0) / \hbar^2&\quad x > 0 \\
+     \end{cases} $$
+ Dette gir
+ $$ \Rightarrow R = |r|^2 = \left(\frac{k-q}{k+q}\right)^2 ;  T = |t|^2\cdot \frac{q}{k} = \frac{4kq}{(k+q)^2} $$ 
+ Likt som bølge på streng med skjøt i $x=1$.
 ** Uke 42 (QM i 2D og 3D)
 *** Harmonisk oscillator i 3D
+Har at
+$$ \hat{H} = \hat{H}_x + \hat{H}_y + \hat{H}_z ; \hat{H}_x = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2} + \frac{1}{2} m\omega_x^2 x^2 ...$$
+TUSL har produktløsninger og separerer i 3 helt tilsvarende ligninger:
+$$ \psi(x,y,z) = \phi(x)\cdot\phi(y)\cdot\phi(z) $$
+
+som gir
+$$ \hat{H}_x\phi(x) = E_x\phi(x) $$
+og tilsvarende for $y$ og $z$.
+
+Energien blir
+$$ E = E_x + E_y + E_z = \left(n_x+\frac{1}{2}\right)\hbar\omega_x + \left(n_y+\frac{1}{2}\right)\hbar\omega_y + \left(n_z+\frac{1}{2}\right)\hbar\omega_z $$ 
+
+For isotrop harmonisk oscillator har vi
+$$ \omega_x = \omega_y = \omega_z = \omega$$
+og
+$$ V(x,y,z) = \frac{1}{2}m\omega^2(x^2+y^2+z^2) = \frac{1}{2}m\omega^2 r^2 = V(r)$$
+Får tilhørende energiverdier
+$$ E_N = \left(N+\frac{3}{2}\right)\hbar \omega $$
+
+Den fullstendige bølgefunksjonen blir nokså tilsvarende den for 1D.
+*** Degenerasjon
+1D: Alltid 1 egenfunksjon $\psi_n(x)$ pr energiverdi E_n$
+
+2D og 3D: Når potensialet $V(\vec{r})$ har en viss symmetri, kan det være flere egenfunksjoner for gitt energi. Da er energinivået *degenerert*, med *degenerasjonsgrad*
+$g_n$  = antall tilstander med energi $E_N$.
+
+For isotrop harmonisk oscillator i 3D:
+ - $E_0  = \frac{3}{2}\hbar\omega : \psi_{000} \Rightarrow g_0 = 1$
+ - $E_1  = \frac{5}{2}\hbar\omega : \psi_{100}, \psi_{010}, \psi_{001} \Rightarrow g_1 = 3$
+
+Kan utlede generelt uttrykk, som sier at
+$$ g_N = \frac{(N+2)(N+1)}{2} $$
 *** Partikkel i 3D boks
+Har boks med sidekanter $L_x, L_y, L_z$. Separasjon av TUSL, med $\psi = 0$ i grenseflatene gir
+
+$$ \psi_{n_x n_y n_z} = \sqrt{2^3/L_x L_y L_z}\sin\frac{n_x\pi x}{L_x} \sin\frac{n_y\pi x}{L_y} \sin\frac{n_z\pi x}{L_z}$$
+og
+$$ E_{n_x n_y n_z} = (\pi^2\hbar^2/2m)(n_x^2/L_x^2+n_y^2/L_y+n_z^2/L_z^2) $$
+
+Like sidekanter gir degenerasjon
+ - $E_1 = E_{111} \Rightarrow g_1 = 1$
+ - $E_2 = E_{211} = E_{121} = E_{112} \Rightarrow g_2 = 3$
+osv ...
 *** Tilstandstetthet
+$N(E) = \int_0^E g(E)dE$ = antall tilstander mellom 0 og $E$.
+$g(E) = dN/dE$ = antall tilstander pr energienhet.
+
+1D: $E_n = \frac{n^2\pi^2\hbar^2}{2mL^2}$
+ $\Rightarrow$ 2 tilst. pr lengdeenhet langs n-aksen
+ $\Rightarrow N_1(E) = 2\sqrt{2mL^2 E/\pi^2\hbar^2}$ = antall tilst i $(0, E)$.
+ $\Rightarrow g_1(E) = dN_1/dE = \frac{\sqrt{2m}}{\pi\hbar}L\cdot E^{-1/2}$ = DOS i 1D
+ $\Rightarrow$ Pr lengdeenhet: $\frac{\sqrt{2m}}{\pi\hbar}E^{-1/2}$
+
+2D: $E = \frac{(n_x^2+n_y^2)\pi^2\hbar^2}{2mL^2}$
+ $\Rightarrow$ 2 tilst. pr flateenhet i planet. 
+ $\Rightarrow N_2(E) = 2\cdot\frac{1}{4}\cdot\pi(n_x^2+n_y^2)=\frac{\pi}{2}\cdot\frac{2mL^2}{\pi^2\hbar^2}\cdot E$
+ $\Rightarrow g_2(E) = \frac{m}{\pi\hbar^2}\cdot L^2$ = DOS i 2D, uavh. av $E$.
+
+3D: $E = \frac{(n_x^2+n_y^2+n_z^2)\pi^2\hbar^2}{2mL^2}$
+ $\Rightarrow$ 2 tilst. pr volumenhet i rommet. 
+ $\Rightarrow N_3(E) = 2\cdot\frac{1}{8}\cdot\frac{4\pi}{3}\cdot(n_x^2+n_y^2+n_z^2)^{3/2}=\frac{\pi}{3}\left(\frac{2mL^2 E}{\pi^2\hbar^2}\right)^{3/2}$
+ $\Rightarrow g_3(E) = \frac{\sqrt{2}m^{3/2}}{\pi^2\hbar^3}\cdot L^3\cdot E^{1/2}$ = DOS i 3D.
+
+ Observerer at 1D avtar med $E$, 2D er konstant med $E$, og 3D øker med $E$.
+
+ Metaller har ledige bånd der det er høy tilstandstetthet, som gir god ledningsevne.
+ Halvledere har relativt lav tilstandstetthet rundt ledige tilstander, men blir svakt metallisk ved at det har små hull. En halvleder kan da lede strøm, men er dårligere enn et metall.
 *** 2D kulesymm, pot. og dreieimpuls
+*** Kompatible størrelser og simultane egenfunksjoner
 ** Uke 43
-*** Kompatible størrelser
-*** Simultane egenfunksjoner
 *** Symmetriegenskaper og paritet
 *** Dreieimpuls i 3D
+*** Stiv rotator
+** Uke 44
+*** Isotropt potensial, radialligning
+*** Coulombpotensialet. Hydrogenatomet
+*** Hydrogenatomet. Degenerasjon
 * Numerikk
 ** Numerisk løsning av TUSL
 Ser for oss en endelig 1D boks delt inn i små intervall $\Delta x$. Det gir
