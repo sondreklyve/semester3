@@ -458,7 +458,7 @@ $$ E_N = \left(N+\frac{3}{2}\right)\hbar \omega $$
 
 Den fullstendige bølgefunksjonen blir nokså tilsvarende den for 1D.
 *** Degenerasjon
-1D: Alltid 1 egenfunksjon $\psi_n(x)$ pr energiverdi E_n$
+1D: Alltid 1 egenfunksjon $\psi_n(x)$ pr energiverdi $E_n$
 
 2D og 3D: Når potensialet $V(\vec{r})$ har en viss symmetri, kan det være flere egenfunksjoner for gitt energi. Da er energinivået *degenerert*, med *degenerasjonsgrad*
 $g_n$  = antall tilstander med energi $E_N$.
@@ -491,29 +491,155 @@ $g(E) = dN/dE$ = antall tilstander pr energienhet.
  $\Rightarrow$ Pr lengdeenhet: $\frac{\sqrt{2m}}{\pi\hbar}E^{-1/2}$
 
 2D: $E = \frac{(n_x^2+n_y^2)\pi^2\hbar^2}{2mL^2}$
- $\Rightarrow$ 2 tilst. pr flateenhet i planet. 
+
+ $\Rightarrow$ 2 tilst. pr flateenhet i planet.
+ 
  $\Rightarrow N_2(E) = 2\cdot\frac{1}{4}\cdot\pi(n_x^2+n_y^2)=\frac{\pi}{2}\cdot\frac{2mL^2}{\pi^2\hbar^2}\cdot E$
+ 
  $\Rightarrow g_2(E) = \frac{m}{\pi\hbar^2}\cdot L^2$ = DOS i 2D, uavh. av $E$.
 
 3D: $E = \frac{(n_x^2+n_y^2+n_z^2)\pi^2\hbar^2}{2mL^2}$
+
  $\Rightarrow$ 2 tilst. pr volumenhet i rommet. 
- $\Rightarrow N_3(E) = 2\cdot\frac{1}{8}\cdot\frac{4\pi}{3}\cdot(n_x^2+n_y^2+n_z^2)^{3/2}=\frac{\pi}{3}\left(\frac{2mL^2 E}{\pi^2\hbar^2}\right)^{3/2}$
- $\Rightarrow g_3(E) = \frac{\sqrt{2}m^{3/2}}{\pi^2\hbar^3}\cdot L^3\cdot E^{1/2}$ = DOS i 3D.
+
+$\Rightarrow N_3(E) = 2\cdot\frac{1}{8}\cdot\frac{4\pi}{3}\cdot(n_x^2+n_y^2+n_z^2)^{3/2}=\frac{\pi}{3}\left(\frac{2mL^2 E}{\pi^2\hbar^2}\right)^{3/2}$
+
+$\Rightarrow g_3(E) = \frac{\sqrt{2}m^{3/2}}{\pi^2\hbar^3}\cdot L^3\cdot E^{1/2}$ = DOS i 3D.
 
  Observerer at 1D avtar med $E$, 2D er konstant med $E$, og 3D øker med $E$.
 
  Metaller har ledige bånd der det er høy tilstandstetthet, som gir god ledningsevne.
  Halvledere har relativt lav tilstandstetthet rundt ledige tilstander, men blir svakt metallisk ved at det har små hull. En halvleder kan da lede strøm, men er dårligere enn et metall.
 *** 2D kulesymm, pot. og dreieimpuls
+Kan lage 2D verden for elektroner ved smal potensialbrønn med en bunden tilstand.
+Elektroner i grunntilstanden ser et isotropt potensial dersom
+$$ V(x,y) = V(r) $$
+
+Kan formulere TUSL i polarkoordinater med partikkelmasse $\mu$ og dreieimpuls med kvantetall $m$.
+$$ -\frac{\hbar^2}{2\mu}\nabla\psi(r,\phi) + V(r)\psi(r,\phi) = E\psi(r,\phi) $$
+
+Denne har produktløsning
+$$ \psi(r,\phi) = R(r) \Phi(\phi) $$
+som kan separeres. Fokuserer på vinkeldelen, som blir
+$$ \frac{d^2\Phi}{d\phi^2} = -m^2\Phi $$
+med løsning $\Phi(\phi) = e^{im\phi}$.
+I 2D har vi naturligvis bare dreieimpuls i $z$ -retning, altså
+$$ \vec{L} = L_z \hat{z} \Rightarrow \hat{L_z} = \frac{\hbar}{i}\frac{\partial}{\partial\phi} $$
+$\Phi_m(\phi)$ må være egenfunksjon til dreieimpulsen med egenverdi $m\hbar$.
+$$ \hat{L_z}\Phi_m = \frac{\hbar}{i}\frac{\partial}{\partial\phi} e^{im\phi} = m\hbar e^{im\phi}=m\hbar\Phi_m $$
+Dette betyr at $\hat{H}$ og $\hat{L_z}$ har *felles egenfunksjoner*.
 *** Kompatible størrelser og simultane egenfunksjoner
+To størrelser A og B er *kompatible* hvis de kan ha skarpe verdier samtidig. Da *kommuterer* A og B:
+$$ [\hat{A}, \hat{B}] = 0 $$
+
+Skarpe verdier A og B betyr at partikkelen er i en stasjonær tilstand $\psi$ som er egenfunksjon til $\hat{A}$ og $\hat{B}$,
+$$ \hat{A}\psi = A\psi \text{  og  } \hat{B}\psi = B\psi $$
+Dette betyr at vi kan finne *felles egenfunksjoner* for to operatorer som kommuterer.
+
+Eksempelvis fra forrige deloverskrift, $[\hat{H}, \hat{L_z}] = 0$, altså kan partikkelen ha skarp energi og dreieimpuls samtidig!
 ** Uke 43
 *** Symmetriegenskaper og paritet
+*Paritetsoperatoren* $\hat{P}$ speiler en funksjon gjennom origo:
+$$ \hat{P}\psi(\vec{r}) = \psi(-\vec{r}) $$
+
+Egenfunksjoner til *paritetsoperatoren* må oppfylle
+$$ \hat{P}\psi(\vec{r}) = p\psi(\vec{r}) $$
+der $p$ er konstant. Det gir to muligeter:
+ - Like paritet: $\psi(-\vec{r}) = \psi(\vec{r}) \Rightarrow p = +1$
+ - Odde paritet: $\psi(-\vec{r}) = -\psi(\vec{r}) \Rightarrow p = -1$
+
 *** Dreieimpuls i 3D
-*** Stiv rotator
+Bruker kulekoordinater som definert i PC Hemmer s91. Det gir
+\begin{align*}
+\hat{L_x} &= \frac{\hbar}{i}\left(-\sin\phi\frac{\partial}{\partial\theta}-\cos\phi\frac{\cos\theta}{\sin\theta}\frac{\partial}{\partial\phi}\right) \\
+\hat{L_y} &= \frac{\hbar}{i}\left(\cos\phi\frac{\partial}{\partial\theta}-\sin\phi\frac{\cos\theta}{\sin\theta}\frac{\partial}{\partial\phi}\right) \\
+\hat{L_x} &= \frac{\hbar}{i}\frac{\partial}{\partial\phi} \\
+\end{align*}
+ Produktregel for derivasjon gir
+ $$ \hat{\vec{L}}^2 = \hbar^2 \left(\frac{\partial^2}{\partial\theta^2}+\cot\theta\frac{\partial}{\partial\theta} + \frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\right) $$
+Dermed: $\hat{H} = \hat{K_r}+\hat{K_L} + V$ med
+\begin{align*}
+\hat{K_r} &= -\frac{\hbar^2}{2\mu} \left(\frac{\partial^2}{\partial r^2} + \frac{2}{r} \frac{\partial}{\partial r}\right) \\
+\hat{K_L} &= \frac{1}{2\mu r^2} \hat{\vec{L}}^2 
+\end{align*}
+
+*Anta isotropt potensial $V(r)$*. Gir følgende relasjoner
+$$ [\hat{H},\hat{L_z}] = 0, [\hat{H},\hat{\vec{L}}^2] = 0, [\hat{\vec{L}}^2,\hat{L_z}] = 0,  $$
+Altså er $E, L^2, L_z$ kompatible størrelser.
+Siden potensialet er isotropt, er det ingenting spesielt med $z$ -aksen, og relasjonene over kan like gjerne gjelde for en vilkårlig komponent av dreieimpulsen, men bare *en*.
+Hele $\vec{L}$ kan ikke være skarp siden komponentene ikke kommuterer innbyrdes!
+
+*** Egenfunksjoner for dreieimpuls i 3D
+Finner egenfunksjoner for $\hat{H}$, $\hat{\vec{L}}^2$ og $\hat{L_z}$ ved å prøve produktløsninger:
+$$ \psi(r,\theta,\phi) = R(r)\Theta(\theta)\Phi(\phi) $$
+Kvadratet av dreieimpulsvektoren avhenger ikke av radialkomponenten, så
+$$ \hat{\vec{L}}^2 Y(\theta,\phi) = L^2 Y(\theta,\phi) $$
+med
+$$ Y(\theta,\phi) = \Theta(\theta)\cdot\Phi(\phi) = \Theta(\theta)\cdot e^{im\phi} $$
+Setter $L^2 = \hbar^2\cdot l(l+1)$, som til slutt gir egenfunksjoner definert ved *Legendrepolynomer*.
+
+For isotropt potensial er dreieimpulsen og dens komponenter kvantisert:
+\begin{align*}
+L &= \sqrt{l(l+1)}\hbar &&; l = 0,1,2,... \\
+L_z &= m\hbar &&; m = 0, \pm 1, ... \pm l
+\end{align*}
+
+$m\leq l$ fordi $|L_z|\leq|\vec{L}|$, naturligvis. Egenfunksjonene blir
+$$ Y_{lm}(\theta,\phi)=\Theta_{lm}(\theta)\cdot e^{im\phi} $$
+med
+$$ \Theta_{lm}(\theta) = \begin{cases}
+       P_l(\cos\theta) &\quad m = 0 \\
+       P_l^m(\cos\theta) &\quad m \neq 0 \\
+     \end{cases} $$
+     
+*** Merknader ved egenfunksjonen
+*Normering*:
+$$ \int\int|Y_{lm}|^2 d\Omega = \int_{\theta=0}^\pi \int_{\phi=0}^{2\pi}|Y_{lm}|^2\sin\theta d\theta d\phi = 1 $$
+
+*Ortogonalitet*:
+$$ \int\int Y_{lm}^* Y_{l'm'} d\Omega = \delta_{l l'}\delta{m m'} $$
+
+*Paritet*:
+Speiling gjennom origo:
+\begin{align*}
+\cos\theta &\rightarrow \cos(\pi-\theta) = -\cos\theta \\
+e^{im\phi} &\rightarrow e^{im(\phi+\pi)} = (-1)^m e^{im\phi}
+\end{align*}
+For *alle* $Y_{lm}$:
+$$ \hat{P} Y_{lm} = (-1)^l Y_{lm} $$
+
+*Terminologi*
+| l-verdi          |       0 |           1 |         2 |             3 | 4 | 5 |
+| bokstavangivelse | s=sharp | p=principal | d=diffuse | f=fundamental | g | h |
+
+*Polardiagram*
+Kurve der avstanden fra origo angir verdien av absoluttkvadratet av dreieimpulsen. Sjekk s98 i PC Hemmer for fine illustrasjoner.
+Kvalitativt blir det sirkulært for s-verdier, åttetall for p+verdier, firkløver for d-verdier osv...
+*** Kvantisert rotasjonsenergi
+Beskriver molekyler som stive legemer med treghetsmoment I:
+$$ K = \frac{1}{2}I\vec{\omega}^2 ; \vec{L} = I\vec{\omega} \Rightarrow K = \frac{1}{2I} \vec{L}^2 $$
+
+*Kvantisering*: $\hat{K} = \frac{1}{2I} \hat{\vec{L}}^2$
+
+*Egenverdiligning*: $\hat{K}Y_{lm} = K_l Y_{lm} = \frac{\hbar^2 l(l+1)}{2I} Y_{lm}$
+
+*Degenerasjonsgrad*: $g_l = 2l+1$
+
+*Utvalgsregel* ved absorpsjon og emisjon av foton:
+Pga at fotonet har spinn $\pm \hbar$ kan molekylet gjennomgå en strålingsovergang som gir $\Delta l = \pm 1$.
+Energibevarelse gir da (her: emisjon)
+$$ h\nu = K_l - K_{l-1}  =  \hbar^2 l / I $$
+
 ** Uke 44
 *** Isotropt potensial, radialligning
 *** Coulombpotensialet. Hydrogenatomet
 *** Hydrogenatomet. Degenerasjon
+*** Utvalgsregler for strålingsoverganger
+*** Effekter av magnetfelt
+** Uke 45
+*** Spinn: Tilstander og operatorer
+*** Pauliprinsippet
+*** Atomer, det periodiske system, molekyler
 * Numerikk
 ** Numerisk løsning av TUSL
 Ser for oss en endelig 1D boks delt inn i små intervall $\Delta x$. Det gir
