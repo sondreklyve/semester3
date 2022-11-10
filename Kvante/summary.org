@@ -173,7 +173,7 @@ $\psi$ og $|\psi|^2$ vil alltid være kontinuerlige over alt.
 **** Krumningsegenskaper
 $\psi''/\psi$ har samme fortegn som $V-E$.
 - Klassisk tillatt område der $E\geq V$, slik at $\psi$ krummer mot x-aksen.
-- Klassisk forbudt område der $E<V$, slik at $\psi$ krummet bort fra x-aksen. (Lov i QM dersom potensial ikke er uendelig.)
+- Klassisk forbudt område der $E<V$ , slik at $\psi$ krummet bort fra x-aksen. (Lov i QM dersom potensial ikke er uendelig.)
 **** Ortogonalitet, ortonormert sett av funksjoner
 Et funksjonssett $\{\psi_n(x)\}$ er ortonormet når
 $$ \langle \psi_n, \psi_k \rangle \equiv \int_{-\infty}^\infty \psi_n^*(x)\psi_k(x)dx = \delta_{nk} $$
@@ -300,18 +300,19 @@ Lagtykkelser kan kontrolleres med atomær nøyaktighet.
 ** Uke 40 (Enkle modeller)
 *** Endeling potensialbrønn
 Ser for oss et potensial
-   
-$$V(x) = \begin{cases}
-       V_0 &\quad|x|<l \\
+$$ V(x) =
+    \begin{cases}
+       V_0 &\quad|x| < l \\
        0 &\quad|x|\geq l \\
-     \end{cases} $$
-
-Løser TUSL for bundne tilstander når $E<V_0$:
-$$\psi(x) = \begin{cases}
+    \end{cases} $$
+  
+Løser TUSL for bundne tilstander når $E < V_0$ :
+$$\psi(x) =
+    \begin{cases}
        Ae^{\kappa x} &\quad x\leq -l \\
-       C\sin(kx) + D\cos(kx) &\quad |x|<l \\
+       C\sin(kx) + D\cos(kx) &\quad |x| < l \\
        Be^{-\kappa x} &\quad x\geq l \\
-     \end{cases} $$
+    \end{cases} $$
 
 Vet at for symmetrisk potensial må vi ha symmetrisk eller antisymmetrisk bølgefunksjon. Holder å kreve at $\psi(x)$ og $d\psi(x)/dx$ er kontinuerlige i f.eks $x=l$. 
 
@@ -537,7 +538,7 @@ $$ \hat{A}\psi = A\psi \text{  og  } \hat{B}\psi = B\psi $$
 Dette betyr at vi kan finne *felles egenfunksjoner* for to operatorer som kommuterer.
 
 Eksempelvis fra forrige deloverskrift, $[\hat{H}, \hat{L_z}] = 0$, altså kan partikkelen ha skarp energi og dreieimpuls samtidig!
-** Uke 43
+** Uke 43 (Dreieimpuls og rotasjon)
 *** Symmetriegenskaper og paritet
 *Paritetsoperatoren* $\hat{P}$ speiler en funksjon gjennom origo:
 $$ \hat{P}\psi(\vec{r}) = \psi(-\vec{r}) $$
@@ -630,16 +631,214 @@ Pga at fotonet har spinn $\pm \hbar$ kan molekylet gjennomgå en strålingsoverg
 Energibevarelse gir da (her: emisjon)
 $$ h\nu = K_l - K_{l-1}  =  \hbar^2 l / I $$
 
-** Uke 44
+** Uke 44 (Hydrogenatomet)
 *** Isotropt potensial, radialligning
-*** Coulombpotensialet. Hydrogenatomet
-*** Hydrogenatomet. Degenerasjon
+Har ligningen
+$$ \left[-\frac{\hbar^2}{2\mu}\left(\frac{\partial^2}{\partial r^2}+\frac{2}{r}\frac{\partial}{\partial r}\right)+\frac{1}{2\mu r^2} \hat{\vec{L}}^2+V(r)\right]R\cdot Y_{lm} = E \cdot R \cdot Y_{ml} $$
+
+ - Bruker $\hat{\vec{L}}^2 Y_{ml} = \hbar^2 l(l+1)Y_{lm}$ og multipliserer ligningen med $-2\mu/\hbar^2 Y_{lm}$
+ - Innfør $u(r) = r\cdot R(r)$; da er $R'' + \frac{2}{r} R' = \frac{u''}{r}$
+ - Multipliser ligningen for $u$ med $-\hbar^2 r / 2\mu$
+
+   Dette gir TUSL i 1D:
+   $$ -\frac{\hbar^2}{2\mu} u'' + V_{eff}^l u = Eu $$
+   med et l-avhengig effektivt potensial
+   $$ V_{eff}^l (r) = V(r) + \frac{l(l+1)\hbar^2}{2\mu r^2} $$
+
+   Når $l>0$ blir området nær $r=0$ klassisk forbudt pga det frastøtende sentrifugalbidraget
+   $$ \frac{l(l+1)\hbar^2}{2\mu r^2} $$
+   
+*** Hydrogenatomet
+$$ V_{eff}^l (r) = -\frac{Z e^2}{4\pi \varepsilon_0 r}+ \frac{l(l+1)\hbar^2}{2\mu r^2} $$ 
+Med $Z$ antall protoner.
+Fokuserer på relativbevegelsen til de to partiklene elektronen og kjernen, og ser bort fra tyngdepunktbevegelsen til atomet.
+Ser bort fra bevegelse til kjernen rundt tyngepunkt fordi den er neglisjerbar i forhold til elektronet (pga masseforskjell).
+Innfører
+\begin{align*}
+\rho &= r\cdot \sqrt{-8\mu E/\hbar} \\
+\lambda &= (Ze^2/4\pi\varepsilon_0\hbar) \cdot \sqrt{-\mu/2E}
+\end{align*}
+
+Vil finne *bundne* der $E<0$.
+$$ u'' + \left[\frac{\lambda}{\rho} - \frac{l(l+1)}{\rho^2} - \frac{1}{4}\right] u = 0; u'' = \frac{d^2 u}{d\rho^2} $$
+
+$l=0$: $u'' = [\lambda/\rho - 1/4] = 0$
+Prøver $u=\rho e^{-\rho/2}$, som med $\lambda = 1$ gir
+$$ E = -\frac{\mu e^4}{32\pi^2\varepsilon_0^2 \hbar^2} \approx -13.6\text{ eV} $$
+
+
+$l>0$:
+Prøver $u=\rho^{l+1} e^{-\rho/2}$, som er oppfylt for $\lambda = l+1$. 
+
+Kan ved potensrekker vise at $\lambda = n = l + 1 + n_r$, der $n$ er hovedkvantetall, og $n_r$ er det radielle kvantetallet.
+
+**** Energiverdiene:
+$$ E_n = -\frac{\mu Z^2 e^4}{32\pi^2 \varepsilon_0^2\hbar^2 n^2}  = -\mu c^2 \cdot \frac{Z^2\alpha^2}{2 n^2} \approx -13.6 \text{ eV } \cdot \frac{Z^2}{n^2}$$
+
+**** Degenerasjon:
+For en gitt $n$ er $l=0,1,...,n-1$ og $m= 0, \pm 1, ..., \pm l$
+$$ \Rightarrow g_n = \sum_{l=0}^{n-1} (2l+1) = n^2 $$
+**** Bohr-radien
+Innsetting for $E_n$ gir $\rho=r\cdot \frac{2}{na}$ med $a=\frac{\hbar}{\mu c Z \alpha}$.
+Med H-atomet, dvs $Z=1$ og $\mu \approx m_e$ er
+$$ a \approx a_0 = \frac{\hbar}{m_e c \alpha} \approx 0.529 \text{ Å } $$
+
+**** Radialfunksjoner (unormerte)
+| $n_r$ | $l$ | $n$ |   | $R_{nl}(r)$                       |   | Orbitalnavn |
+|     0 |   0 |   1 |   | $\exp(-r/a)$                      |   | 1s          |
+|     1 |   0 |   2 |   | $\exp(-r/2a)(1-r/2a)$             |   | 2s          |
+|     0 |   1 |   2 |   | $\exp(-r/2a)(r/a)$                |   | 2p          |
+|     2 |   0 |   3 |   | $\exp(-r/3a)(1-2r/3a+2r^2/27a^2)$ |   | 3s          |
+|     1 |   1 |   3 |   | $\exp(-r/3a)(r/a+r^2/6a^2)$       |   | 3p          |
+|     0 |   2 |   3 |   | $\exp(-r/3a)(r^2/a^2)$            |   | 3d          |
+
+**** Normering
+Vil har $\psi_{nlm}(r,\theta,\phi)=R_{nl}(r)Y_{lm}(\theta,\phi)$ slik at
+$$ \int\int\int|\psi|^2 d^3 r= 1 ; d^3r=r^2dr\sin\theta d\theta d\phi $$
+Kan normere $R$ og $Y$ hver for seg
+\begin{align*}
+&\Rightarrow \int_0^\infty R_{nl}^2 r^2 dr = \int_0^\infty u_{nl}^2(r)dr = 1 (u_{nl}=R_{nl}\cdot r) \\
+&\Rightarrow u_{nl}^2\cdot dr = d P_{nl}
+\end{align*}
+som er sannsynligheten for å finne elektronet i et kuleskall mellom $r$ og $r+dr$.
+*Radialtetthet*
+$$ \frac{dP_{nl}}{dr} = u_{nl}^2 $$
+
+**** Ortogonalitet
+$$ \int\int\int\psi_{n'l'm'}^*\psi_{nlm} d^3 r = \delta_{n n'}\delta_{l l'}\delta_{m m'} $$
+
+**** Forventningsverdier (av isotrope størrelser)
+\begin{align*}
+\langle f(r)\rangle_{nlm} &= \int\int\int f(r)R_{nl}^2 Y_{lm}^2 r^2 dr d\Omega \\
+&= \int_0^\infty f(r)u_{nl}^2(r)dr
+\end{align*}
+
 *** Utvalgsregler for strålingsoverganger
+H-atomet kan absorbere og emittere fotoner. Som nevnt har fotonet $\pm \hbar$ spinn og dreieimpulsbevarelse gir derfor tillatte overganger dersom $\Delta l = \pm 1$ (og i tillegg $Delta m = 0, \pm 1$)
+- Lymanserien      : Mellom $n=1$ og $n>1$
+- Balmerserien     : Mellom $n=2$ og $n>2$
+- Paschenserien   : Mellom $n=3$ og $n>3$
+
+  Siden $\Delta l = \pm 1$ kan ikke et elektron i 2s-tilstanden komme seg til grunntilstanden 1s ved emisjon (sjekk radialfunksjoner under hydrogenatomet). Derfor er levetiden $\tau$ i 2s-tilstanden lang:
+  $$ \tau_{2s} \approx 0.1 \text{ s } ; \tau_{2p} \approx 1 \text{ ns } $$
+
 *** Effekter av magnetfelt
-** Uke 45
+Klassisk atom:
+$L = r m_e v$
+$\mu = I\cdot \pi r^2$ = magnetisk moment 
+$I = ev/2\pi r \Rightarrow \mu = evr/2$
+Dermed: $\vec{\mu} = -\frac{e}{2m_e}\vec{L}$
+
+*Gyromagnetisk forhold*: $\frac{\mu}{L}=\frac{e}{2m_e}$
+
+*Bohr*: $L=n\hbar$, $\mu=n\cdot e\hbar/2m_e = n\cdot \mu_b$, $\mu_m$ = *Bohr magneton*.
+
+*Schrödinger*: $L=\sqrt{l(l+1)}\hbar$, $L_z = m\hbar$
+
+*Magnetisk dipol i magnetfelt*:
+
+$\vec{\tau} = \vec{mu}\times\vec{B}$ = dreiemoment på dipolen
+$V = -\vec{\mu}\cdot\vec{B}$ = potensiell energi
+$\vec{F} = -\nabla V = \nabla (\vec{\mu}\cdot\vec{B})$ = kraft på dipolen
+$\Rightarrow \vec{F} = 0$ når $\vec{B}$ -feltet er uniformt
+
+*Larmor-presesjon*:
+
+Med $\vec{B}=B\hat{z}$ vil $\vec{L}$ presesere (rotere) om $z$ -aksen med *Larmorfrekvensen*
+$$ \omega_L = \frac{e B}{2m_e} $$
+ - $L_x(t) = L_0\cos(\omega_L t)$
+ - $L_y(t) = L_0\sin(\omega_L t)$
+ - $L_z$ = konst
+ - $L_0^2 = L^2-L_z^2 = L_x^2 + L_y^2$
+
+*Zeemaneffekt*:
+
+Et $\vec{B}$ -felt opphever degenerasjon for tilstander med $l>0$. Med $\vec{B} = B\hat{z}$:
+$$ V = -\vec{\mu}\cdot\vec{B} = \frac{e}{2m_e}L_z B = \frac{e\hbar}{2m_e} mB = m\mu_b B $$
+
+** Uke 45 (Spinn, atomer ...)
 *** Spinn: Tilstander og operatorer
-*** Pauliprinsippet
-*** Atomer, det periodiske system, molekyler
+Sender sølvatomer gjennom inhomogent magnetfelt.
+Kraft på sølvatomene: $F_z = -m\cdot \mu_b \cdot \frac{dB}{dz}, m = 0, \pm 1, ... , \pm l$
+Forventet $2l+1$ ulike avbøyninger, men eksperimentet gir bare *to*.
+
+Foreslår at elektronet har indre dreieimpuls, et *spinn* $\vec{S}$, med tilhørende magnetisk moment $\vec{\mu}_s$, og at spinnet er kvantisert slik som dreieimpulsen:
+ - $L = |\vec{L}|=\sqrt{l(l+1)}\hbar ; L_z = m\hbar ; m = -l, -l+1, ..., l$
+ - $S = |\vec{S}|=\sqrt{s(s+1)}\hbar ; S_z = m_s\hbar ; m_s = -s, -s+1, ..., s$
+Eksperiment viser at $m_s$ har *to* mulige verdier:
+$$ m_s = -\frac{1}{2} \text{ og } m_s = +\frac{1}{2} \Rightarrow s=\frac{1}{2} $$
+
+*Magnetisk moment* til spinn er ikke helt analogt med den for dreieimpuls; $\vec{\mu} = -\frac{e}{2m_e}\vec{L}$. Nøyaktige eksperiment gir
+$$ \vec{\mu}_s = g_s\cdot \left(-\frac{e}{2m_e}\right)\cdot \vec{S} $$
+med $g_s\approx 2$.
+Protoner og nøytroner er også spinn- $\frac{1}{2}$ - partikler, med magnetisk moment:
+ - Proton: $g_p = 5.59$
+ - Nøytron: $g_n = -3.83$
+
+Velger egentilstander slik, som for dreieimpuls, feller for $\hat{\vec{S}}^2$ og $\hat{S}_z$, og kommuteringsrelasjoner likt som for dreieimpuls
+
+*Egenvektorer*:
+ - Spinn + : $\chi_+ = \begin{pmatrix} 1 \\ 0 \end{pmatrix}$ og $\chi_{+}^ + = \begin{pmatrix} 1 & 0 \end{pmatrix}$
+ - Spinn - : $\chi_- = \begin{pmatrix} 0 \\ 1 \end{pmatrix}$ og $\chi_{-}^ + = \begin{pmatrix} 0 & 1 \end{pmatrix}$
+
+   *Normering*:
+   $$ \chi_{+}^ + \chi_ + = \begin{pmatrix}1 & 0\end{pmatrix} \begin{pmatrix}1 \\ 0\end{pmatrix}  = 1 ; \chi_-^ + \chi_-=\begin{pmatrix}0 & 1\end{pmatrix} \begin{pmatrix}0 \\ 1\end{pmatrix} =1$$
+
+   *Ortogonalitet*:
+   $$ \chi_+^+ \chi_{-} = \chi_-^+\chi_+ = 0 $$
+
+   *Spinn-operatorer*:
+\begin{align*}
+   \hat{S}_z &= \frac{\hbar}{2} \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} = \frac{\hbar}{2}\sigma_z \\
+   \hat{S}_x &= \frac{\hbar}{2} \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \frac{\hbar}{2}\sigma_x \\
+   \hat{S}_y &= \frac{\hbar}{2} \begin{pmatrix} 0 & -i  \\ i & 0 \end{pmatrix} = \frac{\hbar}{2}\sigma_y \\
+   \Rightarrow \hat{\vec{S}}^2 &= \hat{S}_x^2 + \hat{S}_y^2 + \hat{S}_z^2 = \frac{3\hbar^2}{4} \begin{pmatrix}1 & 0 \\ 0 & 1 \end{pmatrix}
+\end{align*}
+Med *Paulimatrisene* $\sigma_x, \sigma_y, \sigma_z$
+
+*** Atomer
+**** Pauliprinsippet
+Elektroner og andre elementærpartikler er *identiske* partikler, og *ombytte* av to elektroner har ingen målbar effekt.
+$$ |\Psi(1,2)|^2 = |\Psi(2,1)|^2 $$
+
+ *Bosoner*:
+$\Psi(1,2)=\Psi(2,1)$, symmetrisk ved ombytte av 1 og 2. Bosoner har heltallig spinn.
+
+*Bose-Einstein-kondensasjon*:
+Alle bosonene i systemet kan ved lav nok temperatur befinne seg i samme (enpartikkel-) grunntilstand.
+
+*Fermioner*:
+$\Psi(1,2) = -\Psi(2,1)$, antisymmetrisk ved ombytte av 1 og 2. Elektroner, protoner og nøytroner er eksempel. Fermioner har som kjent halvtallig spinn.
+Dersom to fermioner er i samme enpartikkeltilstand, ser vi at bølgefunksjonen blir null. Dermed
+
+*Pauliprinsippet*: To elektroner kan ikke befinne seg i samme enpartikkeltilstand.
+
+**** Det periodiske system
+Grunntilstanden for H-atomet: elektronet i 1s
+Elektronkonfigurasjon: 1s'
+
+Numerisk løsning av TUSL for andre atomer gir en lignende struktur, med økende energi
+$$ 1s < 2s < 2p < 3s < 3p < 4s < 3d < 4p < 5s < 4d < 5p < 6s < 4f < 5d < ... $$
+
+*Aufbau-prinsippet*: Atomets grunntilstand har inntil 2 elektroner (med motsatt spinn) i orbitaler med lavest mulig energi.
+
+*Hund's regel*: Atomets totale spinn er størst mulig. Fyller alltid opp et nivå med opp-spinn før ned-spinn.
+
+*Edelgasser*: Betydelig energigap fra høyeste okkuperte til laveste ledige tilstand. Derfor lite reaktive.
+
+*Alkalimetaller*: Har et forholdsvis løst bundet elektron som kan avgis eller deles med f.eks. halogener.
+
+*Halogener*: Mangler ett elektron for å oppnå edelgasskonfigurasjon. Danner stabile salter med alkalimetallene.
+
+*Innskuddsmetaller*: Kan ha ulike oksidasjonstall, dermed en "rik kjemi". Inngår ofte i katalyse, dvs reduserer energibarrieren og øker hastigheten for ulike kjemiske reaksjoner.
+
+**** Molekyler
+Enpartikkeltilstander, molekylorbitaler (MO), for elektroner i et molekyl kan konstrueres som lineære kombinasjoner (LC) av atomære orbitaler (AO), kjent som LCAO:
+$$ \psi = \sum_j c_j \phi_j $$
+
+Grunntilstanden for molekylet:
+ - Inntil 2 elektroner i hver MO slik at total energi blir så lav som mulig.
+ - Atomposisjoner, dvs bindingslengder og -vinkler, slik at netto kraft er lik null på alle atomene i molekylet.
 * Numerikk
 ** Numerisk løsning av TUSL
 Ser for oss en endelig 1D boks delt inn i små intervall $\Delta x$. Det gir
