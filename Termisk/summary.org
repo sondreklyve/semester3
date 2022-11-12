@@ -329,15 +329,68 @@ $$ S(\Omega) = S(\Omega_1\cdot \Omega_2) = S(\Omega_1) + S(\Omega_2) $$
 
 Ser at logaritemer passer fint her, og Boltzmanns definisjon gir
 $$ S = k_B \ln\Omega $$
-
 * Kinetisk teori
-** Mikroskopisk, statistisk bevegelse
 ** Antagelser
+- Lav tetthet: $V_{molekyl}<< V/N$ = tilgjengelig volum pr molekyl. OK ved normale betingelser.
+- Klassisk dynamikk: elastiske kollisjoner mot glatte vegger.
+- Isotropi: ingen foretrukne retninger.
+
 ** Trykk i ideell gass
+Har gass i beholder, trykk mot veggen blir $p = F_x / A = \Delta P_x / A\Delta t$
+
+Impuls overført: $\frac{1/2} N \cdot \frac{A v_x \Delta t}{V} \cdot 2mv_x$
+
+Dermed: $p = \frac{N}{V} \cdot mv_x^2$
+
+Ved isotropi får vi $\langle v_x^2\rangle = \langle v_y^2\rangle = \langle v_z^2\rangle = \frac{1}{3}\langle v^2\rangle$:
+$$ \Rightarrow p = \frac{N}{V} \cdot \frac{1}{3} m\langle v^2 \rangle = \frac{N}{V}\cdot \frac{2}{3} \langle E_k^{trans}\rangle $$
+
 ** Mikroskopisk tolkning av T
+$$p = Nk_B T /V = 2N \langle E_k^{trans}\rangle = \frac{3}{2}k_B T \Rightarrow \langle E_k^{trans} \rangle = \frac{3}{2} k_B T $$ 
+$T$ er altså et mål på molekylenes midlere translasjonsenergi.
+
 ** Maxwells hastighetsfordeling
+*Fartsfordeling*: $f(v)\cdot dv$ = sannsynlighet for at gitt molekyl har fart mellom $v$ og $v+dv$.
+
+*Komponentfordeling*: $g(v_x)\cdot dv_x$ = sannsynlighet for at gitt molekyl har $x$ -komponent av $\vec{v}$ mellom $v_x$ og $v_x + dv_x$.
+
+Normering:
+$$ \int_0^\infty f(v)dv = 1 \quad ; \quad \int_{-\infty}^\infty g(v_x) dv_x = 1 $$
+
+*Hastighetsfordeling*: $F(\vec{v})d^3v$ = sannsynliget for hastiget i volumenhet $d^3 v = dv_x dv_y dv_z$ omkring $\vec{v}$.
+
+Trenger kunnskap om *Gaussintegraler* for å utlede disse fordelingene.
 ** Gaussintegraler
+Integral på formen
+$$ \int_{-\infty}^\infty e^{-bx^2} dx $$
+
+Bruker resultater herfra for å finne ulike fordelinger:
+ - Komponentfordelingen
+$$ g(v_x) = \sqrt{\frac{m}{2\pi k_B T}} e^{-mv_x^2/2k_B T} $$
+
+ - Hastighetsfordelingen
+$$ F(v) = g(v_x)g(v_y)g(v_z) = \left(\frac{m}{2\pi k_B T}\right)^{3/2} e^{-mv^2/2k_B T} $$
+
+ - Fartsfordelingen
+   $$ f(v) = 4\pi v^2 F(v) = 4\pi\left(\frac{m}{2\pi k_B T}\right)^{3/2} v^2 e^{-mv^2/2k_B T}$$
+
 ** Middelverdier
+Vi må ha at
+$$ \langle v_x \rangle = \langle v_y \rangle = \langle v_z \rangle = 0 $$
+$$ \langle v^2 \rangle = 3\langle v_x^2 \rangle =3k_bT/m$$
+$$ v_{rms} = \sqrt{\langle v^2 \rangle} = \sqrt{3k_B T/m} \approx 1.73 \sqrt{k_B T/m} $$
+
+Midlere fart:
+$$ \langle b \rangle = \int_0^\infty v f(v) dv = \frac{1}{2b^2} $$
+$$ \Rightarrow \langle v \rangle \approx 1.60 \sqrt{k_B T /m} $$
+
+Mest sannsynlige fart $v_s$ når $f(v)$ er maksimal:
+$$ \frac{df}{dv} = 0 \Rightarrow v_s = 1.41 \sqrt{k_B T /m} $$
+
+Lydfarten:
+$$ v_{lyd} = \sqrt{\gamma k_b T/m} \approx 1.18\sqrt{k_B T/ m} $$
+
+Alle partikkelhastighetene er av samme størrelsesorden som lydhastigheten, som forventet.
 * Statistisk mekanikk
 ** Boltzmannfaktoren
 ** Ekvipartisjonsprinsippet
