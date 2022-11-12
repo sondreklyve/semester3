@@ -234,7 +234,16 @@ Carnot-prosessen er unik fordi den inneholder bare _to_ varmereservoar.
 
 * Termodynamikkens 2. lov
 ** Energibevarelse er ikke alt
+*Kelvin*: Det er umulig å konstuere en kretsprosess slik at nettoresultatet er at varme avgis fra et varmereservoar og omsettes fullt ut i arbeid.
+
+*Clausius*: Det er umulig å konstruere en kretsprosess slik at nettoresultatet er at en varmemengde avgis fra ett varmereservoar og absorveres av et annet med høyere temperatur.
+
+Disse utsagnene er ekvivalente, og utgjør *termodynamikkens andre hovedsetning*.
 ** Carnots teorem
+- Carnotprosessens virkningsgrad $\eta_C = 1-T_1/T_2$ er optimal.
+- Virkningsgraden $\eta_C = 1-T_1/T_2$ er uavhengig av typen arbeidssubstans.
+
+  Bevis blir gitt som en oppgave til leseren (eller sjekk PCH s43-s44)
 * Entropi
 ** Clausius' ulikhet
 ** Entropi
