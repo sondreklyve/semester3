@@ -246,15 +246,91 @@ Disse utsagnene er ekvivalente, og utgjør *termodynamikkens andre hovedsetning*
   Bevis blir gitt som en oppgave til leseren (eller sjekk PCH s43-s44)
 * Entropi
 ** Clausius' ulikhet
+*Clausius' ulikhet* fastslår følgende:
+- For en vilkårlig kretsprosess:
+$$ \oint \frac{dQ}{T} \leq 0 $$
+
+- For en reversibel kretsprosess:
+$$ \oint \frac{dQ_{rev}}{T} = 0 $$
+
 ** Entropi
+Definerer entropi $S$ slik:
+$$ dS = \frac{dQ_{rev}}{T} \quad ; \quad \oint S = 0 $$
+Ser at $dS$ er et totalt differensial, og har tilhørende tilstandsfunksjon. Så lenge prosessen er reversibel er entropiendringen uavhengig av veien prosessen tar fra startfase til sluttfase.
+
+- Reversibel og adiabatisk prosess (isentropisk prosess):
+  $$ 0 = dQ_{rev} = T dS \Rightarrow dS = 0 \Rightarrow \Delta S = 0 $$
+
+- Irreversibel prosess:
+  $\oint \frac{dQ}{T} < 0$ slik at vi ikke kan sette $dS = dQ/T$. Irreversibel adiabat har dermed $\Delta Q = 0$ men $\Delta S \neq 0$ .
+
 ** ST-diagrammer
+- $dW = pdV \Rightarrow$ nyttig med $pV$ -diagram
+- $dQ_{rev} = TdS \Rightarrow$ nyttig med $TS$ -diagram
+
 ** Den termodynamiske identitet
+Fra første og andre lov kan vi komme frem til en sentral sammenheng i termodynamikken:
+$$ TdS = dU + pdV $$
+, kjent som *den termodynamiske identitet*.
+
+Videre kan vi utlede
+$$ \left(\frac{dU}{dV}\right)_T = T\left(\frac{\partial p}{\partial T}\right)_V - p $$
+
 ** $C_p-C_v$
-** $\Delta S$ ved reversible prosesser
+Fra tidligere resultat, for $C_p-C_v$, siste ligning under forrige avsnitt, og med den sykliske regel, kan vi komme frem til
+
+$$ C_p - C_V = -T \left(\frac{\partial p}{\partial T}\right)_V^2 \left(\frac{\partial V}{\partial p}\right)_T > 0 $$
+
+Dette gjelder alltid, fordi kompressibiliteten
+$$ \kappa_T = -\frac{1}{V}\left(\frac{\partial V}{\partial p}\right)_T >0 $$
+alltid.
+
+** Entropiendring ved reversible prosesser
+Ser på noen eksempler:
+
+1) Faseoverganger
+   $T$ = konstant; $Q = L$ = latent varme. Det gir $\Delta S = L/T$
+   $L>0$ ved smelting, fordamping og sublimasjon:
+   $$ S_{fast} < S_{væske} < S_{gass} $$
+ 
+2) $S$ som funksjon av $T$ og $V$.
+   TDI $\Rightarrow dS = (dU+pdV)/T$
+   Gir at $dS = C_V dT/T + (\partial p/\partial T)_V dV$
+   Kan bestemme $S(T,V)$ ved integrasjon.
+
+3) Ideell gass
+   Antar $C_V$ konstant. Det gir
+   $$ dS = C_V \frac{dT}{T} + nR \frac{dV}{V} $$
+   Med referanse i $(T_0, V_0) blir
+   $$ S(T,V)-S(T_0,V_0) = C_V \ln\frac{T}{T_0} + nR \ln \frac{V}{V_0} $$
+
 ** Prinsippet om entropiens økning
-** Irreversible prosesser
+Fra før har vi $dS = dQ_{rev}/T$ og dermed $\Delta S = 0$ for reversible prosesser i termisk isolert system.
+Med Clausius' ulikhet har vi generelt at
+$$\Delta S \geq 0 \text{ i et termisk isolert system}$$
+
+1. og 2. lov samlet:
+   Universets energi er konstant, dets entropi øker!
+** Entropiendring ved irreversible prosesser
+Kan ikke bruke $\int_A^B dQ/T$ i irreversibel prosess, men kan velge vilkårlig reversibel prosess fra A til B, og regne
+$$ \Delta S = \int_A^B \frac{dQ_{rev}}{T} \quad ; \quad \frac{Q_{rev}}{T} = C_V \frac{dT}{T}+\left(\frac{\partial p}{\partial T}\right)_V dV$$
+
 ** Mikrofysisk tolkning av entropi
-* Kinetisk gassteori
+*Mikroskopisk* tilstand for $N$ partikler er gitt ved posisjonene og impulsene til hver partikkel.
+
+*Makroskopisk* tilstand er gitt ved noen få termodynamiske variable $p, V, T$.
+
+Anta $\Omega$ mulige mikrotilstander med lik sannsynlighet.
+ - $S$ øker med $\Omega$
+ - $S$ er ekstensiv
+
+Slår sammen to system 1 og 2, og får $\Omega = \Omega_1 \cdot \Omega_2$ mulige tilstander. Dermed
+$$ S(\Omega) = S(\Omega_1\cdot \Omega_2) = S(\Omega_1) + S(\Omega_2) $$ 
+
+Ser at logaritemer passer fint her, og Boltzmanns definisjon gir
+$$ S = k_B \ln\Omega $$
+
+* Kinetisk teori
 ** Mikroskopisk, statistisk bevegelse
 ** Antagelser
 ** Trykk i ideell gass
