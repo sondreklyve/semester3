@@ -1,27 +1,237 @@
 * Innledning - Hovedtema
 ** Grunnbegreper
-** System og omgivelser
-** Trykk
+Kan ha *system* med *energiutveksling*, *partikkelutveksling* til *omgivelser* gjennom *grenseflate*. Har *åpent* og *lukket* system avhengig av om det er partikkelutveksling.
+
+*Trykk* definert som kraft per areal. *Isotrop*, virker likt overalt. Enhet pascal, bar, atm, psi.
 ** Temperatur og termisk likevekt
+*Termisk likevekt* dersom ingen netto strøm av varmeenergi mellom to systemer i termisk kontakt.
+
+Måler $T$ med *termometer* via andre fysiske størrelser:
+ - væskevolum: økt $T$ gir økt volum
+ - gasstrykk: økt $T$ gir økt $p$
+ - lengde av fast stoff: økt $T$ gir økt $L$
+ - elektrisk motstand: økt $T$ gir økt $R$
+
+Enhet og kalibrering:
+ - $T=0^\circ C:$ vann fryser til is ved p = 1 atm
+ - $T=100^\circ C:$ vann koker ved p = 1 atm
+
+Linerære trykkfunksjoner mhp temp gir $T=-273.15^\circ C$ ved p=0, som gir opphav til *absolutt temperatur og kelvinskala*:
+ - $T = 0 K$ tilsvarer $-273.15^\circ C$
+ - $\Delta T = 1 K$ tilsvarer $\Delta T =1^\circ C$
+
 ** Tilstandsvariable og tilstandsligninger
+Et *makroskopisk* system i termisk likevekt er i en tilstand som kan beskrives ved hjelp av et lite antall *tilstandsvariable*:
+$$ p, T, V, \rho=N/V, ... $$
+
+Mengdeproporsjonale variable kalles *ektensive*: $V+V=2V$
+Mengdeuavhengige variable kalles *intensive*: $p,T+p,T=p,T$
+
+*Tilstandsligninger* angir sammenheng mellom tilstandsvariable. For gitt stoffmengde $N$ er som regel 2 av de 3 variable trykk, volum og temperatur nok for å spesivisere systemets tilstand. Dvs
+$$ V=V(p,T) ,\quad p=p(V,T) ,\quad T=T(p,V) \Rightarrow (p,V,T)=0 \text{ generelt }$$
+
+Systemet gjennomgår termodynamisk *prosess* når tilstandsvariable endres.
+
 ** Ideell gass
-** Eksempler, trykk
-** Målbare koeffisienter; eksempler
-** Partielle deriverte og differensialer
+Eksperimenter med gasser med lav tetthet oppfyller
+$$ pV = nRT $$
+med $n$ antall mol og $R$ gasskonstanten. Eventuelt
+$$ pV = N k_b T $$
+med Boltzmanns konstant $k_b$.
+
+Kurver med en variabel holdt konstant:
+ - *Isotermer*: Konstant temperatur
+ - *Isobarer*: Konstant trykk
+ - *Isokorer*: Konstant volum 
+
+** Termodynamiske koeffisienter
+Tilstandsligninger er i utgangspunktet basert på eksperimentelle sammenhenger mellom tilstandsvariable.
+
+ - *Volumutvidelseskoeffisient*:
+   Relativ volumendring pr grad temperaturøkning, målt ved konstant trykk:
+   $$ \alpha_V = \frac{1}{V}\left(\frac{\partial V}{\partial T} \right)_p $$
+
+ - *Lengdeutvidelseskoeffisient*:
+   Kun for faste stoffer:
+   $$ \alpha_L = \frac{1}{L}\left(\frac{\partial L}{\partial T}\right)_p $$
+
+- *Trykk-koeffisient*:
+   $$ \alpha_p = \frac{1}{p}\left(\frac{\partial p}{\partial T}\right)_V $$
+
+- *Isoterm kompressibilitet*:
+   $$ \kappa_T = -\frac{1}{V}\left(\frac{\partial V}{\partial p}\right)_V \quad \left[\Delta p>0\Rightarrow \Delta V < 0 \Rightarrow \kappa_T > 0\right] $$
+
+ - *Bulkmodul*:
+   $$ B = \kappa_T^{-1} $$
+
+   Væsker og faste stoffer har mye mindre isoterm kompressibilitet enn gasser; de er tilnærmet inkompressible.
+   Ideell gass:
+    - $\alpha_V = 1/T$
+    - $\alpha_p = 1/T$
+    - $\kappa_T = 1/p$
+
+** Den sykliske regel
+$$ f(x,y,z) = 0 \Rightarrow x = x(y,z),\quad y=y(x,z), \quad z=z(x,y) $$
+
+Da er
+$$ \left(\frac{\partial x}{\partial y} \right)_z \left(\frac{\partial y}{\partial z} \right)_x \left(\frac{\partial z}{\partial x} \right)_y  = -1 $$
+
+Eksempelvis med $x,y,z = p,V,T \Rightarrow \frac{\alpha_V}{p\kappa_T\alpha_p} = 1$
+
 * Termodynamikkens 1. lov
 ** Reversible prosesser
+Idealisert prosess som kan *revereseres* slik at system og omgivelser returnerer til starttilstanden.
+For eksempel svært langsom isoterm kompresjon. Krever at kraften økes uendelig sakte, slik at gassen hele tiden er i termisk likevekt, med veldefinerte tilstandsvariable. Kan ikke ha friksjon eller andre dissipative effekter.
+
+I praksis: Både umulig og upraktisk. Alle reelle prosesser er *irreversible*, men mange er tilnærmet reversible.
+
+*Notasjon*: Heltrukne linjer i diagram er reversible prosesser, stiplet kurve er irreversibel.
+Vanskelig å gjøre beregninger for irreversible prosesser. Kan likevel beregne endringer i tilstandsfunksjoner fra likevektstilstand til likevektstilstand med en 'tenkt' reversibel prosess mellom tilstandene.
+
+I eksempelet med stempelet ser vi at det blir gjort *arbeid* på gassen. Og *varme* overføres fra gassen til omgivelsene. Arbeid og varme er de to typene *energiutveksling* vi har.
 ** Arbeid
+*Arbeid* er energi som utveksles mellom system og omgivelser, og som _ikke_ skyldes temperaturforskjeller.
+Ser typisk på mekanisk stempel: $dW = p\cdot dV$ = arbeid utført av systemet på omgivelsene.
+
+$dW > 0$ når systemet gjør et positivt arbeid på omgivelsene.
+
+Generelt for reversible prosesser mellom tilstand 1 og 2:
+$$ W = \int_1^2 dW = \int_{V_1}^{V_2} p(V) dV$$
+Ulike veier mellom 1 og 2 gir ulike arbeid, som betyr at arbeid _ikke_ er en tilstandsfunksjon, men en *prosessvariabel*.
+Har dermed
+$$ \oint p(V) dV \neq 0 $$
+
+Noen merknader:
+ - Arbeid knyttet til prosesser, må betraktes som energioverføring mellom omgivelser og system.
+ - Arbeid kan ikke knyttes til potensiell og kinetisk energi som i mekanikken.
+ - Arbeid er ikke en funksjon, kan ikke derivere $W$.
+ - $dW$ er ikke et såkalt totalt differensial, skriver gjerne $dW$ med strek over $d$-en . Av praktiske grunner skriver jeg bare $dW$ fra nå av, innforstått at det ikke er totalt differensial.
+
+Arbeid i sentrale reversible prosesser:
+ - Isokor: $W = 0$
+ - Isobar: $p\cdot(V_2-V_1)$
+ - Isoterm, med ideell gass: $W = nRT\ln(V_2/V_1)$  
+ - Fri utvidelse: Med $p>0$ og $V_2>V_1$ blir arbeid positivt, men prosessen er irreversibel, slik at $dW=pdV$ ikke kan brukes. Dermed må $W=0$.
 ** Indre energi
+*Indre energi* er summen av molekylenes kinetiske og potensielle energi (pga innbyrdes vekselvirkning).
+ - $E_k$ avhenger av molekylenes _hastigheter_, og dermed temperaturen.
+ - $E_p$ avhenger av _avstanden_ mellom molekylene, og dermed volumet.
+   $$ \Rightarrow \text{Generelt er  } U = U(T,V) $$
+ For ideell gass er potensiell energi null, slik at indre energi utelukkende er en funksjon av temperatur.
+
+ $U$ er *ekstensiv*, øker med $N$.
+ 
+ $U$ er en *tilstandsfunksjon*, $\oint dU = 0$, dU er totalt differensial.
+ 
 ** Varme og 1. lov
-** Energienheter
+*Første hovedsetning* slår fast hva varme er:
+*Varme er energioverføring som skyldes temperaturforskjeller*
+
+Alle andre former for energioverføring er arbeid. Ved energibevarelse:
+$$ Q = \Delta U + W $$
+
+For små endringer:
+$$ dQ = dU + dW $$
+der Q og W er prosessvariable, og ikke totale differensial.
+
 ** Kretsprosess. Adiabatisk prosess
+*Kretsprosesser* er sentrale i diverse praktiske innretninger, som kjøleskap, varmepumper, forbrenningsmotorer etc.
+Starter og ender i samme tilstand, altså $\Delta U = 0 \Rightarrow Q = W$
+
+*Adiabatisk prosess*: $Q=0 \Rightarrow \Delta U = -W$
+
 ** Varmekapasitet
+*Varmekapasitet*: hvor mye varme må tilføres et system for å øke temperaturen:
+$$ C = \frac{\Delta Q}{\Delta T} $$
+
+ - Konstant volum: $(dW = 0)$
+   $$ C_V = \left(\frac{dQ}{dT}\right)_V = \left(\frac{dU}{dT}\right)_V = \left(\frac{\partial U}{\partial T}\right)_V $$
+
+ - Konstant trykk:
+   $$ C_p = \left(\frac{dQ}{dT}\right)_p = \left(\frac{dU+dW}{dT}\right)_p = \left(\frac{dU}{dT}\right)_p +p \left(\frac{dV}{dT}\right)_p $$
+   Der siste likhet bare gjelder ved å anta reversibel prosess.
+
+*Spesifikke varmekapasiteter*:
+ - $c = C/M$ = varmekap pr masseenhet
+ - $c = C/n$ = molar varmekap
+
 ** Differansen  $C_p-C_v$
+Har generelt at
+$$ C_p - C_V = \left[p+\left(\frac{\partial U}{\partial V}\right)_T\right]\left(\frac{\partial V}{\partial T}\right)_p $$
+
+- Væsker og faste stoff: $C_p\approx C_v$
+
+- Gasser: Større $\partial V/\partial T$. Dermed $C_p > C_V$
+
+- Ideell gass: $\partial V / \partial T = nR/p \Rightarrow C_p-C_V = nR;\quad c_{pm}-c_{vm} = R$
+  Stemmer godt for de fleste gasser, så lenge tettheten er lav.
+  Eksperimenter gir
+  - Atomære gasser: $c_{vm} \approx 3R/2$
+  - Toatomige gasser: $c_{vm} \approx 5R/2$
+ - Metaller: $c_{vm} \approx 3R$
 ** Latent varme
+*Latent varme* er varme som må tilføres eller som avgis til omgivelsene, i en faseovergang.
+$L$ går med til
+ - å gjøre et arbeid mot det ytre trykket ved fordamping og sublimasjon
+ - å rive molekylene fra hverandre, dvs bryte bindinger
+
+*Merk* at temperaturen er konstand ved faseovergangen.
 ** Adiabatiske prosesser
+Antar reversibelt arbeid og ideell gass:
+$$ dW = p\cdot dV = nRT dV/V $$
+
+Definerer *adiabatkonstanten*:
+$$ \gamma = C_p / C_V $$
+
+Langs adiabat er følgende størrelser konstante:
+ - $T\cdot V^{\gamma-1}$
+ - $p\cdot V^{\gamma}$
+ - $p\cdot T^{-\gamma/(\gamma-1)}$
+
 ** Entalpi
+Definerer *entalpi* som
+$$ H = U+pV $$
+Det gir
+$$ C_p = \left(\frac{dH}{dT}\right)_p \quad \text{ og } \quad C_v = \left(\frac{dU}{dT}\right)_V $$
+
+*Intuisjon*: Entalpi spiller tilsvarende rolle i isobare prosesser som U gjør i isokore prosesser.
+
 ** Joule-Thomson-effekten
+Motivasjon: Kjøleskap, men kompressor!
+Ser på ekspansjonsventilen i kjøleskapet. Kjølemediet presses gjennom ventilen, stort trykkfall, sterkt irreversibel prosess.
+Antar adiabatisk prosess. Får at
+$$ U_2+p_2V_2 = U_1 + p_1 V_1 \Rightarrow H_2 = H_1 $$
+Prosessen er $isentalpisk$!
+
+Må ha _avkjøing_, som med de gitte tilstandsvariablene gir
+$$ dT = \left(\frac{\partial T}{\partial p}\right)_H dp $$
+
+*Joule-Thomson-koeffisienten*:
+$$ \mu_{JT} = \left(\frac{\partial T}{\partial p}\right)_H $$
+Avkjøling oppnår vi når $\mu_{JT} > 0$.
+
+Kan ikke anta ideell gass, fordi det gir i $\Delta T = 0$ :( 
+
 ** Carnot-prosessen
+Kretsprosess med 2 isotermer og 2 adiabater.
+- Med klokka: Varmekraftmasking, tilført varme $Q_2$ brukes for å gjøre nyttig arbeid. $\eta = W/Q_2$
+- Mot klokka: Kjøleskap eller varmepumpe, arbeid brukes til å
+  + fjerne varme $Q_1$ fra kjøleskapet  $\varepsilon_K = Q_1 / W$
+  + tilføre varme $Q_2$ i stua  $\varepsilon_V = Q_2 / W$
+
+Antar ideell gass, og får virkningsgrader:
+ - Carnot-varmekraftmaskin: $\eta_C=1+T_1/T_2$
+ - Carnot-kjøleskap: $\varepsilon_{KC}=T_1/(T_2-T_1) > 0$
+ - Carnot-varmepumpe: $\varepsilon_{VC}=T_2/(T_2-T_1) > 1$
+
+Ser at
+$$ \frac{Q_2}{T_2} + \frac{Q_1}{T_1} = \oint \frac{dQ}{T} = 0 $$
+, som viser seg å gjelde generelt. Her er $dS = dQ_{rev}/T$ systemets *entropi*.
+
+*Varmereservoar*: Reversible isoterme prosesser fordrer termisk kontakt mellom systemet og et varmereservoar, dvs omgivelser med stor varmekapasitet, slik at temperaturen i reservoaret er konstant selv om varme overføres til systemet.
+
+Carnot-prosessen er unik fordi den inneholder bare _to_ varmereservoar.
+
 * Termodynamikkens 2. lov
 ** Energibevarelse er ikke alt
 ** Carnots teorem
@@ -75,3 +285,19 @@
 *** Kokepunktforhøyelse
 *** Frysepunktnedsettelse
 ** Osmose
+* Varmetransport
+** Stråling
+** Termodynamikk
+** Stefan-Boltzmanns lov
+** Frekvensfordelingeng; Plancks strålingslov
+** Wiens forskyvningslov
+** Varmeledning
+** Fouriers lov
+** Eksempler
+** Newtons avkjølingslov
+** Konveksjon
+** Varmeledningsligninen
+** Diffusjon, Ficks lov
+** Diffusjonsligningen
+** Skalering
+** Brownske bevegelser, virrevandring

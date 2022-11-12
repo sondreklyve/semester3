@@ -1,0 +1,1058 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-11-12 lø. 13:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>&lrm;</title>
+<meta name="author" content="Sondre Klyve" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { }
+</style>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents" role="doc-toc">
+<ul>
+<li><a href="#org0dcf473">1. Innledning - Hovedtema</a>
+<ul>
+<li><a href="#org2d0e431">1.1. Grunnbegreper</a></li>
+<li><a href="#org05b54b5">1.2. Temperatur og termisk likevekt</a></li>
+<li><a href="#org2480d5b">1.3. Tilstandsvariable og tilstandsligninger</a></li>
+<li><a href="#org03d6d80">1.4. Ideell gass</a></li>
+<li><a href="#orge84e192">1.5. Termodynamiske koeffisienter</a></li>
+<li><a href="#orge1f8e0b">1.6. Den sykliske regel</a></li>
+</ul>
+</li>
+<li><a href="#org9dce049">2. Termodynamikkens 1. lov</a>
+<ul>
+<li><a href="#orge248ca7">2.1. Reversible prosesser</a></li>
+<li><a href="#org853ceaf">2.2. Arbeid</a></li>
+<li><a href="#org0ab2d5d">2.3. Indre energi</a></li>
+<li><a href="#org73a6d07">2.4. Varme og 1. lov</a></li>
+<li><a href="#orgeaa2ecf">2.5. Kretsprosess. Adiabatisk prosess</a></li>
+<li><a href="#org99a2c7b">2.6. Varmekapasitet</a></li>
+<li><a href="#org3efeaff">2.7. Differansen  \(C_p-C_v\)</a></li>
+<li><a href="#org2a87da3">2.8. Latent varme</a></li>
+<li><a href="#orgf10eece">2.9. Adiabatiske prosesser</a></li>
+<li><a href="#org2547712">2.10. Entalpi</a></li>
+<li><a href="#orged2b9d9">2.11. Joule-Thomson-effekten</a></li>
+<li><a href="#org0040ec7">2.12. Carnot-prosessen</a></li>
+</ul>
+</li>
+<li><a href="#org4ca8b69">3. Termodynamikkens 2. lov</a>
+<ul>
+<li><a href="#orge09060a">3.1. Energibevarelse er ikke alt</a></li>
+<li><a href="#orgbb17e7b">3.2. Carnots teorem</a></li>
+</ul>
+</li>
+<li><a href="#orge4fde24">4. Entropi</a>
+<ul>
+<li><a href="#orge5bf6e1">4.1. Clausius' ulikhet</a></li>
+<li><a href="#orgbae1c48">4.2. Entropi</a></li>
+<li><a href="#org24cb4dd">4.3. ST-diagrammer</a></li>
+<li><a href="#org7199584">4.4. Den termodynamiske identitet</a></li>
+<li><a href="#orge5247f2">4.5. \(C_p-C_v\)</a></li>
+<li><a href="#orge75bc97">4.6. \(\Delta S\) ved reversible prosesser</a></li>
+<li><a href="#org4354c22">4.7. Prinsippet om entropiens økning</a></li>
+<li><a href="#org22bee86">4.8. Irreversible prosesser</a></li>
+<li><a href="#org0bf06eb">4.9. Mikrofysisk tolkning av entropi</a></li>
+</ul>
+</li>
+<li><a href="#orgd5ae791">5. Kinetisk gassteori</a>
+<ul>
+<li><a href="#org4f6f35c">5.1. Mikroskopisk, statistisk bevegelse</a></li>
+<li><a href="#orgd270c1e">5.2. Antagelser</a></li>
+<li><a href="#org5dd0a57">5.3. Trykk i ideell gass</a></li>
+<li><a href="#org8197873">5.4. Mikroskopisk tolkning av T</a></li>
+<li><a href="#org918a4e6">5.5. Maxwells hastighetsfordeling</a></li>
+<li><a href="#org3b33dc7">5.6. Gaussintegraler</a></li>
+<li><a href="#orgaab000e">5.7. Middelverdier</a></li>
+</ul>
+</li>
+<li><a href="#org0f06036">6. Statistisk mekanikk</a>
+<ul>
+<li><a href="#orgcabe979">6.1. Boltzmannfaktoren</a></li>
+<li><a href="#orgcae44bb">6.2. Ekvipartisjonsprinsippet</a></li>
+<li><a href="#org5433983">6.3. \(C_v\) for 2-atomige molekyler</a></li>
+<li><a href="#orgfe0831e">6.4. \(C_v\) for krystaller</a></li>
+</ul>
+</li>
+<li><a href="#org7d127e8">7. Termodynamiske potensialer og relasjoner</a>
+<ul>
+<li><a href="#org7dc5691">7.1. Helmholtz fri energi F</a></li>
+<li><a href="#orgd207710">7.2. Gibbs fri energi G</a></li>
+<li><a href="#orgda40c55">7.3. Eksergi: maksimalt arbeid</a></li>
+<li><a href="#org21d8428">7.4. Maxwell-relasjonene</a></li>
+<li><a href="#orgd0a7aa1">7.5. Legendretransformasjoner</a></li>
+<li><a href="#orgdea3a59">7.6. Joule-Thomson-koeffisient</a>
+<ul>
+<li><a href="#orgb653add">7.6.1. For van der Waals-gass</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org72659f1">8. Magnetiske systemer</a></li>
+<li><a href="#org404f586">9. Materielt åpne systemer</a>
+<ul>
+<li><a href="#org5fa573f">9.1. Kjemisk potensial</a></li>
+<li><a href="#org92d7b11">9.2. Likevektsbetingelser</a></li>
+<li><a href="#org48f7ef7">9.3. Ideelle blandinger</a></li>
+<li><a href="#orgef35d51">9.4. Kjemiske reaksjoner; massevirkningsloven</a></li>
+</ul>
+</li>
+<li><a href="#org34a7916">10. Faselikevekter</a>
+<ul>
+<li><a href="#org670a91f">10.1. Smelting, sublimasjon, trippelpunkt</a></li>
+<li><a href="#orgb49ab4b">10.2. Gibbs' faseregel</a></li>
+<li><a href="#org4d670d5">10.3. Clausius-Clapeyrons ligning</a></li>
+<li><a href="#org7839c6f">10.4. Damptrykk, eksempler</a></li>
+<li><a href="#org2b250a2">10.5. Fasediagram for rent stoff, (p,T),(p,V)</a></li>
+<li><a href="#orgcd28ec3">10.6. Kritisk punkt</a>
+<ul>
+<li><a href="#org3d10323">10.6.1. For van der Waals-gass</a></li>
+</ul>
+</li>
+<li><a href="#org1b38818">10.7. Faselikevekter og svake oppløsninger</a>
+<ul>
+<li><a href="#org4b5dcd3">10.7.1. Damptrykknedsettelse</a></li>
+<li><a href="#orgde3d257">10.7.2. Kokepunktforhøyelse</a></li>
+<li><a href="#org2d3ddf0">10.7.3. Frysepunktnedsettelse</a></li>
+</ul>
+</li>
+<li><a href="#orgf1647dc">10.8. Osmose</a></li>
+</ul>
+</li>
+<li><a href="#org28c7600">11. Varmetransport</a>
+<ul>
+<li><a href="#org6acf7a4">11.1. Stråling</a></li>
+<li><a href="#org1fd7824">11.2. Termodynamikk</a></li>
+<li><a href="#org6bc706a">11.3. Stefan-Boltzmanns lov</a></li>
+<li><a href="#orgd0f9431">11.4. Frekvensfordelingeng; Plancks strålingslov</a></li>
+<li><a href="#org4ba4ce6">11.5. Wiens forskyvningslov</a></li>
+<li><a href="#org022af26">11.6. Varmeledning</a></li>
+<li><a href="#orgac4b99a">11.7. Fouriers lov</a></li>
+<li><a href="#org9aa4960">11.8. Eksempler</a></li>
+<li><a href="#org843d59d">11.9. Newtons avkjølingslov</a></li>
+<li><a href="#org8988a1c">11.10. Konveksjon</a></li>
+<li><a href="#orgd2364b5">11.11. Varmeledningsligninen</a></li>
+<li><a href="#org7191b80">11.12. Diffusjon, Ficks lov</a></li>
+<li><a href="#org06b4778">11.13. Diffusjonsligningen</a></li>
+<li><a href="#org2268269">11.14. Skalering</a></li>
+<li><a href="#orgad2c5a1">11.15. Brownske bevegelser, virrevandring</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0dcf473" class="outline-2">
+<h2 id="org0dcf473"><span class="section-number-2">1.</span> Innledning - Hovedtema</h2>
+<div class="outline-text-2" id="text-1">
+</div>
+<div id="outline-container-org2d0e431" class="outline-3">
+<h3 id="org2d0e431"><span class="section-number-3">1.1.</span> Grunnbegreper</h3>
+<div class="outline-text-3" id="text-1-1">
+<p>
+Kan ha <b>system</b> med <b>energiutveksling</b>, <b>partikkelutveksling</b> til <b>omgivelser</b> gjennom <b>grenseflate</b>. Har <b>åpent</b> og <b>lukket</b> system avhengig av om det er partikkelutveksling.
+</p>
+
+<p>
+<b>Trykk</b> definert som kraft per areal. <b>Isotrop</b>, virker likt overalt. Enhet pascal, bar, atm, psi.
+</p>
+</div>
+</div>
+<div id="outline-container-org05b54b5" class="outline-3">
+<h3 id="org05b54b5"><span class="section-number-3">1.2.</span> Temperatur og termisk likevekt</h3>
+<div class="outline-text-3" id="text-1-2">
+<p>
+<b>Termisk likevekt</b> dersom ingen netto strøm av varmeenergi mellom to systemer i termisk kontakt.
+</p>
+
+<p>
+Måler \(T\) med <b>termometer</b> via andre fysiske størrelser:
+</p>
+<ul class="org-ul">
+<li>væskevolum: økt \(T\) gir økt volum</li>
+<li>gasstrykk: økt \(T\) gir økt \(p\)</li>
+<li>lengde av fast stoff: økt \(T\) gir økt \(L\)</li>
+<li>elektrisk motstand: økt \(T\) gir økt \(R\)</li>
+</ul>
+
+<p>
+Enhet og kalibrering:
+</p>
+<ul class="org-ul">
+<li>\(T=0^\circ C:\) vann fryser til is ved p = 1 atm</li>
+<li>\(T=100^\circ C:\) vann koker ved p = 1 atm</li>
+</ul>
+
+<p>
+Linerære trykkfunksjoner mhp temp gir \(T=-273.15^\circ C\) ved p=0, som gir opphav til <b>absolutt temperatur og kelvinskala</b>:
+</p>
+<ul class="org-ul">
+<li>\(T = 0 K\) tilsvarer \(-273.15^\circ C\)</li>
+<li>\(\Delta T = 1 K\) tilsvarer \(\Delta T =1^\circ C\)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2480d5b" class="outline-3">
+<h3 id="org2480d5b"><span class="section-number-3">1.3.</span> Tilstandsvariable og tilstandsligninger</h3>
+<div class="outline-text-3" id="text-1-3">
+<p>
+Et <b>makroskopisk</b> system i termisk likevekt er i en tilstand som kan beskrives ved hjelp av et lite antall <b>tilstandsvariable</b>:
+\[ p, T, V, \rho=N/V, ... \]
+</p>
+
+<p>
+Mengdeproporsjonale variable kalles <b>ektensive</b>: \(V+V=2V\)
+Mengdeuavhengige variable kalles <b>intensive</b>: \(p,T+p,T=p,T\)
+</p>
+
+<p>
+<b>Tilstandsligninger</b> angir sammenheng mellom tilstandsvariable. For gitt stoffmengde \(N\) er som regel 2 av de 3 variable trykk, volum og temperatur nok for å spesivisere systemets tilstand. Dvs
+\[ V=V(p,T) ,\quad p=p(V,T) ,\quad T=T(p,V) \Rightarrow (p,V,T)=0 \text{ generelt }\]
+</p>
+
+<p>
+Systemet gjennomgår termodynamisk <b>prosess</b> når tilstandsvariable endres.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org03d6d80" class="outline-3">
+<h3 id="org03d6d80"><span class="section-number-3">1.4.</span> Ideell gass</h3>
+<div class="outline-text-3" id="text-1-4">
+<p>
+Eksperimenter med gasser med lav tetthet oppfyller
+\[ pV = nRT \]
+med \(n\) antall mol og \(R\) gasskonstanten. Eventuelt
+\[ pV = N k_b T \]
+med Boltzmanns konstant \(k_b\).
+</p>
+
+<p>
+Kurver med en variabel holdt konstant:
+</p>
+<ul class="org-ul">
+<li><b>Isotermer</b>: Konstant temperatur</li>
+<li><b>Isobarer</b>: Konstant trykk</li>
+<li><b>Isokorer</b>: Konstant volum</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge84e192" class="outline-3">
+<h3 id="orge84e192"><span class="section-number-3">1.5.</span> Termodynamiske koeffisienter</h3>
+<div class="outline-text-3" id="text-1-5">
+<p>
+Tilstandsligninger er i utgangspunktet basert på eksperimentelle sammenhenger mellom tilstandsvariable.
+</p>
+
+<ul class="org-ul">
+<li><b>Volumutvidelseskoeffisient</b>:
+Relativ volumendring pr grad temperaturøkning, målt ved konstant trykk:
+\[ \alpha_V = \frac{1}{V}\left(\frac{\partial V}{\partial T} \right)_p \]</li>
+
+<li><b>Lengdeutvidelseskoeffisient</b>:
+Kun for faste stoffer:
+\[ \alpha_L = \frac{1}{L}\left(\frac{\partial L}{\partial T}\right)_p \]</li>
+</ul>
+<ul class="org-ul">
+<li><b>Trykk-koeffisient</b>:
+\[ \alpha_p = \frac{1}{p}\left(\frac{\partial p}{\partial T}\right)_V \]</li>
+
+<li><b>Isoterm kompressibilitet</b>:
+\[ \kappa_T = -\frac{1}{V}\left(\frac{\partial V}{\partial p}\right)_V \quad \left[\Delta p>0\Rightarrow \Delta V < 0 \Rightarrow \kappa_T > 0\right] \]
+
+<ul class="org-ul">
+<li><p>
+<b>Bulkmodul</b>:
+\[ B = \kappa_T^{-1} \]
+</p>
+
+<p>
+Væsker og faste stoffer har mye mindre isoterm kompressibilitet enn gasser; de er tilnærmet inkompressible.
+Ideell gass:
+</p>
+<ul class="org-ul">
+<li>\(\alpha_V = 1/T\)</li>
+<li>\(\alpha_p = 1/T\)</li>
+<li>\(\kappa_T = 1/p\)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orge1f8e0b" class="outline-3">
+<h3 id="orge1f8e0b"><span class="section-number-3">1.6.</span> Den sykliske regel</h3>
+<div class="outline-text-3" id="text-1-6">
+<p>
+\[ f(x,y,z) = 0 \Rightarrow x = x(y,z),\quad y=y(x,z), \quad z=z(x,y) \]
+</p>
+
+<p>
+Da er
+\[ \left(\frac{\partial x}{\partial y} \right)_z \left(\frac{\partial y}{\partial z} \right)_x \left(\frac{\partial z}{\partial x} \right)_y  = -1 \]
+</p>
+
+<p>
+Eksempelvis med \(x,y,z = p,V,T \Rightarrow \frac{\alpha_V}{p\kappa_T\alpha_p} = 1\)
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9dce049" class="outline-2">
+<h2 id="org9dce049"><span class="section-number-2">2.</span> Termodynamikkens 1. lov</h2>
+<div class="outline-text-2" id="text-2">
+</div>
+<div id="outline-container-orge248ca7" class="outline-3">
+<h3 id="orge248ca7"><span class="section-number-3">2.1.</span> Reversible prosesser</h3>
+<div class="outline-text-3" id="text-2-1">
+<p>
+Idealisert prosess som kan <b>revereseres</b> slik at system og omgivelser returnerer til starttilstanden.
+For eksempel svært langsom isoterm kompresjon. Krever at kraften økes uendelig sakte, slik at gassen hele tiden er i termisk likevekt, med veldefinerte tilstandsvariable. Kan ikke ha friksjon eller andre dissipative effekter.
+</p>
+
+<p>
+I praksis: Både umulig og upraktisk. Alle reelle prosesser er <b>irreversible</b>, men mange er tilnærmet reversible.
+</p>
+
+<p>
+<b>Notasjon</b>: Heltrukne linjer i diagram er reversible prosesser, stiplet kurve er irreversibel.
+Vanskelig å gjøre beregninger for irreversible prosesser. Kan likevel beregne endringer i tilstandsfunksjoner fra likevektstilstand til likevektstilstand med en 'tenkt' reversibel prosess mellom tilstandene.
+</p>
+
+<p>
+I eksempelet med stempelet ser vi at det blir gjort <b>arbeid</b> på gassen. Og <b>varme</b> overføres fra gassen til omgivelsene. Arbeid og varme er de to typene <b>energiutveksling</b> vi har.
+</p>
+</div>
+</div>
+<div id="outline-container-org853ceaf" class="outline-3">
+<h3 id="org853ceaf"><span class="section-number-3">2.2.</span> Arbeid</h3>
+<div class="outline-text-3" id="text-2-2">
+<p>
+<b>Arbeid</b> er energi som utveksles mellom system og omgivelser, og som <span class="underline">ikke</span> skyldes temperaturforskjeller.
+Ser typisk på mekanisk stempel: \(dW = p\cdot dV\) = arbeid utført av systemet på omgivelsene.
+</p>
+
+<p>
+\(dW > 0\) når systemet gjør et positivt arbeid på omgivelsene.
+</p>
+
+<p>
+Generelt for reversible prosesser mellom tilstand 1 og 2:
+\[ W = \int_1^2 dW = \int_{V_1}^{V_2} p(V) dV\]
+Ulike veier mellom 1 og 2 gir ulike arbeid, som betyr at arbeid <span class="underline">ikke</span> er en tilstandsfunksjon, men en <b>prosessvariabel</b>.
+Har dermed
+\[ \oint p(V) dV \neq 0 \]
+</p>
+
+<p>
+Noen merknader:
+</p>
+<ul class="org-ul">
+<li>Arbeid knyttet til prosesser, må betraktes som energioverføring mellom omgivelser og system.</li>
+<li>Arbeid kan ikke knyttes til potensiell og kinetisk energi som i mekanikken.</li>
+<li>Arbeid er ikke en funksjon, kan ikke derivere \(W\).</li>
+<li>\(dW\) er ikke et såkalt totalt differensial, skriver gjerne \(dW\) med strek over $d$-en . Av praktiske grunner skriver jeg bare \(dW\) fra nå av, innforstått at det ikke er totalt differensial.</li>
+</ul>
+
+<p>
+Arbeid i sentrale reversible prosesser:
+</p>
+<ul class="org-ul">
+<li>Isokor: \(W = 0\)</li>
+<li>Isobar: \(p\cdot(V_2-V_1)\)</li>
+<li>Isoterm, med ideell gass: \(W = nRT\ln(V_2/V_1)\)</li>
+<li>Fri utvidelse: Med \(p>0\) og \(V_2>V_1\) blir arbeid positivt, men prosessen er irreversibel, slik at \(dW=pdV\) ikke kan brukes. Dermed må \(W=0\).</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org0ab2d5d" class="outline-3">
+<h3 id="org0ab2d5d"><span class="section-number-3">2.3.</span> Indre energi</h3>
+<div class="outline-text-3" id="text-2-3">
+<p>
+<b>Indre energi</b> er summen av molekylenes kinetiske og potensielle energi (pga innbyrdes vekselvirkning).
+</p>
+<ul class="org-ul">
+<li>\(E_k\) avhenger av molekylenes <span class="underline">hastigheter</span>, og dermed temperaturen.</li>
+<li>\(E_p\) avhenger av <span class="underline">avstanden</span> mellom molekylene, og dermed volumet.
+\[ \Rightarrow \text{Generelt er  } U = U(T,V) \]</li>
+</ul>
+<p>
+For ideell gass er potensiell energi null, slik at indre energi utelukkende er en funksjon av temperatur.
+</p>
+
+<p>
+\(U\) er <b>ekstensiv</b>, øker med \(N\).
+</p>
+
+<p>
+\(U\) er en <b>tilstandsfunksjon</b>, \(\oint dU = 0\), dU er totalt differensial.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org73a6d07" class="outline-3">
+<h3 id="org73a6d07"><span class="section-number-3">2.4.</span> Varme og 1. lov</h3>
+<div class="outline-text-3" id="text-2-4">
+<p>
+<b>Første hovedsetning</b> slår fast hva varme er:
+<b>Varme er energioverføring som skyldes temperaturforskjeller</b>
+</p>
+
+<p>
+Alle andre former for energioverføring er arbeid. Ved energibevarelse:
+\[ Q = \Delta U + W \]
+</p>
+
+<p>
+For små endringer:
+\[ dQ = dU + dW \]
+der Q og W er prosessvariable, og ikke totale differensial.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgeaa2ecf" class="outline-3">
+<h3 id="orgeaa2ecf"><span class="section-number-3">2.5.</span> Kretsprosess. Adiabatisk prosess</h3>
+<div class="outline-text-3" id="text-2-5">
+<p>
+<b>Kretsprosesser</b> er sentrale i diverse praktiske innretninger, som kjøleskap, varmepumper, forbrenningsmotorer etc.
+Starter og ender i samme tilstand, altså \(\Delta U = 0 \Rightarrow Q = W\)
+</p>
+
+<p>
+<b>Adiabatisk prosess</b>: \(Q=0 \Rightarrow \Delta U = -W\)
+</p>
+</div>
+</div>
+
+<div id="outline-container-org99a2c7b" class="outline-3">
+<h3 id="org99a2c7b"><span class="section-number-3">2.6.</span> Varmekapasitet</h3>
+<div class="outline-text-3" id="text-2-6">
+<p>
+<b>Varmekapasitet</b>: hvor mye varme må tilføres et system for å øke temperaturen:
+\[ C = \frac{\Delta Q}{\Delta T} \]
+</p>
+
+<ul class="org-ul">
+<li>Konstant volum: \((dW = 0)\)
+\[ C_V = \left(\frac{dQ}{dT}\right)_V = \left(\frac{dU}{dT}\right)_V = \left(\frac{\partial U}{\partial T}\right)_V \]</li>
+
+<li>Konstant trykk:
+\[ C_p = \left(\frac{dQ}{dT}\right)_p = \left(\frac{dU+dW}{dT}\right)_p = \left(\frac{dU}{dT}\right)_p +p \left(\frac{dV}{dT}\right)_p \]
+Der siste likhet bare gjelder ved å anta reversibel prosess.</li>
+</ul>
+
+<p>
+<b>Spesifikke varmekapasiteter</b>:
+</p>
+<ul class="org-ul">
+<li>\(c = C/M\) = varmekap pr masseenhet</li>
+<li>\(c = C/n\) = molar varmekap</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org3efeaff" class="outline-3">
+<h3 id="org3efeaff"><span class="section-number-3">2.7.</span> Differansen  \(C_p-C_v\)</h3>
+<div class="outline-text-3" id="text-2-7">
+<p>
+Har generelt at
+\[ C_p - C_V = \left[p+\left(\frac{\partial U}{\partial V}\right)_T\right]\left(\frac{\partial V}{\partial T}\right)_p \]
+</p>
+
+<ul class="org-ul">
+<li>Væsker og faste stoff: \(C_p\approx C_v\)</li>
+
+<li>Gasser: Større \(\partial V/\partial T\). Dermed \(C_p > C_V\)</li>
+
+<li><p>
+Ideell gass: \(\partial V / \partial T = nR/p \Rightarrow C_p-C_V = nR;\quad c_{pm}-c_{vm} = R\)
+Stemmer godt for de fleste gasser, så lenge tettheten er lav.
+Eksperimenter gir
+</p>
+<ul class="org-ul">
+<li>Atomære gasser: \(c_{vm} \approx 3R/2\)</li>
+<li>Toatomige gasser: \(c_{vm} \approx 5R/2\)</li>
+</ul>
+<ul class="org-ul">
+<li>Metaller: \(c_{vm} \approx 3R\)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-org2a87da3" class="outline-3">
+<h3 id="org2a87da3"><span class="section-number-3">2.8.</span> Latent varme</h3>
+<div class="outline-text-3" id="text-2-8">
+<p>
+<b>Latent varme</b> er varme som må tilføres eller som avgis til omgivelsene, i en faseovergang.
+\(L\) går med til
+</p>
+<ul class="org-ul">
+<li>å gjøre et arbeid mot det ytre trykket ved fordamping og sublimasjon</li>
+<li>å rive molekylene fra hverandre, dvs bryte bindinger</li>
+</ul>
+
+<p>
+<b>Merk</b> at temperaturen er konstand ved faseovergangen.
+</p>
+</div>
+</div>
+<div id="outline-container-orgf10eece" class="outline-3">
+<h3 id="orgf10eece"><span class="section-number-3">2.9.</span> Adiabatiske prosesser</h3>
+<div class="outline-text-3" id="text-2-9">
+<p>
+Antar reversibelt arbeid og ideell gass:
+\[ dW = p\cdot dV = nRT dV/V \]
+</p>
+
+<p>
+Definerer <b>adiabatkonstanten</b>:
+\[ \gamma = C_p / C_V \]
+</p>
+
+<p>
+Langs adiabat er følgende størrelser konstante:
+</p>
+<ul class="org-ul">
+<li>\(T\cdot V^{\gamma-1}\)</li>
+<li>\(p\cdot V^{\gamma}\)</li>
+<li>\(p\cdot T^{-\gamma/(\gamma-1)}\)</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-org2547712" class="outline-3">
+<h3 id="org2547712"><span class="section-number-3">2.10.</span> Entalpi</h3>
+<div class="outline-text-3" id="text-2-10">
+<p>
+Definerer <b>entalpi</b> som
+\[ H = U+pV \]
+Det gir
+\[ C_p = \left(\frac{dH}{dT}\right)_p \quad \text{ og } \quad C_v = \left(\frac{dU}{dT}\right)_V \]
+</p>
+
+<p>
+<b>Intuisjon</b>: Entalpi spiller tilsvarende rolle i isobare prosesser som U gjør i isokore prosesser.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orged2b9d9" class="outline-3">
+<h3 id="orged2b9d9"><span class="section-number-3">2.11.</span> Joule-Thomson-effekten</h3>
+<div class="outline-text-3" id="text-2-11">
+<p>
+Motivasjon: Kjøleskap, men kompressor!
+Ser på ekspansjonsventilen i kjøleskapet. Kjølemediet presses gjennom ventilen, stort trykkfall, sterkt irreversibel prosess.
+Antar adiabatisk prosess. Får at
+\[ U_2+p_2V_2 = U_1 + p_1 V_1 \Rightarrow H_2 = H_1 \]
+Prosessen er \(isentalpisk\)!
+</p>
+
+<p>
+Må ha <span class="underline">avkjøing</span>, som med de gitte tilstandsvariablene gir
+\[ dT = \left(\frac{\partial T}{\partial p}\right)_H dp \]
+</p>
+
+<p>
+<b>Joule-Thomson-koeffisienten</b>:
+\[ \mu_{JT} = \left(\frac{\partial T}{\partial p}\right)_H \]
+Avkjøling oppnår vi når \(\mu_{JT} > 0\).
+</p>
+
+<p>
+Kan ikke anta ideell gass, fordi det gir i \(\Delta T = 0\) :( 
+</p>
+</div>
+</div>
+
+<div id="outline-container-org0040ec7" class="outline-3">
+<h3 id="org0040ec7"><span class="section-number-3">2.12.</span> Carnot-prosessen</h3>
+<div class="outline-text-3" id="text-2-12">
+<p>
+Kretsprosess med 2 isotermer og 2 adiabater.
+</p>
+<ul class="org-ul">
+<li>Med klokka: Varmekraftmasking, tilført varme \(Q_2\) brukes for å gjøre nyttig arbeid. \(\eta = W/Q_2\)</li>
+<li>Mot klokka: Kjøleskap eller varmepumpe, arbeid brukes til å
+<ul class="org-ul">
+<li>fjerne varme \(Q_1\) fra kjøleskapet  \(\varepsilon_K = Q_1 / W\)</li>
+<li>tilføre varme \(Q_2\) i stua  \(\varepsilon_V = Q_2 / W\)</li>
+</ul></li>
+</ul>
+
+<p>
+Antar ideell gass, og får virkningsgrader:
+</p>
+<ul class="org-ul">
+<li>Carnot-varmekraftmaskin: \(\eta_C=1+T_1/T_2\)</li>
+<li>Carnot-kjøleskap: \(\varepsilon_{KC}=T_1/(T_2-T_1) > 0\)</li>
+<li>Carnot-varmepumpe: \(\varepsilon_{VC}=T_2/(T_2-T_1) > 1\)</li>
+</ul>
+
+<p>
+Ser at
+\[ \frac{Q_2}{T_2} + \frac{Q_1}{T_1} = \oint \frac{dQ}{T} = 0 \]
+, som viser seg å gjelde generelt. Her er \(dS = dQ_{rev}/T\) systemets <b>entropi</b>.
+</p>
+
+<p>
+<b>Varmereservoar</b>: Reversible isoterme prosesser fordrer termisk kontakt mellom systemet og et varmereservoar, dvs omgivelser med stor varmekapasitet, slik at temperaturen i reservoaret er konstant selv om varme overføres til systemet.
+</p>
+
+<p>
+Carnot-prosessen er unik fordi den inneholder bare <span class="underline">to</span> varmereservoar.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4ca8b69" class="outline-2">
+<h2 id="org4ca8b69"><span class="section-number-2">3.</span> Termodynamikkens 2. lov</h2>
+<div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orge09060a" class="outline-3">
+<h3 id="orge09060a"><span class="section-number-3">3.1.</span> Energibevarelse er ikke alt</h3>
+</div>
+<div id="outline-container-orgbb17e7b" class="outline-3">
+<h3 id="orgbb17e7b"><span class="section-number-3">3.2.</span> Carnots teorem</h3>
+</div>
+</div>
+<div id="outline-container-orge4fde24" class="outline-2">
+<h2 id="orge4fde24"><span class="section-number-2">4.</span> Entropi</h2>
+<div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orge5bf6e1" class="outline-3">
+<h3 id="orge5bf6e1"><span class="section-number-3">4.1.</span> Clausius' ulikhet</h3>
+</div>
+<div id="outline-container-orgbae1c48" class="outline-3">
+<h3 id="orgbae1c48"><span class="section-number-3">4.2.</span> Entropi</h3>
+</div>
+<div id="outline-container-org24cb4dd" class="outline-3">
+<h3 id="org24cb4dd"><span class="section-number-3">4.3.</span> ST-diagrammer</h3>
+</div>
+<div id="outline-container-org7199584" class="outline-3">
+<h3 id="org7199584"><span class="section-number-3">4.4.</span> Den termodynamiske identitet</h3>
+</div>
+<div id="outline-container-orge5247f2" class="outline-3">
+<h3 id="orge5247f2"><span class="section-number-3">4.5.</span> \(C_p-C_v\)</h3>
+</div>
+<div id="outline-container-orge75bc97" class="outline-3">
+<h3 id="orge75bc97"><span class="section-number-3">4.6.</span> \(\Delta S\) ved reversible prosesser</h3>
+</div>
+<div id="outline-container-org4354c22" class="outline-3">
+<h3 id="org4354c22"><span class="section-number-3">4.7.</span> Prinsippet om entropiens økning</h3>
+</div>
+<div id="outline-container-org22bee86" class="outline-3">
+<h3 id="org22bee86"><span class="section-number-3">4.8.</span> Irreversible prosesser</h3>
+</div>
+<div id="outline-container-org0bf06eb" class="outline-3">
+<h3 id="org0bf06eb"><span class="section-number-3">4.9.</span> Mikrofysisk tolkning av entropi</h3>
+</div>
+</div>
+<div id="outline-container-orgd5ae791" class="outline-2">
+<h2 id="orgd5ae791"><span class="section-number-2">5.</span> Kinetisk gassteori</h2>
+<div class="outline-text-2" id="text-5">
+</div>
+<div id="outline-container-org4f6f35c" class="outline-3">
+<h3 id="org4f6f35c"><span class="section-number-3">5.1.</span> Mikroskopisk, statistisk bevegelse</h3>
+</div>
+<div id="outline-container-orgd270c1e" class="outline-3">
+<h3 id="orgd270c1e"><span class="section-number-3">5.2.</span> Antagelser</h3>
+</div>
+<div id="outline-container-org5dd0a57" class="outline-3">
+<h3 id="org5dd0a57"><span class="section-number-3">5.3.</span> Trykk i ideell gass</h3>
+</div>
+<div id="outline-container-org8197873" class="outline-3">
+<h3 id="org8197873"><span class="section-number-3">5.4.</span> Mikroskopisk tolkning av T</h3>
+</div>
+<div id="outline-container-org918a4e6" class="outline-3">
+<h3 id="org918a4e6"><span class="section-number-3">5.5.</span> Maxwells hastighetsfordeling</h3>
+</div>
+<div id="outline-container-org3b33dc7" class="outline-3">
+<h3 id="org3b33dc7"><span class="section-number-3">5.6.</span> Gaussintegraler</h3>
+</div>
+<div id="outline-container-orgaab000e" class="outline-3">
+<h3 id="orgaab000e"><span class="section-number-3">5.7.</span> Middelverdier</h3>
+</div>
+</div>
+<div id="outline-container-org0f06036" class="outline-2">
+<h2 id="org0f06036"><span class="section-number-2">6.</span> Statistisk mekanikk</h2>
+<div class="outline-text-2" id="text-6">
+</div>
+<div id="outline-container-orgcabe979" class="outline-3">
+<h3 id="orgcabe979"><span class="section-number-3">6.1.</span> Boltzmannfaktoren</h3>
+</div>
+<div id="outline-container-orgcae44bb" class="outline-3">
+<h3 id="orgcae44bb"><span class="section-number-3">6.2.</span> Ekvipartisjonsprinsippet</h3>
+</div>
+<div id="outline-container-org5433983" class="outline-3">
+<h3 id="org5433983"><span class="section-number-3">6.3.</span> \(C_v\) for 2-atomige molekyler</h3>
+</div>
+<div id="outline-container-orgfe0831e" class="outline-3">
+<h3 id="orgfe0831e"><span class="section-number-3">6.4.</span> \(C_v\) for krystaller</h3>
+</div>
+</div>
+<div id="outline-container-org7d127e8" class="outline-2">
+<h2 id="org7d127e8"><span class="section-number-2">7.</span> Termodynamiske potensialer og relasjoner</h2>
+<div class="outline-text-2" id="text-7">
+</div>
+<div id="outline-container-org7dc5691" class="outline-3">
+<h3 id="org7dc5691"><span class="section-number-3">7.1.</span> Helmholtz fri energi F</h3>
+</div>
+<div id="outline-container-orgd207710" class="outline-3">
+<h3 id="orgd207710"><span class="section-number-3">7.2.</span> Gibbs fri energi G</h3>
+</div>
+<div id="outline-container-orgda40c55" class="outline-3">
+<h3 id="orgda40c55"><span class="section-number-3">7.3.</span> Eksergi: maksimalt arbeid</h3>
+</div>
+<div id="outline-container-org21d8428" class="outline-3">
+<h3 id="org21d8428"><span class="section-number-3">7.4.</span> Maxwell-relasjonene</h3>
+</div>
+<div id="outline-container-orgd0a7aa1" class="outline-3">
+<h3 id="orgd0a7aa1"><span class="section-number-3">7.5.</span> Legendretransformasjoner</h3>
+</div>
+<div id="outline-container-orgdea3a59" class="outline-3">
+<h3 id="orgdea3a59"><span class="section-number-3">7.6.</span> Joule-Thomson-koeffisient</h3>
+<div class="outline-text-3" id="text-7-6">
+</div>
+<div id="outline-container-orgb653add" class="outline-4">
+<h4 id="orgb653add"><span class="section-number-4">7.6.1.</span> For van der Waals-gass</h4>
+</div>
+</div>
+</div>
+<div id="outline-container-org72659f1" class="outline-2">
+<h2 id="org72659f1"><span class="section-number-2">8.</span> Magnetiske systemer</h2>
+</div>
+<div id="outline-container-org404f586" class="outline-2">
+<h2 id="org404f586"><span class="section-number-2">9.</span> Materielt åpne systemer</h2>
+<div class="outline-text-2" id="text-9">
+</div>
+<div id="outline-container-org5fa573f" class="outline-3">
+<h3 id="org5fa573f"><span class="section-number-3">9.1.</span> Kjemisk potensial</h3>
+</div>
+<div id="outline-container-org92d7b11" class="outline-3">
+<h3 id="org92d7b11"><span class="section-number-3">9.2.</span> Likevektsbetingelser</h3>
+</div>
+<div id="outline-container-org48f7ef7" class="outline-3">
+<h3 id="org48f7ef7"><span class="section-number-3">9.3.</span> Ideelle blandinger</h3>
+</div>
+<div id="outline-container-orgef35d51" class="outline-3">
+<h3 id="orgef35d51"><span class="section-number-3">9.4.</span> Kjemiske reaksjoner; massevirkningsloven</h3>
+</div>
+</div>
+<div id="outline-container-org34a7916" class="outline-2">
+<h2 id="org34a7916"><span class="section-number-2">10.</span> Faselikevekter</h2>
+<div class="outline-text-2" id="text-10">
+</div>
+<div id="outline-container-org670a91f" class="outline-3">
+<h3 id="org670a91f"><span class="section-number-3">10.1.</span> Smelting, sublimasjon, trippelpunkt</h3>
+</div>
+<div id="outline-container-orgb49ab4b" class="outline-3">
+<h3 id="orgb49ab4b"><span class="section-number-3">10.2.</span> Gibbs' faseregel</h3>
+</div>
+<div id="outline-container-org4d670d5" class="outline-3">
+<h3 id="org4d670d5"><span class="section-number-3">10.3.</span> Clausius-Clapeyrons ligning</h3>
+</div>
+<div id="outline-container-org7839c6f" class="outline-3">
+<h3 id="org7839c6f"><span class="section-number-3">10.4.</span> Damptrykk, eksempler</h3>
+</div>
+<div id="outline-container-org2b250a2" class="outline-3">
+<h3 id="org2b250a2"><span class="section-number-3">10.5.</span> Fasediagram for rent stoff, (p,T),(p,V)</h3>
+</div>
+<div id="outline-container-orgcd28ec3" class="outline-3">
+<h3 id="orgcd28ec3"><span class="section-number-3">10.6.</span> Kritisk punkt</h3>
+<div class="outline-text-3" id="text-10-6">
+</div>
+<div id="outline-container-org3d10323" class="outline-4">
+<h4 id="org3d10323"><span class="section-number-4">10.6.1.</span> For van der Waals-gass</h4>
+</div>
+</div>
+<div id="outline-container-org1b38818" class="outline-3">
+<h3 id="org1b38818"><span class="section-number-3">10.7.</span> Faselikevekter og svake oppløsninger</h3>
+<div class="outline-text-3" id="text-10-7">
+</div>
+<div id="outline-container-org4b5dcd3" class="outline-4">
+<h4 id="org4b5dcd3"><span class="section-number-4">10.7.1.</span> Damptrykknedsettelse</h4>
+</div>
+<div id="outline-container-orgde3d257" class="outline-4">
+<h4 id="orgde3d257"><span class="section-number-4">10.7.2.</span> Kokepunktforhøyelse</h4>
+</div>
+<div id="outline-container-org2d3ddf0" class="outline-4">
+<h4 id="org2d3ddf0"><span class="section-number-4">10.7.3.</span> Frysepunktnedsettelse</h4>
+</div>
+</div>
+<div id="outline-container-orgf1647dc" class="outline-3">
+<h3 id="orgf1647dc"><span class="section-number-3">10.8.</span> Osmose</h3>
+</div>
+</div>
+<div id="outline-container-org28c7600" class="outline-2">
+<h2 id="org28c7600"><span class="section-number-2">11.</span> Varmetransport</h2>
+<div class="outline-text-2" id="text-11">
+</div>
+<div id="outline-container-org6acf7a4" class="outline-3">
+<h3 id="org6acf7a4"><span class="section-number-3">11.1.</span> Stråling</h3>
+</div>
+<div id="outline-container-org1fd7824" class="outline-3">
+<h3 id="org1fd7824"><span class="section-number-3">11.2.</span> Termodynamikk</h3>
+</div>
+<div id="outline-container-org6bc706a" class="outline-3">
+<h3 id="org6bc706a"><span class="section-number-3">11.3.</span> Stefan-Boltzmanns lov</h3>
+</div>
+<div id="outline-container-orgd0f9431" class="outline-3">
+<h3 id="orgd0f9431"><span class="section-number-3">11.4.</span> Frekvensfordelingeng; Plancks strålingslov</h3>
+</div>
+<div id="outline-container-org4ba4ce6" class="outline-3">
+<h3 id="org4ba4ce6"><span class="section-number-3">11.5.</span> Wiens forskyvningslov</h3>
+</div>
+<div id="outline-container-org022af26" class="outline-3">
+<h3 id="org022af26"><span class="section-number-3">11.6.</span> Varmeledning</h3>
+</div>
+<div id="outline-container-orgac4b99a" class="outline-3">
+<h3 id="orgac4b99a"><span class="section-number-3">11.7.</span> Fouriers lov</h3>
+</div>
+<div id="outline-container-org9aa4960" class="outline-3">
+<h3 id="org9aa4960"><span class="section-number-3">11.8.</span> Eksempler</h3>
+</div>
+<div id="outline-container-org843d59d" class="outline-3">
+<h3 id="org843d59d"><span class="section-number-3">11.9.</span> Newtons avkjølingslov</h3>
+</div>
+<div id="outline-container-org8988a1c" class="outline-3">
+<h3 id="org8988a1c"><span class="section-number-3">11.10.</span> Konveksjon</h3>
+</div>
+<div id="outline-container-orgd2364b5" class="outline-3">
+<h3 id="orgd2364b5"><span class="section-number-3">11.11.</span> Varmeledningsligninen</h3>
+</div>
+<div id="outline-container-org7191b80" class="outline-3">
+<h3 id="org7191b80"><span class="section-number-3">11.12.</span> Diffusjon, Ficks lov</h3>
+</div>
+<div id="outline-container-org06b4778" class="outline-3">
+<h3 id="org06b4778"><span class="section-number-3">11.13.</span> Diffusjonsligningen</h3>
+</div>
+<div id="outline-container-org2268269" class="outline-3">
+<h3 id="org2268269"><span class="section-number-3">11.14.</span> Skalering</h3>
+</div>
+<div id="outline-container-orgad2c5a1" class="outline-3">
+<h3 id="orgad2c5a1"><span class="section-number-3">11.15.</span> Brownske bevegelser, virrevandring</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Sondre Klyve</p>
+<p class="date">Created: 2022-11-12 lø. 13:27</p>
+<p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
