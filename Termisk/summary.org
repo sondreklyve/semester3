@@ -521,10 +521,10 @@ Justering av ideell gass tilstandsligning, for å ta hensyn til:
   $$ \mu_{JT} = C_p^{-1}\left[T\left(\frac{\partial V}{\partial T}\right)_p -V\right]  = C_p^{-1}\left[\frac{RT}{\frac{RT}{V-b}-\frac{2a(V-b)}{V^3}} -V\right] $$
 
 * Magnetiske systemer
-Magnetiske og magnetiserbare materialer er systemer med et stort antall magnetiske dipoler, dvs termodynamiske systemer. Dette er (som regel) faste stoffer med liten kompressibilitet slik at $pdV$ -arbeid er neglisjerbart. Men arbeid utføres, av eller på systemet, når magnetiske dipoler endrer retning i et ytre magnetfelt.
+Magnetiske og magnetiserbare materialer er systemer med et stort antall *magnetiske dipoler*, dvs termodynamiske systemer. Dette er (som regel) faste stoffer med liten kompressibilitet slik at $pdV$ -arbeid er neglisjerbart. Men arbeid utføres, av eller på systemet, når magnetiske dipoler endrer retning i et *ytre magnetfelt*.
 
 Fra elektromagnetismen:
-$E_p = -\vec{m}\cdot \vec{B}_0 = -\vec{m}\cdot \mu_0 \vec{H}$ = potensiell energi til magnetisk dipol med moment $\vec{m}$ i ytre magnetfelt $\vec{B}_0$; $\vec{H}=\vec{B}_0/\mu_0$ = "H-feltet". $\mu_0$ = vakuumpermeabiliteten.
+$E_p = -\vec{m}\cdot \vec{B}_0 = -\vec{m}\cdot \mu_0 \vec{H}$ = potensiell energi til magnetisk dipol med *moment* $\vec{m}$ i ytre magnetfelt $\vec{B}_0$; $\vec{H}=\vec{B}_0/\mu_0$ = "H-feltet". $\mu_0$ = *vakuumpermeabiliteten*.
 
 Systemets magnetiske moment: $\vec{M} = \sum_i \vec{m}_i$
 $$ dW = -\mu_0\vec{H}\cdot d\vec{M} = -\mu_0 H \cdot dM $$
@@ -535,9 +535,69 @@ Dvs:
 
 * Materielt åpne systemer
 ** Kjemisk potensial
+Ser på utveksling av _partikler_ mellom system og omgivelser. For eksempel kjemisk reaskjon eller faseoverganger (fordamping, kondensasjon ...).
+
+Anta først kun _en_ type partikler:
+$$ dU = TdS - pdV + \mu dN $$
+Ser at partikkelendring påvirker systemets energi.
+$$ \mu = \left(\frac{\partial U}{\partial N}\right)_{S,V} $$
+pr partikkel når $S$ og $V$ holdes konstant. $\mu$ er det kjemiske potensialet.
+
+Vil heller har $p$ og $T$ som variable, så bruker $G$ i stedet for $U$:
+$$ G = Vdp-SdT+\mu dN \quad\text{med}\quad \mu = \left(\frac{\partial G}{\partial N}\right)_{p,T}$$
+Med ulike typer kan vi summere over bidraget til de ulike typene:
+
+$$ G = Vdp-SdT+\sum_{i=1}^c \mu_i dN_i \quad \text{med} \quad \mu_i = \left(\frac{\partial G}{\partial N_i}\right)_{p,T,N_{j\neq i}}$$
+
+Siden alle variable som inngår er _ekstensive_, må også $G$ være det. Kan da skrive
+$$ G(p,T,N) = g(p,T)\cdot N $$
+med $g(p,T)$ = Gibbs fri energi pr partikkel. Dermed:
+$$ \mu = \frac{G}{N} = g(p,T) $$
+slik at $\mu$ er _intensiv_.
+
 ** Likevektsbetingelser
+Et system er i likevekt når $p, T$ og alle kjemiske potensialer $\mu_i$ er konstante over hele systemet.
+
+I motsatt fall:
+ - Netto massestrøm fra høy mot lav $p$.
+ - Netto varmestrøm fra høy mot lav $T$.
+ - Omfordeling av partiklerr fra høy mot lav $\mu_i$ (inntil $G$ er minimal).
+
 ** Ideelle blandinger
+Antagelser:
+- Blandingsentropi som med ideelle gasser.
+- Ingen endring i størrelser som $U$ og $V$ ved blanding.
+OK for ideelle gasser; brukbar tilnærming også for reelle blandinger.
+
+Antagelsene gir (utledes ikke her)
+$$ \mu_i = \mu_i^0 + k_B T\ln x_i $$
+
+Her er
+ - $\mu_i$ = kjemisk potensial for komponent $i$ i blandingen
+ - $\mu_i^0$ = kjemisk potensial for komponent $i$ i rent stoff
+ - $x_i = N_i/N$ = molbrøk for komponent $i$
+
 ** Kjemiske reaksjoner; massevirkningsloven
+Termodynamisk likevekt ved minimanl $G$:
+$$ dG = \sum_j \mu_j dN_j = 0 $$
+
+Generell notasjon:
+ - $\nu_j = \Delta N_j$ pr reaskjon = støkiometriske tall
+ - $\nu_j > 0$ for produkter, $\nu_j < 0$ for reaktanter 
+ - $X_j$ = molekyltype $j$
+
+*Reaksjonsligning*: $\sum_j \nu_j X_j = 0$
+
+*Likevektskriterium*: $\sum_j \nu_j \mu_j = 0$
+
+Antar ideell blanding slik at $\mu_j = \mu_j^0 + k_B T \ln x_j$
+
+Det gir *massevirkningsloven*:
+$$ \prod_j x_j^{\nu_j} = K(T) $$
+
+med *likevektskonstanten*
+$$ K(T) = \exp\left[-\frac{\sum_j \nu_j \mu_j^0}{k_B T}\right] $$
+
 * Faselikevekter
 ** Smelting, sublimasjon, trippelpunkt
 ** Gibbs' faseregel
