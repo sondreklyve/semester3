@@ -385,7 +385,7 @@ $$ \langle b \rangle = \int_0^\infty v f(v) dv = \frac{1}{2b^2} $$
 $$ \Rightarrow \langle v \rangle \approx 1.60 \sqrt{k_B T /m} $$
 
 Mest sannsynlige fart $v_s$ når $f(v)$ er maksimal:
-$$ \frac{df}{dv} = 0 \Rightarrow v_s = 1.41 \sqrt{k_B T /m} $$
+$$ \frac{df}{dv} = 0 \Rightarrow v_s \approx 1.41 \sqrt{k_B T /m} $$
 
 Lydfarten:
 $$ v_{lyd} = \sqrt{\gamma k_b T/m} \approx 1.18\sqrt{k_B T/ m} $$
@@ -393,18 +393,146 @@ $$ v_{lyd} = \sqrt{\gamma k_b T/m} \approx 1.18\sqrt{k_B T/ m} $$
 Alle partikkelhastighetene er av samme størrelsesorden som lydhastigheten, som forventet.
 * Statistisk mekanikk
 ** Boltzmannfaktoren
+Sannsynligheten for at en partikkel er i en tilstand med energi $E$ er proporsjonal med *Boltzmann-faktoren* $\exp(-E/k_B T)$.
 ** Ekvipartisjonsprinsippet
-** $C_v$ for 2-atomige molekyler
-** $C_v$ for krystaller
+En frihetsgrad som inngår kvadratisk i energifunksjonen bidrar med $\frac{1}{2}k_B T$ til indre energi pr partikkel. Dette kalles *ekvipartisjonsprinsippet* (EPP).
+** $C_V$ for 2-atomige molekyler
+Eksperimenter gir
+$$ c_{Vm} \approx \frac{5}{2}R \Rightarrow C_V/N = \frac{5}{2} k_B $$
+
+Ekvipartisjonsprinsippet: burde ha 5 frihetsgrader!
+ - Translasjon gir 3 kvadratiske frihetsgrader: $v_x, v_y, v_z$.
+ - Rotasjon gir 2 kvadratiske frihetsgrader: $I_x = I_y = I \quad ; \quad I_z \approx 0$
+ - Vibrasjon gir 2 frihetsgrader.
+
+Dette blir 7 til sammen, men ved kvantemekanikk kan det vises at vibrasjonsenergien ikke bidrar til varmekapasitet, dvs temperaturendring betyr lite. Dermed ender vi opp med 5 frihetsgrader, som vi skulle.
+
+** $C_V$ for krystaller
+Einstein: $C_V \approx C_p$.
+Hvert atom kan vibrere i 3 ulike dimensjoner, som 3 uavhengige harmoniske oscillatorer.
+Må dermed skalere opp tidligere resultat med en faktor 3.
+
 * Termodynamiske potensialer og relasjoner
 ** Helmholtz fri energi F
+Definisjon:
+$$ F = U-TS $$
+
+Fra den termodynamiske identitet:
+$$ dF = -p dV - S dT $$
+
+$V$ og $T$ er _naturlige variable_ for $F$, i den forstand at dersom $V$ og $T$ holdes konstante i en prosess, så er også $F$ konstant.
+
 ** Gibbs fri energi G
+Definisjon:
+$$ G = U-TS+pV $$
+
+Fra den termodynamiske identitet:
+$$ dG = -S dT + V dp $$
+
+$T$ og $p$ er de naturlige variable for $G$; dvs i prosesser med $T$ og $p$ konstant er også $G$ konstant.
+
+Med $G=G(T,p)$:
+$$ S=-\left(\frac{\partial G}{\partial T}\right)_p \quad ; \quad \left(\frac{\partial G}{\partial p}\right)_T $$
+og videre
+$$ \left(\frac{\partial S}{\partial p}\right)_T = -\left(\frac{\partial V}{\partial T}\right)_p $$
+
+Et system som kan utveksle varme og arbeid med omgivelser (ikke isolert), er i likevekt når $G$ er *minimal*.
+Systemet går i retning likevekt via spontane prosesser som minimerer $G$.
+
 ** Eksergi: maksimalt arbeid
+Eksergi, $W_{max}$, er maksimalt nyttig arbeid et system kan utføre i omgivelser med gitt trykk og temperatur. Arbeid i form av utvidelse mot omgivende trykk anses ikke som nyttig arbeid. Dvs:
+$$ Q = \Delta U + p_0 \Delta V + W_{max} $$
+
+Oppnår maksimalt arbeid med reversibel prosess mot likevekt.
+$$ W_{max} = -\Delta G = G_{start} - G_{slutt} $$
+
 ** Maxwell-relasjonene
+Vi har definert 4 potensialer (energifunksjoner). De _naturlige variable_ til disse potensialene framtrer ved å se på små endringer:
+\begin{align*}
+dU &=T dS - pdV \\
+dH &=T dS + Vdp \\
+dF &=-S dT - pdV \\
+dG &=-S dT + Vdp \\
+\end{align*}
+
+Altså:
+$$ U(S,V) \quad ; \quad H(S,p) \quad ; \quad F(T,V) \quad ; \quad G(T,p) $$
+
+F.eks
+$$ T = \left(\frac{\partial U}{\partial S}\right)_V \quad \text{og} \quad  p = - \left(\frac{\partial U}{\partial V}\right)_S \Rightarrow \left(\frac{\partial U}{\partial V}\right)_S = -\left(\frac{\partial U}{\partial S}\right)_V  $$
+
 ** Legendretransformasjoner
-** Joule-Thomson-koeffisient
+Tar utgangspunkt i $U(S,V)$ og $dU = TdS - pdV$, og kan dermed finne $H, F, G$ ved variabelskifte i form av *Legendretransformasjon*. Generelt:
+
+Har $f(x,y)$ med $df = udx+vdy$, der
+$$ u=\frac{\partial f}{\partial x} \quad ; \quad v = \frac{\partial f}{\partial y} $$
+
+Ønsker $g(u,y)$, som oppnås med
+$$ g = f - u\cdot x \Rightarrow dg = df - udx - xdu = vdy-xdu $$
+dvs
+$$ g=g(u,y) \quad \text{med} \quad x = -\partial g/\partial u \quad , \quad v = \partial g / \partial y $$
+
+- Entalpi: Ønsker $H(S,p)$. Har
+  \begin{align*}
+  H &= U-(-p)V \\
+  dH &= dU + pdV + Vdp = TdS + Vdp \\
+  H &= H(S,p) \quad \text{med} \quad T=(\partial H/\partial S)_p \quad , \quad V=(\partial H/\partial p)_S
+  \end{align*}
+
+- Helmholtz: Ønsker $F(T,V)$. Har
+  \begin{align*}
+  F &= U-TS \\
+  dF &= dU + TdS + SdT = -pdV -SdT \\ 
+  F &= F(T,V) \quad \text{med} \quad p=-(\partial F/\partial V)_T \quad , \quad S=-(\partial F/\partial T)_V \\ 
+  \end{align*}
+
+- Gibbs: Ønsker $G(p,T)$. Har
+  \begin{align*}
+  G &= F-(-p)V \\
+  dG &= dF + pdV + Vdp = -SdT + Vdp \\
+  G &= G(p,T) \quad \text{med} \quad V=(\partial G/\partial p)_T \quad , \quad S=-(\partial G/\partial T)_p \\ 
+  \end{align*}
+
+** Joule-Thomson-koeffisienten
+Har fra tidligere at et fluid presses gjennom ekspansjonsventil. Det gir *isentalpisk* trykkfall; trenger avkjøling. Fortegnet på $\mu_{JT} = (\partial T/\partial p)_H$ avgjør.
+$$ \left(\frac{\partial T}{\partial p}\right)_H \left(\frac{\partial p}{\partial H}\right)_T\left(\frac{\partial H}{\partial T}\right)_p = -1 \Rightarrow \mu_{JT} = -C_p^{-1} \left(\frac{\partial H}{\partial p}\right)_T$$
+
+Et par generelle *tips* ved termodynamisk krumspring:
+ - Få inn deriverte av potensialer, ikke deriverte med et potensial holdt konstant.
+ - Når $V$ og $T$ er variable, innfør $F$.
+   Når $p$ og $T$ er variable, innfør $G$.
+
+Bruker tips og triks, som gir
+$$ \mu_{JT} = \frac{V\cdot (T\alpha_V -1)}{C_p} $$
+
+Ideell gass: $\alpha_V = 1/T\Rightarrow \mu_{JT} = 0$. Hverken avkjøling eller oppvarming.
+
 *** For van der Waals-gass
+
+Justering av ideell gass tilstandsligning, for å ta hensyn til:
+- La et mol molekyl oppta et volum $b$. Tilgjengelig volum for et gitt molekyl blir da $V-b$, slik at
+  $$ p = \frac{RT}{V-b} $$ 
+
+- Tiltrekning mellom molekyler gir redusert trykk mot beholdervegger.
+  $$ p=\frac{RT}{V-b} - \frac{a}{V^2} $$
+  Kjent som *van der Waals* tilstandsligning for 1 mol.
+
+  Med dette blir Joule-Thomson-koeffisienten
+  $$ \mu_{JT} = C_p^{-1}\left[T\left(\frac{\partial V}{\partial T}\right)_p -V\right]  = C_p^{-1}\left[\frac{RT}{\frac{RT}{V-b}-\frac{2a(V-b)}{V^3}} -V\right] $$
+
 * Magnetiske systemer
+Magnetiske og magnetiserbare materialer er systemer med et stort antall magnetiske dipoler, dvs termodynamiske systemer. Dette er (som regel) faste stoffer med liten kompressibilitet slik at $pdV$ -arbeid er neglisjerbart. Men arbeid utføres, av eller på systemet, når magnetiske dipoler endrer retning i et ytre magnetfelt.
+
+Fra elektromagnetismen:
+$E_p = -\vec{m}\cdot \vec{B}_0 = -\vec{m}\cdot \mu_0 \vec{H}$ = potensiell energi til magnetisk dipol med moment $\vec{m}$ i ytre magnetfelt $\vec{B}_0$; $\vec{H}=\vec{B}_0/\mu_0$ = "H-feltet". $\mu_0$ = vakuumpermeabiliteten.
+
+Systemets magnetiske moment: $\vec{M} = \sum_i \vec{m}_i$
+$$ dW = -\mu_0\vec{H}\cdot d\vec{M} = -\mu_0 H \cdot dM $$
+
+Dvs:
+ - $-\mu_0 H$ spiller samme rolle som $p$.
+ - $M$ spiller samme rolle som $V$.
+
 * Materielt åpne systemer
 ** Kjemisk potensial
 ** Likevektsbetingelser
