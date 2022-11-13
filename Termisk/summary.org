@@ -600,17 +600,98 @@ $$ K(T) = \exp\left[-\frac{\sum_j \nu_j \mu_j^0}{k_B T}\right] $$
 
 * Faselikevekter
 ** Smelting, sublimasjon, trippelpunkt
+En *fase* er et *homogent system*. Kan være en ren gass, væske eller fast stoff, eller en blanding av gasser eller væsker.
+
+Et *fasediagram* gir en oversikt over hvilke faser vi har i likevekt, for oss som funksjon av $p$ og $T$.
+
+*Koeksistenslinjer*: To faser i likevekt
+
+*Trippelpunkt*: Alle tre faser i likevekt
+
+*Kritisk punkt*: Forskjellene mellom gass og væske opphører, f.eks. massetettheten.
+
+*Kokepunkt*: $p_k$ = det omgivende trykket, typisk ca 1 bar.
+
 ** Gibbs' faseregel
+For et rent stoff, anta at et antall $q$ ulike faser er i likevekt. Da er kjemisk potensial like stort i alle faser:
+$$ \mu_1 = \mu_2 = ... = \mu_q $$
+som er $N_l=q-1$ ligninger.
+
+De termodynamiske variable er $p$ og $T$, dvs $N_v = 2$ variable.
+
+Antall ligninger må ikke være større enn antall variable,
+$$ N_l \leq N_v \Rightarrow q \leq 3 $$
+
+Generaliseres til
+$$ q\leq c+2 $$
+hvis vi har $c$ komponenter.
+
 ** Clausius-Clapeyrons ligning
-** Damptrykk, eksempler
-** Fasediagram for rent stoff, (p,T),(p,V)
+Langs koeksistenslinjene er
+$$ \frac{dp}{dT} = \frac{L}{T\cdot \Delta V} $$
+
+Fordampingskurven og sublimasjonskurven:
+$$ L>0 \quad , \quad \Delta V > 0 \Rightarrow \frac{dp}{dT} > 0 $$
+
+Smeltekurven:
+$L >0$, $\Delta V$ liten, som regel er $\Delta V>0$, men for smelting av is er $\Delta V<0$.
+
+Gode antagelser ved fordamping og sublimasjon:
+ - Konstant $L$ (Kan evt bruke kjent $L(T)$)
+ - $\Delta V \approx V_g$ fordi $V_g >> V_v, V_f$
+
+Disse antagelsene gir
+$$ \frac{dp}{dT} = \frac{L\cdot p}{nRT^2} \Rightarrow \frac{dp}{p} = \frac{L}{nR}\frac{dT}{T^2} $$
+som videre gir
+$$ \Rightarrow \ln p = -\frac{l}{R} \cdot \frac{1}{T} + \text{konst} $$
+
+Med kjent referanse $(p_0, T_0)$:
+$$ p(T) = p_0 \exp\left[\frac{l}{R}\left(\frac{1}{T_0}-\frac{1}{T}\right)\right] $$
+** Fasediagram i 3D 
+$p(V,T)$ blir en *koeksistensflate*, slik at projeksjonen på $(p,T)$ -planet gir oss koeksistenslinjene $p(T)$, mens projeksjonen på $(p,V)$ -planet gir oss et alternativ og supplerende bilde av hvor vi har de ulike fasene, alene eller i koeksistens med en annen fase, evt. alle tre i trippelpunktet.
+
 ** Kritisk punkt
-*** For van der Waals-gass
+Den *kritiske* isotermen har et sadelpunkt i kritisk punkt:
+$$ \left(\frac{\partial p}{\partial V}\right)_c = 0 \quad , \quad \left(\frac{\partial^2 p}{\partial V^2}\right)_c = 0 $$
+
+Med van der Waals tilstandsligning:
+$$ V_c = 3b \quad , \quad T_c = \frac{8a}{27Rb} \quad , \quad p_c = \frac{a}{27b^2} $$
+
+Mellom $v$ og $g$ er isotermen i realiteten horisontal, siden faseovergangen foregår ved konstant trykk $p_{c0}$. Med likevekt mellom gass og væske har vi $G_v=G_g$ langs stiplet, horisontal kurve fra $g$ til $v$, inkludert tilstandene $g$ og $v$:
+
+$$ G_v - G_g = 0 $$
+
 ** Faselikevekter og svake oppløsninger
-*** Damptrykknedsettelse
-*** Kokepunktforhøyelse
-*** Frysepunktnedsettelse
+I en blanding av to stoff er løsemiddelet det det er mest av og løst stoff det det er minst av. Skal se at litt løst stoff påvirker faselikevekten for løsemiddelet.
+
+Prinsipp: I likevekt er kjemisk potensial for et gitt stoff det samme overalt.
+
+Antagelser:
+ - Mye mer løsemiddel enn løst stoff
+    $$ \Rightarrow x_s << 1 \quad ; \quad x=1-x_s \lesssim 1 \quad \text{(molbrøker)} $$
+ - Ideell blanding: $\mu = \mu_0+k_B T \ln x$
+ - Løst stoff som ikke er flyktig => ren løsemiddelgass
+
+- *Damptrykknedsettelse*
+  $$ \frac{\Delta p}{p_0} = -x_s $$
+
+- *Kokepunktforhøyelse*
+  $$ \frac{\Delta T}{T_0} = \frac{RT_0}{l_f}\cdot x_s $$ 
+  
+- *Frysepunktnedsettelse*
+  $$ \frac{\Delta T_{sm}}{T_0} = -RT_0 x_s / l_{sm} $$
+
 ** Osmose
+Semipermeabel membran slippe løsemiddelet gjennom, men ikke det løste stoffet, som har molbrøk $x$.
+
+Likevekt for løsemiddelet: $\mu(p+\Delta p, T, x) = \mu_0(p,T)$
+
+Får at
+$$ \Delta p = \frac{nRT}{V} $$
+= *osmotisk trykk* med $n$ mol løst stoff (van't Hoffs lov).
+
+Kan få ganske store trykkforskjeller, $\Delta p \approx 28\text{ atm}$ ved saltvannskraftverk.
+
 * Varmetransport
 ** Stråling
 ** Termodynamikk
