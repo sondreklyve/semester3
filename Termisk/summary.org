@@ -693,18 +693,108 @@ $$ \Delta p = \frac{nRT}{V} $$
 Kan få ganske store trykkforskjeller, $\Delta p \approx 28\text{ atm}$ ved saltvannskraftverk.
 
 * Varmetransport
+Mekanismer for varmeoverføring:
+ - Stråling
+ - Varmeledning
+ - Konveksjon
+Alle skyldes temperaturforskjeller!
 ** Stråling
-** Termodynamikk
-** Stefan-Boltzmanns lov
-** Frekvensfordelingeng; Plancks strålingslov
-** Wiens forskyvningslov
-** Varmeledning
-** Fouriers lov
-** Eksempler
-** Newtons avkjølingslov
+Akselererte ladninger emitterer elektromagnetiske bølger, ifølge Maxwells ligninger.
+Et hulrom, i termisk likevekt med beholderveggene, fylles derfor med EM energi, i form av fotoner.
+$$ u(T) = U/V $$
+er strålingsenergi pr volumenhet.
+Fotonene kolliderer med veggene og utøver et strålingstrykk.
+
+*** Termodynamikk
+Vet at EM-stråling bærer med seg en impuls $\vec{P}$ pr volumenget, og at energien pr volumenget er $u=\vec{P}\cdot\vec{c} = P\cdot c$. Kan finne uttrykk for *strålingstrykket* mot hulrommets vegger:
+$$ p = \frac{1}{3} u $$
+
+*** Stefan-Boltzmanns lov
+Fra forrige punkt kan vi utlede Stefan-Boltzmanns lov:
+$$ u(T) = \alpha T^4 $$
+
+Vi må bruke kvantemekanikk for å fastlegge konstanten $\alpha$.
+
+Ser på hvordan dette blir for ulike potensialer:
+ - $S(V,T) = \frac{4}{3}\alpha VT^3$ som betyr at $VT^3$ er konstant for isentropisk prosess.
+ - $G =0$
+ - $F = -\frac{1}{3}\alpha T^4 V$
+ - Alle disse gir hver for seg $\mu=0$
+ 
+*** Plancks strålingslov
+ - Frekvensfordelingen: $j(T) = \int_0^\infty d\nu\frac{dj}{d\nu}$
+   $$ \frac{dj}{d\nu}=\frac{2\pi h \nu^3/c^2}{\exp(\beta h \nu) -1} $$
+
+ - Bølgelengdefordelingen:  $j(T) = \int_0^\infty d\lambda\frac{dj}{d\lambda}$
+   $$ \frac{dj}{d\lambda}=\frac{2\pi h c^2/\lambda^5}{\exp(\beta h c/\lambda) -1} $$
+
+ - Wiens forskyvningslov:
+   $\frac{dj}{d\lambda}$ er maksimal for $\lambda\cdot  T = 2.989 \text{ mm K}$
+   
+ - Svart legeme:
+   Resultatet $j=\sigma T^4$ gjelder for et legeme som absorbrer all innkommende stråling, for alle bølgelengder.
+
 ** Konveksjon
-** Varmeledningsligninen
-** Diffusjon, Ficks lov
-** Diffusjonsligningen
-** Skalering
-** Brownske bevegelser, virrevandring
+Varmeoverføring pga strømning.
+Eks: Dobbeltvindu.
+
+Gass med høy temp. $T_2$ (lav tetthet) stiger opp ved innerglasset, gass med lavere temp. $T_1$ (høyere tetthet) faller ned ved ytterglasset. Nettoeffekten er varmeoverføring som grovt sett er proporsjonal med temperaturforskjellen $\Delta T = T_2 - T_1$.
+
+Eks: Vind
+
+Mye større varmeoverføring fra f.eks. huden til omgivelsene når lufta nær kroppen hele tiden byttes ut med kaldere luft.
+
+Empiriske varmeovergangstall $\alpha$: $j=\alpha\cdot \Delta T$
+
+** Varmeledning
+*** Fouriers lov
+Empirisk er
+$$ \vec{j} = -\kappa \nabla T $$
+
+Fouriers lov, med $\vec{j}$ = overført varme pr flate- og tidsenhet, $kappa$ = varmeledningsevnen til materialet som varmen transporteres gjennom.
+
+Ved stasjonære forhold er $j$ uavhengig av $x$, slik at $\nabla T$ er konstant, dvs
+$$ \frac{dT}{dx} = \frac{T_2-T_1}{a} \Rightarrow T(x) = T_1 + \frac{T_2-T_1}{a}\cdot x $$
+som gir
+$$ j = -\kappa\frac{dT}{dx} = -\frac{\kappa}{a} (T_2-T_1) $$
+
+Dette er analogt med elektrisk motstand og Ohms lov $\vec{j} = \sigma \vec{E} = -\sigma \nabla V$ for elektrisk strømtetthet. Kjente relasjoner for serie- og parallellkobling i elektrisitetslære må dermed også gjelde for varmemotstander. 
+
+*** Varmeledningsligninen
+Generelt er $T=T(\vec{r},t)$. Finner da en partiell diff.ligning for $T$ ved å kombinere energibevarelse med Fouriers lov.
+
+Energibevarelse er uttrykt ved kontinuitetsligningen
+$$ \frac{\partial u}{\partial t} + \nabla \cdot \vec{j} = 0 $$
+
+Her er $u$ energi pr volumenhet.
+Vi har tilsvarende ligning for masse og ladning, og som kjent for sannsynlighet i kvantemekanikken.
+
+For et fast, lite volum $V$:
+$$ C_V = \frac{dU}{dT} = V\frac{du}{dT} \Rightarrow du = c\cdot dT \quad ; \quad c = C_V / V  \Rightarrow \frac{\partial u}{\partial t} = c \frac{\partial T}{\partial t} $$
+
+Fouriers lov gir $\nabla\cdot \vec{j} = -\nabla \cdot (\kappa \nabla T)$, som dermed gir
+
+$$ \frac{\partial T}{\partial t} = D_t \nabla^2 T $$
+
+Som er *varmeledningsligningen*. 
+
+*** Diffusjon, Ficks lov og diffusjonsligningen
+Diffusjon er transport av partikler pga konsentrasjonsforskjeller, fra høy mot lav konsentrasjon.
+
+NB: Diffusjon er _ikke_ strømning pga trykkforskjeller!
+
+En bakgrunn av andre typer partikler sørger for at total konsentrasjon og trykk holder seg konstant.
+
+Vi ser altså på en situasjon der konsentrasjonen $n$ av en _gitt type_ partikler varierer, generelt i både rom og tid, dvs $n(\vec{r}, t)$
+
+Empirisk er beskrivelsen av diffusjon nøyaktig som for varmeledning.
+
+*Ficks lov* sier at partikkelstrømtettheten er proporsjonal med konsentrasjonsgradienten:
+$$ \vec{j} = -D\nabla n $$
+
+Partikkelbevarelse er uttrykt i kontinuitetsligningen
+$$ \frac{\partial n}{\partial t} + \nabla \cdot \vec{j} = 0 $$
+
+Kombinasjon av Ficks lov og kont.lign gir *diffusjonsligningen*
+$$ \frac{\partial n}{\partial t} = D\nabla^2 n $$
+
