@@ -1,67 +1,1250 @@
 * Problemer og algoritmer
+Kapittel: 1.x, 2.1, 2.2, 3.1, 3.2
 ** RAM-modellen
+Random access machine. Generic one processor, no concurrent operations. Operations take constant time, assume only trivial operations, so no short-cut one operation sorting for instance.
 ** Problem, instans og problemstørrelse
+Problem: generell relasjon mellom input og output.
+Instans: tilfelle med konkret input.
+Problemstørrelse n: Lagringsplass som trengs for en instans. Kjøretid er en funksjon av størrelse n.
+
 ** Asymptotisk notasjon
+Hvor fort kjøretiden vokser. Kun interessert i veldig grov størrelsesorden, så kutter ut konstanter og lavere ordens ledd.
+
+Stor Theta: Ligger mellom to skaleringer av samme kurve, for store n.
+Stor O: Ligger under skalert kurve, for store n.
+Stor Omega: Ligger over skalert kurve, for store n.
+Liten o og omega: samme som for store, men streng ulikhet.
+
+Generelt asymmetrisk likhet.
 ** Best-, average- og worst-case
+Et tilfelle: en bestemt instans for hver størrelse.
+ - Kjøretid: funksjon av problemstørrelse
+ - Best-case: Beste mulige kjøretid for en gitt størrelse
+ - Worst-case: Verste mulige kjøretid for en gitt størrelse
+ - Average-case: Gjennomsnitt over alle inputs
+ - Bruker vanligvis worst-case.
 ** Løkkeinvarianter og induksjon
+ Induksjon:
+ Anta grunntilfelle og induksjonshypotese. Kan vise at ting gjelder generelt ved disse antagelsene.
+
+  Løkkeinnvarianter:
+  - Invariant: egenskap som ikke endres
+  - Initialisering: Invariant er sann ved start
+  - Vedlikehold i hver iterasjon
+    + Induktivt premiss: Antatt sann først
+    + Induksjonstrinn: Vist sann etterpå
+  - Terminering: Vis at løkka stopper
 ** Rekursiv dekomponering og induksjon over delinstanser
-** INSERTION SORT
+- Bryt ned problemet så det kan løses trinn for trinn.
+- Fokuser på ett representativt trinn
+
+  Rekursjon og induksjon:
+- Del opp i mindre problemer
+- Induksjonshypotest: Anta at du kan løse de mindre problemene
+- Induksjonssteg: Konstruer fullstendig løsning fra del-løsningene
+
+  Instans -> Dekomponering -> Delinstans -> Grunntilfelle
+  -> Grunnløsning -> Delløsning -> Kombinasjon -> Løsning.
+** INSERTION SORT :Sorting:
+*** Kjøretid
+| Best-case   | Average-case  | Worst-case | Space  | Stable |
+| $\Omega(n)$ | $\Theta(n^2)$ | $O(n^2)$   | $O(1)$ | Ja     |
+
+*** Beskrivelse
+Setter inn element i på rett plass i den allerede sorterte lista av i-1 elementer.
+
+[[https://www.youtube.com/watch?v=JU767SDMDvA][Insertion Sort - YouTube]]
+*** Pseudokode
+
+#+begin_src python
+  for i = 2 to n:
+      key = A[i]
+      j = i - 1
+      while j > 0 and A[j] > key:
+          A[j + 1] = A[j]
+          j -= 1
+      A[j + 1] = key
+#+end_src
+
 * Datastrukturer
+Kapittel: Del III, 10.1, 10.2, 11 - 11.3.1, 16.1 
 ** Stack og kø
+Stack: Kun adgang øverst
+PUSH: Legg til element øverst
+POP: Fjern element øverst
+LIFO: Last In, First Out
+
+Kø: Akkurat som vanlig kø
+ENQUEUE: Legger til element bakest i køen (tail)
+DEQUEUE: Den første i køen går ut (head)
+FIFO: First In, First Out
+
 ** Lenkede lister
+ - Består av noder som peker på neste (og kanskje forrige)
+ - Tar lineær tid å slå opp på en gitt posisjon
+ - Tar konstant tid å sette inn/slette elementer
+
+   LIST-SEARCH(L,k): Finn en node men nøkkel k
+   LIST-PREPEND(L,x): Sett noden x inn først i L
+   LIST-INSERT(x,y): Sett inn noden x etter noden y
+   LIST-DELETE(L,x): Fjern noden x fra lista L
+
 ** Direkte addressering og hash-tabeller
+Direkte addressering: Myk start på hashing, elementer er lagra på indeksen til nøkkelen k.
+
+#+begin_src python
+  def DIRECT_ADDRESS_SEARCH(T,k):
+      return T[k]
+
+  def DIRECT_ADDRESS_INSERT(T,k):
+      return T[x.key] = x
+
+  def DIRECT_ADDRESS_DELETE(T,k):
+      return T[x.key] = NIL 
+#+end_src
+
+
+Hashtabeller: Bruker hashfunksjoner for å samle flere elementer under samme indeks.
+Ønsker at hashfunksjonen skal fordele nøklene mest mulig uniformt, men må være entydig, slik at vi kan finne tilbake til riktig indeks med samme nøkkel k.
+
 ** Chaining
-** Hashfunksjoner
+Hver posisjon har en liste. Om to verdier hasher til samme indeks, får vi kollisjon, som vi kan løse med chaining. For eksempel lenket liste.
+
+Gitt hashfunksjon h(x):
+#+begin_src python
+  def CHAINED_HASH_SEARCH(T,k):
+      return LIST_SEARCH(T[h(k)], k)
+
+  def CHAINED_HASH_INSERT(T,k):
+      LIST_PREPEND(T[h(x.key)], x) 
+
+  def CHAINED_HASH_DELETE(T,k):
+      LIST_DELETE(T[h(x.key), x]) 
+#+end_src
+
+Mange kollisjoner: Lineært lange lister
+- Søk vil ta lineær tid
+- Anta lineært stor tabell
+Anta jevn, "tilfeldig" fordeling
+- Konstant forventet kjøretid!
+
 ** Amortisert analyse
-** Aggregert analyse
+- Kjøretid for en enkelt operasjon: ikke alltid informativ
+- Se på gjennomsnittet per operasjon etter at mange har blitt utført!
+Aggregert analyse: Finn totalt arbeid og del på antall operasjoner.
+
+Average-case: Snitt over instanser
+Amortisering: Snitt over operasjoner
 ** Dynamiske tabeller
+Dersom hashtabell/stack/kø blir full: kan allokere nytt minne og kopiere
+men ... det tar jo lineær tid ... så vi vil gjøre det sjelden!
+Kan like så godt allokere mye minne.
+
 * Splitt og hersk 
+Kapittel: Del II, 2.3, 4.3-4.5, 7.x
 ** Divide and conquer
-** BISECT og BISECT'
-** MERGE-SORT
-** QUICKSORT og RANDOMIZED-QUICKSORT
+Deler problemet rekursivt opp i mindre, lignende delproblemer. Gjør dette helt til vi når et delproblem vi kan løse, og bygger oss tilbake til utgangspunktet derfra.
+** BISECT :Search:Divide_and_conquer:
+*** Beskrivelse
+KJØRETID: $\Theta(\lg n)$.
+Leter gjennom en sortert tabell A etter verdi v. Deler tabellen i to, og sjekker bare den siden som passer med søkeverdien. Gjør dette rekursivt til verdien er funnet.
+
+BISECT' er den iterative varianten av BISECT, og vil være mer effektiv fordi den slipper ekstra kostnad i funksjonskall.
+*** Pseudokode
+
+#+begin_src python
+
+  def BISECT(A, p, r, v):
+      if p <= r:
+          q = math.floor((p + r) / 2)
+          if v == A[q]:
+              return q
+          elif v < A[q]:
+              return BISECT(A, p, q - 1, v)
+          else:
+              return BISECT(A, q + 1, r, v)
+      return None
+#+end_src
+
+** MERGE-SORT :Sorting:Divide_and_conquer:
+*** Kjøretid
+| Best-case    | Average-case | Worst-case   | Space  | Stable |
+| $O(n\log n)$ | $O(n\log n)$ | $O(n\log n)$ | $O(n)$ | Ja     |
+
+*** Beskrivelse
+Deler listen rekursivt i to helt til hver delinstans har ett element. Fletter så sammen underlistene.
+MERGE funksjonen kjører i lineær tid.
+
+
+[[https://www.youtube.com/watch?v=4VqmGXwpLqc][Merge Sort - YouTube]]
+*** Pseudokode
+
+#+begin_src python
+  def MERGE(A, p, q, r):
+      copy into L and R
+      for k = p to r:
+          if L[i] <= R[j]:
+              A[k] = L[i]
+              i += 1
+          else:
+              j += 1
+  def MERGE_SORT(A, p, r):
+      if p >= r:
+          return
+      q = math.floor((p + r) / 2)
+      MERGE_SORT(A, p, q)
+      MERGE_SORT(A, q + 1, r)
+      MERGE(A, p, q, r)
+
+#+end_src
+
+** QUICKSORT og RANDOMIZED-QUICKSORT :Sorting:Divide_and_conquer:
+*** Kjøretid
+| Best-case    | Average-case | Worst-case   | Space  | Stable |
+| $O(n\log n)$ | $O(n\log n)$ | $O(n^2)$ | $O(\log n)$ | Nei  |
+
+*** Beskrivelse
+- Velg ett pivot element (Viss tilfeldig pivot: RANDOMIZED QUICKSORT).
+- Sorter resten av elementene i 2 del-lister utifra om de er større eller mindre enn pivot.
+- Sorter de 2 del-listene rekursivt till de bare inneholder 1 element.
+
+[[https://www.youtube.com/watch?v=Hoixgm4-P4M][Quicksort - YouTube]]
+*** Pseudokode
+
+#+begin_src python
+  def PARTITION(A, p, r):
+      # Viss denne returnerer tilfeldig PIVOT blir det RANDOMIZED-QUICKSORT
+      x = A[r]
+      i = p - 1
+      for j = p to r - 1:
+          if A[j] <= x:
+              i += 1
+              exchange A[i] with A[j]
+      exchange A[i + 1] with A[r]
+      return i + 1
+
+  def QUICKSORT(A, p, r)
+      if p < r:
+          q = PARTITION(A, p, r)
+          QUICKSORT(A, p, q - 1)
+          QUICKSORT(A, q + 1, r)
+
+#+end_src
+
 ** Løse rekurrenser
+Rekurrens: Rekursiv ligning
+Måter å løse:
+*** Iterasjonsmetoden
+Gjentatt ekspandering av den rekursive forekomsten av funksjonen - det gir oss en sum som vi kan regne ut.
+*** Rekursjonstrær
+Tegn opp rekursjonstre og finn maksimal dybde.
+*** Masterteoremet
+Gitt rekurrens $T(n) = aT(n/b) + f(n)$ med
+ - $f(n)$ drivende funksjon
+ - $n^{\log_b a}$ vannskillefunksjon
+
+Gir tre mulige tilfeller
+\begin{align*}
+f(n) = O(n^{\log_b a-\varepsilon}) &\Rightarrow T(n) = \Theta(n^{\log_b a}) \\
+f(n) = \Theta(n^{\log_b a}) &\Rightarrow T(n) = \Theta(n^{\log_b a}\log n) \\
+f(n) = \Omega(n^{\log_b a+\varepsilon}) &\Rightarrow T(n) = \Theta(f(n)) \\
+\end{align*}
+
+*** Verifiser løsning med substitusjon (induksjon)
+Gitt løsning til et delproblem, kan vi sette dette inn for å finne løsningen til rekurensen direkte.
+   
 * Rangering i lineær tid 
-** Sammenligningsbasert worst case
+** Sammenligningsbasert sortering har n lg n worst case
+Som overskriften foreslår kan sammenligningsbaserte sorteringsalgoritmer i beste fall ha worst case på $\Omega(n\lg n)$.
+
+Reduksjon: Det kan ikke være lettere å få opp låsen enn kista.
+Man kan redusere til flere ulike problemer. Hvis ett av dem er enkle, så har vi funnet en løsning.
+Hvis vi vet at det vi reduserer fra ikke kan ha en løsning, så kan ingen av dem vi reduserer til ha et heller.
 ** Stabil sorteringsalgoritme
-** COUNTING-SORT
-** RADIX-SORT
-** BUCKET-SORT
+Stabil sortering bevarer rekkefølge på element med lik verdi. For eksempel vil en stabil sorteringsalgoritme på følgende liste L = [2, 3, 2, 4] resultere i [2, 2, 3, 4] og ikke [2, 2, 3, 4] ;)
+
+Dette er nyttig om vi sorterer nøkler med satelittdata som vi vil skal beholde opprinnelig rekkefølge.
+
+** COUNTING-SORT :Sorting:
+*** Kjøretid
+| Best-case     | Average-case  | Worst-case | Space  | Stable |
+| $\Omega(n+k)$ | $\Theta(n+k)$ | $O(n+k)$   | $O(k)$ | ja     |
+
+*** Beskrivelse
+Antar input med heltall begrenset på intervall opp til k. Teller hvor mange lavere enn lik elementer som skal sorteres, og putter det på riktig plass i lista. Dette er en stabil søkealgoritme.
+
+*** Pseudokode
+
+#+begin_src python
+
+  def COUNTING_SORT(A, n, k):
+      new: B[1:n], C[0:k]
+      for i = 0 to k:
+          C[i] = 0
+      for j = 1 to n:
+          C[A[j]] = C[A[j]] + 1
+      for i = 1 to k:
+          C[i] = C[i] + C[i - 1]
+      for j = n downto 1:
+          B[C[A[j]]] = A[j]
+          C[A[j]] = C[A[j]] - 1
+      return B
+
+#+end_src
+
+** RADIX-SORT :Sorting:
+*** Kjøretid
+| Best-case     | Average-case  | Worst-case | Space  | Stable |
+| $O(d(n+k))$ | $\Theta(d(n+k))$ | $O(d(n+k))$ | $O(n+k)$ | ja     |
+
+*** Beskrivelse
+Radix sort antar at input er n elementer med d siffer, der hvert siffer kan ha opp til k forskjellige verdier. Algoritmen tar som regel det minst signifikante sifferet, sorterer med hensyn på dette sifferet, og gjentar så med det nest minst signifikante sifferet, osv. Om sorteringen på hvert siffer er basert på en algoritme som sorterer stabilit på $\Theta(n+k)$, som COUNTING-SORT, vil vi få kjøretider som i tabellen over.
+
+*** Pseudokode
+
+#+begin_src python
+
+  def RADIX_SORT(A, d):
+      for i = 1 to d:
+          sort A on digit i
+
+#+end_src
+
+** BUCKET-SORT :Sorting:
+*** Kjøretid
+| Best-case     | Average-case  | Worst-case | Space  | Stable |
+| $\Omega(n+k)$ | $\Theta(n+k)$ | $O(n^2)$   | $O(n)$ | ja     |
+
+*** Beskrivelse
+Bucket sort antar at inputen er generert fra en tilfeldig prosess som fordeler elementene uniformt og uavhengig over er intervall. Bucket sort deler intervallet inn i n like store "bøtter", og fordeler så de n inputtallene i bøttene. Hver bøtte sorteres så for seg ved å bruke en sorteringsalgoritme, bucket sort, insertion sort eller en annen algoritme. 
+
+*** Pseudokode
+
+#+begin_src python
+
+  def BUCKET_SORT(A, n):
+      new: B[0:n - 1]
+      for i = 0 to n - 1:
+          make B[i] an empty list
+      for i = 1 to n
+          add A[i] to B[math.floor(n*A[i])]
+      for i = 0 to n - 1:
+          sort list B[i]
+      concatenate B[0] to B[n - 1]
+
+      return the resulting list
+
+#+end_src
+
 ** RANDOMIZED-SELECT
+*** Kjøretid
+| Best-case   | Average-case | Worst-case    |
+| $\Theta(n)$ | $\Theta(n)$  | $\Theta(n^2)$ |
+
+*** Beskrivelse
+Har en sekvens av tall, og vil finne det i-ende minste elementet i A. Vil finne pivot med riktig rang, og returnerer den så fort den er funnet.
+
+*** Pseudokode
+
+#+begin_src python
+
+  def RAND_SEL(A, p, r, i):
+      if p == r:
+          return A[p]
+      q = RAND_PARTITION(A, p, r)
+      k = q - p + 1
+      if i == k:
+          return A[q]
+      elif i < k:
+          return RAND_SEL(A, p, q - 1, i)
+      else:
+          return RAND_SEL(A, q + 1, r, i - k)
+
+
+#+end_src
+
 ** SELECT
+Teknikk for å velge gunstig pivot-element i RANDOMIZED-SELECT. 
+
 * Rotfaste trestrukturer
 ** Hauger og prioriteringskøer
-** HEAPSORT
+En Max-Heap er et komplett binærtre som har max-heap-egenskapen, nemlig at alle barn har mindre verdi. En min-hear er tilsvarende. Denne egenskaper bruker en når en tar ut det største elementet fra heapen. En vet at det øverste elementet er størst, og for så å sette det nest-øverste elementet på toppen av heapen må en gjøre log n sammenligninger. På grunn av denne egenskapen brukes en heap i prioritetskøer og heapsort.
+
+Har følgende metoder:
+| Metode            | Kjøretid |
+| Build max heap    | O(n)     |
+| Extract max       | O(log n) |
+| Max heapify       | O(log n) |
+| Max heap insert   | O(log n) |
+| Heap increase key | O(log n) |
+| Heap maximum      | THETA(1) |
+
+** HEAPSORT :Sortering:
+*** Kjøretid
+| Best-case          | Average-case      | Worst-case   | Space  | Stable |
+| $\Omega(n \log n)$ | $\Theta(n\log n)$ | $O(n\log n)$ | $O(1)$ | Nei    |
+
+*** Beskrivelse
+Bruker trestrukturen heap til å sortere.
+
+[[https://www.youtube.com/watch?v=2DmK_H7IdTo][Heapsort - YouTube]]
+*** Pseudokode
+
+#+begin_src python
+
+  def HEAPSORT(A, n):
+      BUILD_MAX_HEAP(A, n)
+      for i = n downto 2:
+          exchange A[1] with A[i]
+          A.size = A.size - 1
+          MAX_HEAPIFY(A, 1)
+
+#+end_src
+
 ** Implementasjon av rotfaste trær
+Heap er et rotfast tre, se der for forskjellige metoder.
+
 ** Binære søketrær
+Binærsøketre-egenskapen: venstre deltre \leq rot \leq høyre deltre
+
+Har litt forskjellige metoder:
+| Metode            | Kjøretid |
+| Inorder tree walk | THETA(n) |
+| Tree search       | O(h)     |
+| Tree minimum      | O(h)     |
+| Tree successor    | O(h)     |
+| Tree insert       | O(h)     |
+| Tree delete       | O(h)     |
+
 ** Forventet og garantert høyde på søketrær
+
+- Tilfeldig input-permutasjon gir logaritmisk forventet høyde.
+- Worst-case-høyde er lineær
+- Vi kan holde treet balansert etter hver innsetting og sletting, i logaritmisk tid
 
 * Dynamisk programmering
 ** Delinstansgraf
-** Dymanisk programmering
+Systematiserer de ulike delinstansene i en graf. Vil gjerne ha overlappende delinstanse, altså flere kanter til samme delinstansnode. Kan bruke dynamisk programmering for å utnytte denne strukturen.
+
+** Dynamisk programmering
+Dynamisk programmering bruker når delproblemene overlapper. Hvis en på visse problemer bruker standard splitt-og-hersk vil en løse samme problem flere ganger og dermed gjøre unødvendig arbeid. Dynamisk progammering løser delproblemet en gang og lagrer svaret til bruk i resten av problemet. For at vi skal kunne gjøre dette må problemet ha optimal substruktur. Vanlige problemstillinger som kan løses vha DP er longest common subsequence og rod cutting.
+
 ** Memoisering
+Gi en funksjon hukommelse: Har jeg fått disse argumentene før?
+Hvis ja: returner svaret du fant sist gang!
+
 ** Iterasjon
+Bottom up: Iterasjon over alle delinstanser. I steder for rekursjon: slå opp i løsninger du alt har regnet ut og lagret i en tabell.
+
 ** Rekonstruere løsninger
 ** Optimal delstruktur
+Krever at løsninger bygger på delløsninger: optimal delstruktur.
+
 ** Overlappende delinstanser
-** Stavkutting, matrisekjede-multiplikasjon og LCS
-** Det binære ryggsekkproblemet
+Dynamisk programmering er nyttig når vi har overlappende delinstanser.
+Det er korrekt når vi har optimal delstruktur!
+
+** Noen eksempler
+*** Stavkutting
+Gitt en stav med lengde n, og en liste med priser for alle lengder kortere enn n. Avgjør hva maksimal fortjeneste blir ved å kutte den opp og selge den.
+*** LCS
+Løses med dynamisk programmering fra bunnen og opp, ved å se på det siste elementet i hver liste.
+*** Matrisekjede-multiplikasjon
+En matrise er enkelt sagt en tabell med n rader og m kolonner. Produktet av en (n x k)-matrise og en (k x m)-matrise krever n*k*m skalare multiplikasjoner.
+Bruker dynamisk programmering til å finne en lur rekkefølge å multiplisere på for færrest mulig skalare multiplikasjoner.
+
+*** Det binære ryggsekkproblemet
+Kan plukke med ulike verdier med ulike vekter, og har begrenset kapasitet. Vil plukke med oss slik at det blir mest mulig verdi. Kan bruke dynamisk programmering til å finne beste mulige kombinasjon.
+
+Binært fordi vi ikke kan dele opp verdiene, men må enten ta med en verdi eller ikke.
+
+Kan for eksempel finne optimal kombinasjon ved små kapasiteter, og sette dette inn der det passer, i stedet for å regne ut optimum hver gang.
+
 * Grådighet og stabil matching
 ** Grådighet
+Løser kun delproblem som lover best, i håp om at det vil gi riktig svar.
+Vanligvis vil grådighet feile, fordi det ikke alltid lønner seg å gjøre det valget som lønner seg mest der og da, men heller tenke fremover.
+
 ** Grådighetsegenskapen
+Så lenge vi ikke eliminerer alle optimale løsninger ved å velge grådig, er grådighetsegenskapen oppfylt. Det vil si at vi til slutt vil nå en optimal løsning ved å gjøre utelukkende grådige valg.
+
+Optimal delstruktur: Kan fortsette på samme måte, optimal løsning bygger på optimale delløsninger, som alle kan finnes ved å ta grådige valg.
+
 ** Aktivitet-utvelgelse og Det kontinuerlige ryggsekkproblemet
-** HUFFMANN of Huffmann-koder
+Det skader ikke å velge den aktiviteten som slutter først, og vi ender dermed opp med å få inn mest mulig aktiviteter i en gitt timeplan.
+
+Den kontinuerlige ryggsekkproblemet ser nærmest på kiloprisen til varene vi skal ha med, og det vil alltid lønne seg å plukke med seg det med høyest kilopris først, altså ta grådige valg.
+
+Begge disse problemene har oppfylt grådighetsegenskapen, og kan dermed løses med grådighet.
+
+** HUFFMANN og Huffmann-koder
+Gitt et alfabet C med tegn av ulike frekvenser, vil vi generere en binær koding som minimerer kodelengde. Kodene må være prefiksfrie, altså kan ikke en kode ha en annen kode som prefiks. Kan representeres som stier i et binærtre, med tegn som løvnoder.
+
+Vi kan velge grådig hele veien, fordi det alltid vil lønne seg å ha tegn med lavest frekvens nederst i binærtreet, altså gi tegn med lav frekvens lengre kode.
+
+#+begin_src python
+
+  def HUFFMAN(C):
+      n = |C|
+      Q = C
+      for i = 1 to n - 1:
+          allocate a new node z
+          x = EXTRACT_MIN(Q)
+          y = EXTRACT_MIN(Q)
+          z.left, z.right = x, y
+          z.freq = x.freq + y.freq
+          INSERT(Q, z)
+      return EXTRACT_MIN(Q)
+
+#+end_src
+
 ** Stabil matching
+I stable marriage problem: Det finnes ingen par der begge foretrekker hverandre over sin nåværende partner. Dermed er det ingen som kommer til å bytte, fordi det aldri vil være tilfelle at begge parter blir mer fornøyd.
+
 ** GALE-SHAPLEY
-*** Best for kvinne -> værst for menn
+Kvinner og menn matches. Et umatchet par blokkerer hvis de heller vil ha hverandre. En matching er stabil om det ikke finnes blokkerende par.
+
+Best for kvinne -> værst for menn
+
+Kan løse dette ved å gjøre kvinnene grådige, altså at de jobber seg nedover sin prioritering helt til de får napp.
+
+#+begin_src python
+
+  def GALE_SHAPLEY(men, women, rankings):
+      initially, everyone is free
+      while some woman w is free:
+          m is next on w list
+          if m is free:
+              w and m become engaged
+          elif m prefers w: 
+              m breaks engagement
+              w and m become engaged
+          else:
+              m rejects w
+
+      return the engaged pairs
+
+#+end_src
+
 * Traversering av grafer
 ** Implementere grafer
+To representasjoner:
+- Nabomatriser: 1 viss det er kant fra rad til kolonne, og 0 viss ikke. Urettet graf vil naturligvis ha nabomatrise som er symmetrisk langs diagonalen.
+- Hver node har en liste med noder som den har kant til.
+
+Matriser egner seg til direkte oppslag, lister egner seg til traversering, og tar forøvrig mindre plass dersom grafen har få kanter.
 ** BFS - korteste vei uten vekter
+Bredde-først-søk er en FIFO graftraverseringsalgoritme. For hver node en besøker legger en alle nodens barn i en kø. Mer konkret:
+- Legg til startnode i køen vår, Q.
+- Hent ny aktiv node gjennom et POP-kall til køen
+- Legg den aktive nodens barn til i Q, så fremt de ikke allerede er besøkt
+- Gå til steg 2 og gjenta til Q er tom.
+
+Kjøretid: O(|V| + |E|)
+
 ** DFS
+Dybde-først-søk er en LIFO graftraverseringsalgoritme. For hver node en besøker legger en nodens barn i en stack. Mer konkret:
+- Legg til startnoden S
+- Hent ny aktiv node gjennom POP-kall til stakken
+- Legg den aktive nodens barn til i S, så fremt de ikke allerede er besøkt
+- Gå til steg 2 og gjenta til S er tom
+
+Kjøretid: O(|V| + |E|)
+
+Forgjenger-kantene utgjør traverserings-trær. For DFS kan vi ha flere, som utjør en DFS-skog.
+
+Kantklassifisering:
+- Trekanter: Kanter i dybde-først-skogen
+- Bakoverkanter: Kanter til en forgjenger i DF-skogen
+- Foroverkanter: Kanter utenfor DF-skogen til en etterkommer i DF-skogen
+- Krysskanter: Alle andre kanter
+
+#+begin_src python
+  def DFS(G):
+      for each vertex u in G.V:
+          u.color = WHITE
+          u.pi = NIL
+      time = 0
+      for each vertex u in G.V:
+          if u.color = WHITE:
+              DFS_VISIT(G, u)
+
+  def DFS_VISIT(G, u):
+      time += 1
+      u.d = time
+      u.color = GRAY
+      for each v in G.Adj[u]
+          if v.color == WHITE
+              v.pi = u
+              DFS_VISIT(G, v)
+      u.color = BLACK
+      time += 1
+      u.f = time
+
+#+end_src
+
 *** Parentesteoremet
 *** Hvit-sti-teoremet
 *** Klassifisering
 *** Impementasjon på stakk
-** TOPOLOGICAL-SORT
+** TOPOLOGICAL-SORT :Sortering:
+*** Beskrivelse
+Ved å merke start- og slutt-tider kan DFS brukes til topologisk sortering, men dette krever da at grafen er en DAG (Directed Acyclic Graph). Finnes det en kant (u, v), skal noden u komme før v i ordningen. DFS brukes til å finne denne ordningen.
+
+Hvis det er mulig å lage en topologisk sortering (grafen er rettet og asyklisk), kan er kjøre DAG-shortest-path, den mest effektive løsningen av korteste vei en til alle.
+
+*** Pseudokode
+
+#+begin_src python
+  for i = 2 to n:
+      key = A[i]
+      j = i - 1
+      while j > 0 and A[j] > key:
+          A[j + 1] = A[j]
+          j -= 1
+      A[j + 1] = key
+#+end_src
+
 ** Traverseringstrær
-** Vilkårlig prioriteringskø
+En metode for å traversere:
+#+begin_src python
+
+  def TRAVERSE(G, u):
+      print u
+      delete u from G
+      for each v in G.Adj[u]:
+          TRAVERSE(G, v)
+      add u back to G
+
+#+end_src
+
+Men vi trenger ikke traversere fra en node mer enn en gang, så siste linje er kanskje unødvendig?
+Forslag:
+#+begin_src python
+
+  def TRAVERSE_(G, u):
+      print u
+      u.color = GRAY
+      for each v in G.Adj[u]:
+          if v.color == WHITE:
+              TRAVERSE_(G, v)
+      u.color = BLACK
+
+#+end_src
+
+* Minimale spenntrær 
+** Skog-implementasjon av disjunkte mengder
+Mengder representeres som trær vha foreldrepekere v.p.
+Rota representerer mengder; FIND_SET(v) gir peker til rota.
+Union by rank-heuristikk: Rang er øvre grense for nodehøyde.
+
+#+begin_src python
+  def MAKE_SET(x):
+      x.p = x
+      x.rank = 0
+
+  def UNION(x, y):
+      LINK(FIND_SET(x), FIND_SET(y))
+
+  def LINK(x, y):
+      if x.rank > y.rank:
+          y.p = x
+      else:
+          x.p = y
+          if x.rank == y.rank:
+              y.rank += 1
+
+  def FIND_SET(x):
+      if x != x.p:
+          x.p = FIND_SET(x.p)
+      return x.p
+
+  def CONNECTED_COMPONENTS(G):
+      for each vertex v in G.V:
+          MAKE_SET(v)
+      for each edge (u, v) in G.E:
+          if FIND_SET(u) != FIND_SET(v):
+              UNION(u, v)
+
+  def SAME_COMPONENT(u, v):
+      return FIND_SET(u) == FIND_SET(v)
+
+#+end_src
+
+** Spenntrær og minimale spenntrær
+Et minimalt spenntre er et tre som er innom alle nodene nøyaktig en gang, og som har den lavest mulige kombinerte kantvekten.
+
+** GENERIC-MST
+Innfører graf med kantvekter. Vil finne delmendge som spenner over V og minimerer vekten. Tillater negative vekter så lenge grafen er asyklisk.
+
+Input: En urettet graf G med vektfunksjon w.
+Output: En asyklisk delmengde T som kobler sammen nodene i V og minimerer vektsummern.
+
+Vi utvider en kantmengde gradvis. Invariant: Kantmengden utgjør en del av et minimalt spenntre. En trygg kant er en kant som bevarer invarianten.
+
+#+begin_src python
+
+  def GENERIC_MST(G, w):
+      A = Ø
+      while A does not form a spanning tree:
+          find an edge (u, v) that is safe for A
+          A = A union {(u, v)}
+      return A
+
+#+end_src
+
+** Hvorfor lette kanter er trygge kanter
+Grådighetsegenskapen: Lett kant over snitt uten kanter så langt = trygg kant
+Kan dermed velge kanter over snitt grådig.
+Hvor snittet går gir opphav til de to følgende algoritmene.
+** MST-KRUSKAL
+En kant med minimal vekt blant de gjenværende er trygg så lenge den ikke danner sykler.
+
+Kruskals algoritme lager treet ved å finne de minste kantene i grafen en etter en, og lage en skog av trær. Deretter settes disse trærne gradvis sammen til ett tre, som blir det minimale spenntreet. Først finnes kanten i grafen med lavest vekt. Denne kanten legges til et tre. Deretter ser algoritmen etter den neste laveste kantvekten. Er ingen av nodene til denne kanten med i noe tre, så lages et nytt tre. Er en av nodene knyttet til et tre, så legges kanten til i det eksisterende treet. Er begge nodene knyttet til hver sitt tre settes de to trærne sammen. Er begge nodene knyttet til samme tre ignoreres kanten. Sånn fortsetter det til vi har ett tre.
+
+- En skog er fragmenter av et MST
+- Den andre skogen: Disjoint-set forest
+  + Samme noder og komponenter
+  + Rettede kanter/pekere som spiller en helt annen rolle
+- Vi behandler denne siste skogen som en black box i algoritmen
+
+#+begin_src python
+
+  def MST_KRUSKAL(G, w):
+      A = Ø
+      for each vertex v in G.V:
+          MAKE_SET(v)
+      create list of edges in G.E
+      sort edge list by w
+      for each edge (u, v) in edge list:
+          if FIND_SET(u) != FIND_SET(v):
+              A = A union {(u, v)}
+              UNION(u, v)
+      return A
+
+#+end_src
+
+Kjøretider:
+| Operasjon | Antall | Kjøretid   |
+| MAKE_SET  | V      | O(1)       |
+| Sortering | 1      | O(E log E) |
+| FIND_SET  | O(E)   | O(log V)   |
+| UNION     | O(E)   | O(log V)   |
+
+TOTALT: O(E log V)
+
+** MST-PRIM
+Bygger ett tre gradvis; en lett kant over snittet rundt treet er alltid trygg.
+
+Prims algoritme lager treet ved å starte i en vilkårlig node, og så legge til den kanten knyttet til noden som har lavest verdi. Deretter velges kanten med lavest verdi som er i knyttet til en av nodene som nå er en del av treet. Dette fortsetter til alle nodene er blitt en del av treet. Kjøretiden avhenger av datastrukturen som velges, pensum bruker en binærheap.
+
+- Kan implementeres vha. traversering
+- Der BFS bruker FIFO og DFS bruker LIFO, bruker Prim en min-prioritets-kø
+- Prioriteten er vekten på den letteste kanten mellom noden og treet
+- For enkelhets skyld: Legg alle noder inn fra starten, med uendelig dårlig prioritet
+
+
+#+begin_src python
+
+  def MST_PRIM(G, w, r):
+      for each u in G.V:
+          u.key = inf
+          u.pi = None
+      r.key = 0
+      Q = Ø
+      for each u in G.V:
+          INSERT(G, u)
+      while Q != Ø:
+          u = EXTRACT_MIN(Q)
+          for each v in G.Adj[u]:
+              if v in Q and w(u, v) < v.key:
+                  v.pi = u
+                  v.key = w(u, v)
+                  DECR_KEY(Q, v, w(u, v))
+#+end_src
+
+Kjøretider:
+| Operasjon      | Antall | Kjøretid |
+| BUILD_MAX_HEAP | 1      | O(V)     |
+| EXTRACT_MIN    | V      | O(log V) |
+| DECREASE_KEY   | E      | O(log V) |
+
+TOTALT: O(E log V)
+
+* Korteste vei fra en til alle
+** Ulike varianter av korteste-vei og korteste-sti
+- En til alle (SSSP)
+- Alle til en (SSSP med omvendt graf)
+- En til en: har ikke noe bedre enn SSSP
+- Alle til alle (neste kapittel)
+** Strukturen til korteste-vei, og negative sykler
+Input: En rettet graf G, vektfunksjon w og node s.
+Output: For hver node v, en sti p med startnode s og sluttnode i v med minimal vektsum.
+
+- En enkel sti er en sti uten sykler
+- En kortest sti er alltid enkel
+- Negativ sykel? Ingen sti er kortest!
+- Det finnes fortsatt en kortest enkel sti
+- Å finne den effektivt: Uløst (NP-hardt)
+** Korteste enkle vei kan løses vha lengste enkle vei og omvendt
+Kan negere kantvektene slik at lengste vei blir korteste vei og motsatt.
+
+** Representere korteste-vei-tre
+At rota tre som inneholder korteste vei fra kilden s til hver kant som er mulig å nå fra s.
+
+** Kant-slakking og RELAX og egenskaper
+v.d er øvre grense på avstanden mellom startnode s og en gitt node v. Metoden RELAX på en kan mellom u og v tester om det lønner seg å gå gjennom u for å komme seg til v.
+Den sjekker om v.d > u.d + w(u, v)
+
+** BELLMAN-FORD
+Oppdaterer alle kanter helt til ingenting endres mer, max V-1 iterasjoner.
+Om vi ikke er ferdig da, må grafen ha en negativ sykel.
+
+Kjøretid:
+| Operasjon      | Antall | Kjøretid  |
+| Initialisering |      1 | THETA(V)  |
+| RELAX          |    V-1 | THETA(E)  |
+| RELAX          |      1 | O(E)      |
+| TOTALT         |        | THETA(VE) |
+
+#+begin_src python
+
+  def BELLMAN_FORD(G, w, s):
+      INITIALIZE_SINGLE_SOURCE(G, s):
+      for i = 1 to |G.V| - 1:
+          for each edge (u, v) in G.E:
+              RELAX(u, v, w)
+      for each edge (u, v) in G.E:
+          if v.d > u.d + w(u, v):
+              return False
+      return True
+
+#+end_src
+
+** DAG-SHORTEST-PATHS
+
+Kjøretid:
+| Operasjon            | Antall | Kjøretid     |
+| Topologisk sortering |      1 | THETA(V + E) |
+| Initialisering       |      1 | THETA(V)     |
+| RELAX                |      E | THETA(1)     |
+| TOTALT               |        | THETA(V + E) |
+
+
+#+begin_src python
+
+  def DAG_SHORTEST_PATHS(G, w, s):
+      topologically sort G
+      INITIALIZE_SINGLE_SOURCE(G, s)  # Initialiser grafen ved å sette v.d = inf og v.pi = None
+      for each vertex u, in topsort order:
+          for each vertex v in G.Adj[u]:
+              RELAX(u, v, w)  # Sjekk om det finnes en kortere avstand til noden
+
+  def INITIALIZE_SINGLE_SOURCE(G, s):
+      for each vertex v in G.V:
+          v.d = inf
+          v.pi = None
+      s.d = 0
+
+  def RELAX(u, v, w):
+      if v.d > u.d + w(u, v):
+          v.d = u.d + w(u, v)
+          v.pi = u
+
+#+end_src
+
+*** Kobling mellom DAG-SHORTEST-PATHS og dynamisk programmering
+** DIJKSTRA
+Noden med lavest estimat må være ferdig. Den unne bare bli bedre via en annen node om vi hadde negative kanter, som er forbudt i DIJKSTRA!
+
+Kjøretid:
+| Operasjon      | Antall | Kjøretid           |
+| Initialisering | 1      | THETA(V)           |
+| BUILD_HEAP     | 1      | THETA(V)           |
+| EXTRACT_MIN    | V      | O(lg V)            |
+| DECREASE_KEY   | E      | O(lg V)            |
+| TOTALT         |        | O(V lg V + E lg V) |
+
+Kan ha bedre kjøretid ved å implementere på binærheap eller fibonacciheap f.eks.
+
+#+begin_src python
+
+  def DIJKSTRA(G, w, s):
+      INITIALIZE_SINGLE_SOURCE(G, s)
+      S = Ø
+      Q = Ø
+      for each vertex u in G.V:
+          INSERT(Q, u)
+      while Q != Ø:
+          u = EXTRACT_MIN(Q)
+          S = S union {u}
+          for each vertex v in G.Adj[u]:
+              RELAX(u, v, w)
+              if RELAX decreased v.d:
+                  DECR_KEY(Q, v, v.d)
+
+#+end_src
+
+* Korteste vei fra alle til alle
+** Forgjengerstrukturen for alle-til-alle-varianter av korteste vei-problemet
+Forgjengermatrise: Null der i = j eller ingen korteste sti fra i til j. Den i-ende raden utgjør korteste vei tre med rotnode i.
+
+Korteste vei fra alle til alle:
+Dette problemet er en direkte forlengelse av problemet korteste vei fra en til alle, for en kan jo selvfølgelig kjøre Bellman-Ford eller Dijkstra for hver node. Da får en hhv kjøretiden O(EV^2) og O(VE + V^2 log V). Altså vil vi i en dense graf med negative kanter og mange kanter få en kjøretid på O(V^4), fordi E = V^2. Floyd-Warshall reduerer dette til O(V^3). Merk at i en graf med negative sykler er korteste vei ikke definert og vi kan heller ikke bruke Floyd-Warshall.
+
+** SLOW-APSP og FASTER-APSP
+
+#+begin_src python
+
+  def EXTEND_SHORTEST_PATHS(L, W, L_, n):
+      for i = 1 to n:
+          for j = 1 to n:
+              for k = 1 to n:
+                  l__ij = min(l__ij, l_ik + w_kj)
+
+  def SLOW_APSP(W, L0, n):
+      new n x n matrices: L, M
+      L = L0
+      for r = 1 to n - 1:
+          M = inf
+          EXTEND_SHORTEST_PATHS(L, W, M, n)
+          L = M
+      return L
+
+  def FASTER_APSP(W, L0, n):
+      new n x n matrices: L, M
+      L = W
+      r = 1
+      while r < n - 1:
+          M = inf
+          EXTEND_SHORTEST_PATHS(L, L, M, n)
+          r = 2*r
+          L = M
+      return L
+
+#+end_src
+
+** FLOYD-WARSHALL
+
+Funker hvis det finnes negative kanter, men ikke negative sykler.
+Nodene må være lagret som nabomatrise, ikke naboliste.
+
+For hver tildeling av nodene i, j og k sjekker den om det finnes en raskere vei fra i til j som går gjennom k.
+
+Total kjøretid: THETA(n^3)
+
+#+begin_src python
+
+  def FLOYD_WARSHALL(W, n):
+      initialize D and PI
+      for k = 1 to n:
+          for i = 1 to n:
+              for j = 1 to n:
+                  if d_ij > d_ik + d_kj:
+                      d_ij = d_ik + d_kj
+                      pi_ij = pi_kj
+
+      return D, PI
+
+#+end_src
+
+** TRANSITIVE-CLOSURE
+Input: En rettet graf G
+Output: En rettet graf G* der (i, j) in E* hvis og bare hvis det finnes en sti fra i til j i G.
+
+Traverserer fra hver node?
+ - Kjøretid: V x THETA(E + V) = THETA(VE + V^2)
+ - Bra når vi har få kanter, f.eks. E = o(V^2)
+ - Mye overhead; høye konstantledd  
+Målsetting:
+ - Vi fokuserer på tilfellet E = THETA(V^2)
+ - Vi vil ha et lavere konstantledd
+Observasjon:
+ - Korteste stier har felles segmenter
+ - Overlappende delproblemer
+
+Gjør akkurat det samme som FLOYD_WARSHALL, men sjekker om det finnes en vei fra i til j eller ikke, den er altså ikke opptatt av vektene.
+
+Kjøretid: THETA(n^3)
+
+#+begin_src python
+
+  def TRANSITIVE_CLOSURE_(G, n):
+      initialize T
+      for k = 1 to n:
+          for i = 1 to n:
+              for j = 1 to n:
+                  t_ij = t_ij or (t_ik and t_kj)
+
+#+end_src
+   
+** JOHNSON
+Input: En vekter, rettet graf G, uten negative sykler, og vektmatrise W.
+Output: En n x n matrise D med korteste avstander mellom noder.
+
+#+begin_src python
+
+  def JOHNSON(G, w):
+      construct G_ with start node s
+      BELLMAN_FORD(G_, w, s)
+      for each vertex v in G.V:
+          h(v) = v.d
+      for each edge (u, v) in G.E:
+          w_(u, v) = w(u, v) + h(u) - h(v)
+      let D = (d_uv) be a new n x n matrix
+      for each vertex u in G.V:
+          DIJKSTRA(G, w_, u)
+          for each vertex v in G.V:
+              d_uv = v.d + h(v) - h(u)
+
+      return D
+
+#+end_src
+
+* Maksimal flyt
+** Flytnett, flyt og maks-flyt-problemet
+Flytnett: Rettet graf
+ - Kapasiteter c(u, v) > 0
+ - Kilde og sluk s, t in V
+ - Ingen løkker
+
+Flyt: En funksjon f: V x V -> R  
+
+Flytverdi: $|f| = \sum_v f(s, v) - \sum_v f(v, s)$
+
+Input: Et flytnett G
+Output: En flyt f for G med maks |f|
+
+Flyt kan visualiseres ved for eksempel et rørsystem for å levere vann i en by, eller som et nettverk med ulik kapasitet på kablene. Maks flyt er hvor mye som faktisk strømmer gjennom nettverket. Det kan finnes kanter med veldig liten kapasitet som hindrer flyt, så uansett om alle de andre kantene har stor kapasitet, vil maks flyt avhenge av den minste kanten dersom det ikke er noen vei rundt den. Maksimal flyt er nådd hvis og bare hvis residualnettverket ikke har flere flytforøkende stier.
+
+Flytnettverk:
+Et flytnettverk er en rettet graf, der alle kantene har en ikke-negativ kapasitet. I tillegg er det et krav at dersom det finnes en kant mellom u og v, finnes det ingen kant motsatt v til u. Et flytnettverk har en kilde, s, og et sluk, t. Kilden kan sees på som startnode, og sluket som sluttnode. Grafen er ikke delt, så for alle v finnes en vei s ~ v ~ t. Alle kanter bortsett fra s har en kant inn. En node, bortsett fra kilden og sluket, har like mye flyt inn som den har flyt ut.
+
+Et flytnettverk kan ha mange kilder og sluk. For å eliminere problemet, lager vi en superkilde og/eller et supersluk. Superkilden har en kant til hver av kildene, og kapasisteten på de kantene setter vi som uendelig. På samme måte lager vi supersluket. En kant fra hver av slukene, og setter kapasiteten til uendelig. Da er det et nytt nettverk, med kun en kilde og en sluk, og vi kan løse problemet som vanlig.
+
+** Antiparallelle kanter og flere kilder og sluk
+Antiparallelle kanter: Splitt den ene med en node
+
+Flere kilder og sluk: Legg til super-kilde og super-sluk
+
+** Restnett
+Engelsk: Residual network
+Fremoverkant ved ledig kapasitet
+Bakoverkant ved flyt
+
+Residualnettverket er det som er igjen av kapasitet, altså
+$$ c_f(u, v)= c(u, v) - f(u, v) $$
+
+Å følge med på residualnettverket er nyttig. Hvis vi sender 1000 liter vann fra u til v, og 300 liter fra v til u, er det nok å sende 700 liter fra u til v for å ha samme resultat.
+
+** Oppheve flyt
+Kan øke flyt en vei ved å redusere den andre veien. F.eks hvis det flyter 4 fra u til v, så kan en øke flyten fra v til u med 1 ved å redusere flyten fra u til v med 1.
+
+** Forøkende sti (augmenting path)
+En sti fra kilde til sluk i restnettet
+Langs fremoverkanter: Flyten økes
+Langs bakoverkanter: Flyten kan omdirigeres
+
+Altså: En sti der den totale flyten økes
+
+En flytøkende sti er en sti fra starten til en node, som øker total flyt i nettverket. En augmenting path er en enkel sti fra s til t i residualnettverket. Per definisjon av residualnettverket kan vi øke f(u, v) i en augmenting path med c_f(u, v) uten å gå over begrensningene.
+
+** Snitt, snitt-kapasitet og minimalt snitt
+Snitt i flytnett: Partisjon (S, T) av V
+
+Netto flyt: $f(S, T) = \sum_{u\in S}\sum_{v\in T} f(u, v) - \sum_{u\in S}\sum_{v\in T} f(v, y)$ 
+
+Kapasitet: $c(S, T) = \sum_{u\in S}\sum_{v\in T} c(u, v)$ 
+
+Lemma: $f(S,T) = |f|$
+
+Minimalt kutt:
+Et kutt i et flytnettverk er å dele grafen i to, S og T, og se på flyten gjennom kuttet.
+Antall mulige kutt totalt i et nettverk med n noder er $|C| = 2^{n-2}$.
+
+Av alle de mulige kuttene, ønsker vi å se på det kuttet som har minst flyt, da dette er flaskehalsen i nettverket.
+
+** Maks-flyt/min-snitt-teoremet
+Maksimal flyt = minste snitt
+Laget er ikke sterkere enn sin svakeste spiller.
+
+** FORD-FULKERSON-METHOD og FORD-FULKERSON
+I hver iterasjon av FORD_FULKERSON finner vi en flytforøkende sti p, og bruker p til å modifisere f. Merk at FORD_FULKERSON ikke spesifiserer hvordan dette implementeres.
+
+Kjøretid: O(VE^2)
+
+#+begin_src python
+
+  def FORD_FULKERSON_METHOD(G, s, t):
+      initialize flow f to 0
+      while there is an augmenting path p in G_f:
+          augment flow f along p
+      return f
+
+  def FORD_FULKERSON(G, s, t):
+      for each edge (u, v) in G.E:
+          (u, v).f = 0
+      while there is a path p from s to t in G_f:
+          c_f(p) = min(c_f(u, v) : (u, v) is in p)
+          for each edge (u, v) in p:
+              if (u, v) in E:
+                  (u, v).f = (u, v).f + c_f(p)
+              else:
+                  (v, u).f = (v, u).f - c_f(p)
+
+#+end_src
+
+** FORD-FULKERSON med BFS kalles EDMONDS-KARP-algoritmen
+Bruker BFS med FORD_FULKERSON_METHOD. Kjøretid O(VE^2)
+
+#+begin_src python
+
+  def EDMONDS_KARP(G, s, t):
+      for each edge (u, v) in G.E:
+          (u, v).f = 0
+      while BFS_LABELING(G, s, t):
+          c_f(p) = t.f
+          u, v = t.pi, t
+          while u != None:
+              if (u, v) in G.E:
+                  (u, v).f = (u, v).f + c_f(p)
+              else:
+                  (v, u).f = (v, u).f - c_f(p)
+              u, v = u.pi, u
+
+#+end_src
+
+** Hvordan FORD-FULKERSON kan finne minimalt snitt
+Kan finne minimalt snitt med FORD_FULKERSON lol.
+** Maks-flyt kan finne maksimum bipartitt matching
+Input: En bipartitt urettet graf
+Output: En matching M med flest mulige kanter
+
+Kan lage superkilder og supersluk, og sette alle kapasiteter i bipartitt graf til 1. Maksimal flyt gir da størst mulig antall matchinger.
+** Heltallsteoremet (integrality theorem)
+For heltallskapasiteter gir FORD_FULKERSON (og andre alg.) heltallsflyt!
+
+** Konstruere reduksjoner til maks-flyt-problemet
+Kan være nyttig å redusere et problem til et maks flyt problem, slik som i bipartitt matching.
+
+* NP-kompletthet
+** Sammenheng mellom optimerings- og beslutningsproblemer
+Generelt: beslutningsproblem er ikke vanskeligere enn optimeringsproblem. Typisk eksempel som at en vil finne korteste sti i en graf. Dette er optimering. Beslutning vil være noe slik som om det finnes en sti av lengde k i grafen. Dersom optimering er enkelt, må også beslutning være det, fordi det kan løses med optimering.
+
+Holder oss hovedsaklig til beslutningsproblem for enkelhets skyld.
+
+** Koding (encoding) av en instans
+Ser på beslutningsproblem som tar inn en bitstreng, altså er problemet kodet slik at det opererer med bitstrenger.
+Hvor mange bits som kreves for å representere input avgjør om et problem er polynomisk.
+
+** Hvorfor Binary Knapsack ikke er polynomisk
+Dette problemet kan på en måte løses polynomisk, men siden den vil kreve faktoriell plass, sier vi at den er pseudo-polynomisk. Så den kjører ikke polynomisk når vi regner med koding av problemet til bitstreng.
+
+At et problem kjører i polynomisk tid refererer til størrelsen på input.
+
+** Forskjell mellom konkrete og abstrakte problemer
+Et problem er konkret hvis input og output er bitstrenger.
+Et abstrakt problem tar i vårt tilfelle en funksjon med input I, som returnerer enten ja eller nei (beslutningsproblem). 
+
+** Representasjon av formelle språk
+Det er praktisk å se på beslutningsproblemene som mendger av instanser (bitstrenger) der svaret er ja. En slik mengde kalles et formelt språk.
+
+** Definisjon av P, NP og co-NP
+Ønsker et univers å jobbe i, der vi velger problemer med gitt løsning kan verifiseres i polynomisk tid.
+
+P: (polynomial time) Løsbart i polynomisk tid.
+
+NP: (nondeterministically polynomial) Løsning kan verifiseres i polynomisk tid
+
+co-NP: Dersom man klarer å falsifisere løsningen i polynomisk tid.
+
+NP-hardt: Kan antagelig ikke løses i polynomisk tid. En klasse vanskelige problemer som kan reduseres til hverandre, og må dermed være minst like vanskelige.
+
+NP-komplette: NP-harde problemer som lar seg verifisere i polynomisk tid
+
+** Redusibilitets-relasjonen
+For å forstå bevisteknikken som brukes for å bevise at et problem er NPC, er det et par begreper som må på plass. Ett av de er redusibilitetsrelasjonen $\leq_P$. I denne sammenhengen brukes det for å si at et språk er polynomisk-tid redusertbart til et annet språk.
+
+Boken trekker grem et eksempel der førstegradslikningen $ax + b = 0$ kan transformeres til $0x^2 + ax + b = 0$. Alle gyldige løsninger for andregradslikningen er også gyldige for førstegradslikninen. Ideen bak eksempelet er å vise at et problem, X, kan reduseres til et problem, Y, slik at inputverdier for X kan løses med Y. Kan du redusere X til Y, betyr det at å løse Y krever minst like mye som å løse X, dermed må Y være minst like vanskelig som å løse X. Det er verdt å merke seg at reduksjonen ikke er gjensidig, du kan dermed ikke bruke X til å løse Y.
+
+** Konvensjonell hypotese mellom P, NP og NPC
+P og NPC er en delmengde av NP. NP-harde problem hører ikke til i NP.
+
+Gitt at P er ulik NP så kan vi si at et problem er NPC dersom det er både et NP-problem og et NP-hardt problem.
+
+** Bevis for at CIRCUIT-SAT er NP-komplett
+1) Bevis at problemet hører til i NP-klassen. Bruk et sertifikat til å bevise at løsningen stemmer i polynomisk tid.
+2) Bevis at problemet er NP-hardt. Gjøres ved polynomisk reduksjon.
+
+CIRCUIT-SAT kan brukes til å løse alt i NP. Har en kompinatorisk logisk krets, representert som en DAG med variable og boolske operatorer på nodene.
+Spørsmål: Er det mulig å oppfylle eller tilfredsstille kretsen?
+
+Tenker oss en krets som viser at CIRCUIT-SAT er i NP.
+Konstruerer denne kretsen, og får at CIRCUIT-SAT er NPC.
+
+* NP-komplette problemer
+** NP-kompletthet kan bevises ved en reduksjon
+Vil vise at et språk L er NPC
+- Vis at L er i NP
+- Velg et kjent NP-komplett språk L'
+- Beskriv en algoritme som beregner en funksjon som mapper instanser av L' til instanser av L  
+
+** Kjenne til enkelte NP-komplette problem og bevis for hver av de
+Tror det enkleste her vil være å se over forelesning 13, som gjennomgår alle bevisene! 
+*** CIRCUIT-SAT
+Instans: En krets med logiske porter og en utverdi
+Spørsmål: Kan utverdien bli 1?
+
+*** SAT
+Instans: En logisk formel 
+Spørsmål: Kan formelen være sann? 
+Ser at dette er ekvivalent med CIRCUIT-SAT
+
+*** 3-CNF-SAT
+Instans: En logisk formel på 3-CNF-form
+Spørsmål: Kan formelen være sann?
+
+*** CLIQUE
+Instans: En urettet graf G og et positivt heltall k
+Spørsmål: Har G en komplett delgraf med k noder?
+Kan redusere til 3-CNF-SAT
+
+*** VERTEX-COVER
+Instans: En urettet graf G og et positivt heltall k
+Spørsmål: Har G et nodedekke med k noder? Dvs., k noder som tilsammen ligger inntil alle kantene.
+Observerer at dette er ekvivalent med at komplementet av grafen har en klikk (CLIQUE)
+
+*** HAM-CYCLE
+Instans: En urettet graf G
+Spørsmål: Finnes det en sykel som inneholder alle nodene?
+Ganske langt og vanskelig bevis, men kan antagelig redusere fra VERTEX-COVER
+
+*** TSP
+Instans: Komplett graf med heltallige vekter og et tall k
+Spørsmål: Finnes det en rundtur med kostnad mindre enn eller lik k?
+Billigste Hamilton-sykel! Trenger bare gjøre originalgrafen veldig billig
+
+*** SUBSET-SUM
+Instans: Mengde positive heltall S og positivt heltall t
+Spørsmål: Finnes en delmendge av S med sum t?
+'Lett' å redusere til det binære ryggsekkproblemet. Bare la vekt være lik verdi.
+** Binary knapsack er NP-hardt
+Faktum
+** Lengste enkle-vei-problemet er NP-hardt
+Faktum
+** Konstruere enkle NP-kompletthetsbevis
+Noen tips fra boken:
+*** Pitfalls
+Du vil vise at Y er NPC med reduksjon fra NPC problem X. Pass på å _ikke_ gå fra Y til X. Du må redusere fra X til Y, siden du går fra noe kjent til noe ukjent. Dette viser isåfall at Y er NP-hardt, ikke nødvendigvis NPC, for da må den kunne verifiseres i polynomisk tid.
+*** Gå fra generelt til spesifikt
+Ved reduksjon fra X til Y, må du alltid starte med å anta vilkårlig input. Men du har lov til å begrense input til problem Y.
+*** Se etter spesialtilfeller
+Mange NPC problem er bare spesialtilfeller av andre NPC problemer. Viss problem X er NP-hardt, og Y er et spesialtilfelle av X, så må også Y være NP-hardt.
+*** Velg et passelig problem å redusere fra
+For eksempel har vi sett mange reduksjoner mellom problemer som tar inn urettet graf som input (HAM-CYC, VERTEX, TSP, ...). Andre ganger kan det passe seg å bytte domene, og ofte er 3-CNF en god overgang.
+*** Dra nytte av strukturen i problemet du reduserer fra
+Problemer som har en streng, og veldefinert struktur er ofte lettere å redusere fra, fordi det går an å dra nytte av denne strukturen.
+*** Store belønninger og store straffer
+Når vi reduserer fra HAM-CYC til TSP, vekter vi kantene slik at reduksjonen passer. Da lønner det seg ofte å smøre tjukt på, gjøre ulovlige kanter veldig dyre, og foretrukne kanter gratis. På denne måten kan oppførselen til reduksjonen styres.
+*** Design gadgets
+Bruk verktøy for å forsvare reduksjonen. For eksempel blir det innført en delgraf i reduksjonen fra VERTEX til HAM-CYC. En gadget forsterker enkelte egenskaper i problemet, og de kan fort bli kompliserte.
